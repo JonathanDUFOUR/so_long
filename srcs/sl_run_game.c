@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   sl_run_game.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/09 14:15:56 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/09 16:54:59 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/09 14:57:42 by jodufour          #+#    #+#             */
+/*   Updated: 2021/06/09 17:03:01 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	SO_LONG_H
-# define SO_LONG_H
+#include <stdio.h>
+#include <stdlib.h>
+#include "so_long.h"
 
-#include <stdint.h>
-#include <string.h>
-
-enum	e_ret
+static	int	free_n_quit(char *map, int ret)
 {
-	SUCCESS = 0,
-	AC_ERRNO,
-	OPEN_ERRNO,
-	GNL_ERRNO
-};
+	free(map);
+	return (ret);
+}
 
-enum	e_dim
+int	sl_run_game(char const *file)
 {
-	H,
-	W
-};
+	uint32_t	dim[2];
+	char		*map;
+	int			ret;
 
-int		sl_errno_msg(int const errno);
-int		sl_run_game(char const *file);
-int		sl_get_map(char const *file, char **map, uint32_t *dim);
-char	*sl_strjoin(char const *s1, char const *s2);
-size_t	sl_strlen(char const *s);
-
-
-#endif
+	dim[W] = 0;
+	map = NULL;
+	ret = sl_get_map(file, &map, dim);
+	if (ret != SUCCESS)
+		return (free_n_quit(map, ret));
+	printf("map:\n%s\n", map);
+	free(map);
+	return (SUCCESS);
+}
