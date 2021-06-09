@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:15:56 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/09 16:54:59 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/09 17:12:39 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,18 @@ enum	e_ret
 	GNL_ERRNO
 };
 
-enum	e_dim
+typedef	struct s_map	t_map;
+
+struct	s_map
 {
-	H,
-	W
+	int		w;
+	int		h;
+	char	*elems;
 };
 
 int		sl_errno_msg(int const errno);
 int		sl_run_game(char const *file);
-int		sl_get_map(char const *file, char **map, uint32_t *dim);
+int		sl_get_map(char const *file, t_map *map);
 char	*sl_strjoin(char const *s1, char const *s2);
 size_t	sl_strlen(char const *s);
 

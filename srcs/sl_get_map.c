@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 15:07:28 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/09 17:03:20 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/09 17:28:17 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "so_long.h"
 #include "get_next_line.h"
 
-int	sl_get_map(char const *file, char **map, uint32_t *dim)
+int	sl_get_map(char const *file, t_map *map)
 {
 	char	*line;
 	char	*dent;
@@ -29,15 +29,15 @@ int	sl_get_map(char const *file, char **map, uint32_t *dim)
 	ret = get_next_line(fd, &line);
 	while (ret > 0)
 	{
-		dent = *map;
-		*map = sl_strjoin(*map, line);
+		dent = map->elems;
+		map->elems = sl_strjoin(map->elems, line);
 		free(line);
 		free(dent);
 		ret = get_next_line(fd, &line);
 	}
-	dent = *map;
+	dent = map->elems;
 	if (!ret)
-		*map = sl_strjoin(*map, line);
+		map->elems = sl_strjoin(map->elems, line);
 	free(line);
 	free(dent);
 	close(fd);
