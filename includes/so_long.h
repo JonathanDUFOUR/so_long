@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:15:56 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/09 15:05:10 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/09 15:17:34 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 enum	e_ret
 {
 	SUCCESS = 0,
-	AC_ERRNO
+	AC_ERRNO,
+	OPEN_ERRNO
 };
 
 enum	e_dim

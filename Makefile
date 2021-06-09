@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/06/09 15:15:24 by jodufour         ###   ########.fr        #
+#    Updated: 2021/06/09 15:16:55 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ OBJD	=	objs/
 
 SRCS	=	\
 			main.c		\
+			get_map.c	\
 			run_game.c	\
 			errno_msg.c
 
