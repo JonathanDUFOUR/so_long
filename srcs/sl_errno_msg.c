@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:41:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/09 16:56:00 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/09 20:24:08 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	sl_errno_msg(int const errno)
 		printf("Open failed\n");
 	else if (errno == GNL_ERRNO)
 		printf("Get_next_line failed\n");
+	else if (errno == INVALID_MAP_ERRNO)
+		printf("Invalid map\n");
 	printf("\e[0m\n");
 	fflush(stdout);
 	system("leaks so_long");

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:57:42 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/09 17:28:12 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/09 20:24:28 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ int	sl_run_game(char const *file)
 	map.w = 0;
 	ret = sl_get_map(file, &map);
 	if (ret == SUCCESS)
+	{
 		printf("map:\n%s\n", map.elems);
+		printf("h -> %u\n", map.h);
+		printf("w -> %u\n", map.w);
+	}
 	free(map.elems);
 	return (ret);
 }

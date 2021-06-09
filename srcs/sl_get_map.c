@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 15:07:28 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/09 17:28:17 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/09 20:43:57 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,23 @@ int	sl_get_map(char const *file, t_map *map)
 	if (fd == -1)
 		return (OPEN_ERRNO);
 	ret = get_next_line(fd, &line);
-	while (ret > 0)
+	while (ret == 1)
 	{
 		dent = map->elems;
 		map->elems = sl_strjoin(map->elems, line);
+		if (++map->h && !map->w)
+			map->w = sl_strlen(line);
 		free(line);
 		free(dent);
 		ret = get_next_line(fd, &line);
 	}
-	dent = map->elems;
 	if (!ret)
+	{
+		dent = map->elems;
 		map->elems = sl_strjoin(map->elems, line);
+		free(dent);
+	}
 	free(line);
-	free(dent);
 	close(fd);
 	if (!ret)
 		return (SUCCESS);
