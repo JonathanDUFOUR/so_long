@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:15:56 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/09 15:17:34 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/09 15:48:37 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ enum	e_dim
 
 int	errno_msg(int errno);
 int	run_game(char *file);
+
 
 #endif

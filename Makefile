@@ -6,32 +6,55 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/06/09 15:16:55 by jodufour         ###   ########.fr        #
+#    Updated: 2021/06/09 15:48:01 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	so_long
-CC		=	gcc -c -o
-LINKER	=	gcc -o
-RM		=	rm -rf
-MAKEDIR	=	mkdir -p
+NAME		=	so_long
 
-INCLUDE	=	includes/
-SRCD	=	srcs/
-OBJD	=	objs/
+######################################
+#              COMMANDS              #
+######################################
+CC			=	gcc -c -o
+LINKER		=	gcc -o
+RM			=	rm -rf
+MAKEDIR		=	mkdir -p
 
-SRCS	=	\
-			main.c		\
-			get_map.c	\
-			run_game.c	\
-			errno_msg.c
+#####################################
+#            DIRECTORIES            #
+#####################################
+INCLUDE		=	includes/
+GNL_SRCD	=	get_next_line/
+SRCD		=	srcs/
+OBJD		=	objs/
 
-OBJS	=	${SRCS:.c=.o}
-OBJS	:=	${addprefix ${OBJD}, ${OBJS}}
+######################################
+#            SOURCE FILES            #
+######################################
+GNL_SRCS	=	\
+				get_next_line.c			\
+				get_next_line_utils.c
 
-DEPS	=	${OBJS:.o=.d}
-CFLAGS	=	-Wall -Wextra -MMD -I${INCLUDE}
-LDFLAGS	=
+SRCS		=	\
+				${GNL_SRCS}	\
+				main.c		\
+				get_map.c	\
+				run_game.c	\
+				errno_msg.c
+
+######################################
+#            OBJECT FILES            #
+######################################
+OBJS		=	${SRCS:.c=.o}
+OBJS		:=	${addprefix ${OBJD}, ${OBJS}}
+
+DEPS		=	${OBJS:.o=.d}
+
+#####################################
+#               FLAGS               #
+#####################################
+CFLAGS		=	-Wall -Wextra -MMD -I${INCLUDE}
+LDFLAGS		=
 
 ifeq (DEBUG, true)
 	CFLAGS	+=	-g
@@ -45,6 +68,10 @@ all:	${NAME}
 -include ${DEPS}
 
 ${OBJD}%.o:	${SRCD}%.c
+	@${MAKEDIR} ${OBJD}
+	${CC} $@ ${CFLAGS} $<
+
+${OBJD}%.o:	${GNL_SRCD}%.c
 	@${MAKEDIR} ${OBJD}
 	${CC} $@ ${CFLAGS} $<
 
