@@ -6,15 +6,15 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:15:56 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/09 20:22:41 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/11 02:50:40 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	SO_LONG_H
+#ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include <stdint.h>
-#include <string.h>
+# include <stdint.h>
+# include <string.h>
 
 enum	e_ret
 {
@@ -25,7 +25,7 @@ enum	e_ret
 	INVALID_MAP_ERRNO
 };
 
-typedef	struct s_map	t_map;
+typedef struct s_map	t_map;
 
 struct	s_map
 {
@@ -39,6 +39,5 @@ int		sl_run_game(char const *file);
 int		sl_get_map(char const *file, t_map *map);
 char	*sl_strjoin(char const *s1, char const *s2);
 size_t	sl_strlen(char const *s);
-
 
 #endif
