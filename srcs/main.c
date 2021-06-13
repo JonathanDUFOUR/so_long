@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:14:09 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/11 02:44:57 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/12 13:15:02 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int	main(int ac, char **av)
 #ifdef __APPLE__
 	system("leaks so_long");
 #endif
-	return (0);
+	return (SUCCESS);
 }

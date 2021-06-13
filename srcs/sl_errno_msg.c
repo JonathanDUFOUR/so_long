@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:41:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/11 02:46:07 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/13 03:45:12 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	sl_errno_msg(int const errno)
 		printf("Get_next_line failed\n");
 	else if (errno == INVALID_MAP_ERRNO)
 		printf("Invalid map\n");
+	else if (errno == MALLOC_ERRNO)
+		printf("Malloc failed\n");
 	printf("\e[0m\n");
 	fflush(stdout);
 #ifdef __APPLE__

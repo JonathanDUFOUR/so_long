@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_run_game.c                                      :+:      :+:    :+:   */
+/*   sl_multifree.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/09 14:57:42 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/13 03:28:34 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/12 14:25:37 by jodufour          #+#    #+#             */
+/*   Updated: 2021/06/13 03:43:11 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "so_long.h"
 
-int	sl_run_game(char const *file)
+int	sl_multifree(int ret)
 {
-	t_map			map;
-	int				ret;
+	t_lst *const	lst = sl_get_lst();
+	t_free			*next;
 
-	map.elems = NULL;
-	map.h = 0;
-	map.w = 0;
-	ret = sl_lstadd_back(map.elems);
-	if (ret != SUCCESS)
-		return (sl_multifree(ret));
-	ret = sl_get_map(file, &map);
-	if (ret == SUCCESS)
+	while (lst->head)
 	{
-		printf("map:\n%s\n", map.elems);
-		printf("h -> %u\n", map.h);
-		printf("w -> %u\n", map.w);
+		next = ((t_free *)lst->head)->next;
+		free(((t_free *)lst->head)->addr);
+		((t_free *)lst->head)->addr = NULL;
+		free(lst->head);
+		lst->head = next;
 	}
-	return (sl_multifree(ret));
+	lst->size = 0;
+	lst->tail = NULL;
+	return (ret);
 }

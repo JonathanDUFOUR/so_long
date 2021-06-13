@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 23:55:08 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/29 16:57:38 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/13 03:19:20 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	gnl_clear(void)
 
 	while (lst->head)
 	{
-		next = lst->head->next;
-		free(lst->head->rest);
+		next = ((t_elem *)lst->head)->next;
+		free(((t_elem *)lst->head)->rest);
 		free(lst->head);
 		lst->head = next;
 	}
@@ -74,7 +74,7 @@ int	get_next_line(int fd, char **line)
 	t_elem			*curr;
 	int				ret;
 
-	curr = lst->head;
+	curr = (t_elem *)lst->head;
 	while (curr && curr->fd != fd)
 		curr = curr->next;
 	if (!curr)

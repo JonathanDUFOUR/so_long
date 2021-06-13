@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 23:52:53 by jodufour          #+#    #+#             */
-/*   Updated: 2021/05/29 16:58:11 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/13 03:14:35 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <string.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2048
+#  define BUFFER_SIZE 4096
 # endif
 
 typedef struct s_elem	t_elem;
