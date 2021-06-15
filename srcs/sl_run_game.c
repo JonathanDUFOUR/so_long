@@ -6,18 +6,19 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:57:42 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/13 03:28:34 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/15 01:38:52 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "t_map.h"
 #include "so_long.h"
 
 int	sl_run_game(char const *file)
 {
-	t_map			map;
-	int				ret;
+	t_map	map;
+	int		ret;
 
 	map.elems = NULL;
 	map.h = 0;
@@ -26,11 +27,11 @@ int	sl_run_game(char const *file)
 	if (ret != SUCCESS)
 		return (sl_multifree(ret));
 	ret = sl_get_map(file, &map);
-	if (ret == SUCCESS)
-	{
-		printf("map:\n%s\n", map.elems);
-		printf("h -> %u\n", map.h);
-		printf("w -> %u\n", map.w);
-	}
+	if (ret != SUCCESS)
+		return (sl_multifree(ret));
+	ret = sl_check_map(map);
+	if (ret != SUCCESS)
+		return (sl_multifree(ret));
+	sl_print_map(map);
 	return (sl_multifree(ret));
 }

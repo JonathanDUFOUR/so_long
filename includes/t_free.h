@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_multifree.c                                     :+:      :+:    :+:   */
+/*   t_free.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/12 14:25:37 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/15 02:17:28 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/15 01:34:00 by jodufour          #+#    #+#             */
+/*   Updated: 2021/06/15 03:11:00 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "so_long.h"
-#include "t_free.h"
-#include "t_lst.h"
+#ifndef T_FREE_H
+# define T_FREE_H
 
-int	sl_multifree(int ret)
+typedef struct s_free	t_free;
+
+struct	s_free
 {
-	t_lst *const	lst = sl_get_lst();
-	t_free			*next;
+	void	*addr;
+	t_free	*next;
+};
 
-	while (lst->head)
-	{
-		next = ((t_free *)lst->head)->next;
-		free(((t_free *)lst->head)->addr);
-		((t_free *)lst->head)->addr = NULL;
-		free(lst->head);
-		lst->head = next;
-	}
-	lst->size = 0;
-	lst->tail = NULL;
-	return (ret);
-}
+#endif

@@ -6,12 +6,14 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:41:25 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/13 03:45:12 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/15 01:38:23 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <stdlib.h>
+#ifdef __APPLE__
+# include <stdlib.h>
+#endif
 #include "so_long.h"
 
 int	sl_errno_msg(int const errno)

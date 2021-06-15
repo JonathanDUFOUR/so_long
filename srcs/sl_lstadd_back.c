@@ -6,13 +6,15 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 14:04:58 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/13 03:30:51 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/15 02:17:48 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "so_long.h"
+#include "t_free.h"
+#include "t_lst.h"
 
 int	sl_lstadd_back(void *addr)
 {

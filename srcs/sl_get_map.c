@@ -6,13 +6,14 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 15:07:28 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/13 04:25:23 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/15 02:18:16 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include "t_map.h"
 #include "so_long.h"
 #include "get_next_line.h"
 

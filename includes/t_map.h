@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_multifree.c                                     :+:      :+:    :+:   */
+/*   t_map.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/12 14:25:37 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/15 02:17:28 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/15 01:20:51 by jodufour          #+#    #+#             */
+/*   Updated: 2021/06/15 01:36:39 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "so_long.h"
-#include "t_free.h"
-#include "t_lst.h"
+#ifndef T_MAP_H
+# define T_MAP_H
 
-int	sl_multifree(int ret)
+# include <stdint.h>
+
+typedef struct s_map	t_map;
+
+struct	s_map
 {
-	t_lst *const	lst = sl_get_lst();
-	t_free			*next;
+	uint32_t	w;
+	uint32_t	h;
+	char		*elems;
+};
 
-	while (lst->head)
-	{
-		next = ((t_free *)lst->head)->next;
-		free(((t_free *)lst->head)->addr);
-		((t_free *)lst->head)->addr = NULL;
-		free(lst->head);
-		lst->head = next;
-	}
-	lst->size = 0;
-	lst->tail = NULL;
-	return (ret);
-}
+int		sl_check_map(t_map map);
+int		sl_get_map(char const *file, t_map *map);
+
+void	sl_print_map(t_map map);
+
+#endif

@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/06/13 03:02:21 by jodufour         ###   ########.fr        #
+#    Updated: 2021/06/15 01:17:05 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,10 @@ SRCS		=	\
 				sl_get_map.c		\
 				sl_run_game.c		\
 				sl_errno_msg.c		\
-				sl_lstadd_back.c	\
-				sl_multifree.c
+				sl_check_map.c		\
+				sl_print_map.c		\
+				sl_multifree.c		\
+				sl_lstadd_back.c
 
 ######################################
 #            OBJECT FILES            #

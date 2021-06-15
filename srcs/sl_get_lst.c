@@ -6,11 +6,11 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 13:58:09 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/12 13:59:06 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/15 01:18:14 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "t_lst.h"
 
 t_lst	*sl_get_lst(void)
 {
