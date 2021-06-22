@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/06/22 08:38:21 by jodufour         ###   ########.fr        #
+#    Updated: 2021/06/22 08:54:16 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ SRCS		=	\
 				sl_strjoin.c		\
 				sl_get_lst.c		\
 				sl_get_map.c		\
-				sl_run_game.c		\
+				sl_init_game.c		\
 				sl_errno_msg.c		\
 				sl_check_map.c		\
 				sl_print_map.c		\
@@ -70,7 +70,7 @@ DEPS		=	${OBJS:.o=.d}
 #####################################
 #               FLAGS               #
 #####################################
-CFLAGS		=	-Wall -Wextra -MMD -I${INCLUDE}
+CFLAGS		=	-Wall -Wextra -MMD -I${INCLUDE} -framework OpenGL -framework AppKit
 LDFLAGS		=
 
 ifeq (${DEBUG}, true)
