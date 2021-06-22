@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 15:07:28 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/15 02:18:16 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/22 08:16:42 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ int	sl_get_map(char const *file, t_map *map)
 		sl_lstadd_back(map->elems = sl_strjoin(map->elems, line));
 	if (!map->elems)
 		return (sl_close_quit(fd, MALLOC_ERRNO));
+	sl_free(line);
 	return (sl_close_quit(fd, GNL_ERRNO * !!ret));
 }

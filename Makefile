@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/06/15 01:17:05 by jodufour         ###   ########.fr        #
+#    Updated: 2021/06/22 08:38:21 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,19 @@ MAKEDIR		=	mkdir -p
 #####################################
 #            DIRECTORIES            #
 #####################################
-INCLUDE		=	includes/
+MLXD		=	mlx_MacOS/
 GNL_SRCD	=	get_next_line/
 SRCD		=	srcs/
 OBJD		=	objs/
+
+INCLUDE		=	\
+				includes		\
+				${MLXD}includes
+
+#####################################
+#             LIBRARIES             #
+#####################################
+MLX			=	libmlx.a
 
 ######################################
 #            SOURCE FILES            #
@@ -38,6 +47,7 @@ GNL_SRCS	=	\
 SRCS		=	\
 				${GNL_SRCS}			\
 				main.c				\
+				sl_free.c			\
 				sl_strlen.c			\
 				sl_strjoin.c		\
 				sl_get_lst.c		\
@@ -67,7 +77,7 @@ ifeq (${DEBUG}, true)
 	CFLAGS	+=	-g
 endif
 
-${NAME}:	${OBJS}
+${NAME}:	${OBJS} ${MLXD}${MLX}
 	${LINKER} $@ ${LDFLAGS} $^
 
 all:	${NAME}
@@ -81,6 +91,9 @@ ${OBJD}%.o:	${SRCD}%.c
 ${OBJD}%.o:	${GNL_SRCD}%.c
 	@${MAKEDIR} ${OBJD}
 	${CC} $@ ${CFLAGS} $<
+
+${MLXD}${MLX}:
+	${MAKE} -C ${MLXD}
 
 clean:
 	${RM} ${OBJD}

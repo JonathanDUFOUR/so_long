@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:14:09 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/12 13:15:02 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/22 07:17:23 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 	else
 		return (sl_errno_msg(AC_ERRNO));
 #ifdef __APPLE__
-	system("leaks so_long");
+	system("leaks so_long | grep 'leaks'");
 #endif
 	return (SUCCESS);
 }

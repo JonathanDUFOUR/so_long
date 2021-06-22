@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:15:56 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/15 02:42:37 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/22 08:09:03 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int		sl_errno_msg(int const errno);
 int		sl_lstadd_back(void *addr);
 int		sl_multifree(int ret);
 int		sl_run_game(char const *file);
+
+void	sl_free(void *addr);
 
 char	*sl_strjoin(char const *s1, char const *s2);
 
