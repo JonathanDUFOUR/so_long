@@ -6,10 +6,13 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/06/22 20:48:42 by jodufour         ###   ########.fr        #
+#    Updated: 2021/06/22 22:01:06 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+######################################
+#             EXECUTABLE             #
+######################################
 NAME		=	so_long
 
 ######################################
@@ -23,21 +26,14 @@ MAKEDIR		=	mkdir -p
 #####################################
 #            DIRECTORIES            #
 #####################################
-MLXD		=	mlx/
 GNL_SRCD	=	get_next_line/
 SRCD		=	srcs/
 OBJD		=	objs/
-
-INCLUDE		=	\
-				includes		\
-				${MLXD}
+INCLUDE		=	includes
 
 #####################################
 #             LIBRARIES             #
 #####################################
-MLXA		=	libmlx.a
-MLXA		:=	${addprefix ${MLXD}, ${MLXA}}
-MLX			=	mlx
 
 ######################################
 #            SOURCE FILES            #
@@ -73,8 +69,8 @@ DEPS		=	${OBJS:.o=.d}
 #####################################
 #               FLAGS               #
 #####################################
-CFLAGS		=	-Wall -Wextra -MMD -I${INCLUDE} -framework OpenGL -framework AppKit
-LDFLAGS		=	-L${MLXD} -l${MLX}
+CFLAGS		=	-Wall -Wextra -MMD -I${INCLUDE}
+LDFLAGS		=	
 
 ifeq (${DEBUG}, true)
 	CFLAGS	+=	-g
