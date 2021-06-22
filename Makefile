@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/06/22 08:54:16 by jodufour         ###   ########.fr        #
+#    Updated: 2021/06/22 20:48:42 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,19 +23,21 @@ MAKEDIR		=	mkdir -p
 #####################################
 #            DIRECTORIES            #
 #####################################
-MLXD		=	mlx_MacOS/
+MLXD		=	mlx/
 GNL_SRCD	=	get_next_line/
 SRCD		=	srcs/
 OBJD		=	objs/
 
 INCLUDE		=	\
 				includes		\
-				${MLXD}includes
+				${MLXD}
 
 #####################################
 #             LIBRARIES             #
 #####################################
-MLX			=	libmlx.a
+MLXA		=	libmlx.a
+MLXA		:=	${addprefix ${MLXD}, ${MLXA}}
+MLX			=	mlx
 
 ######################################
 #            SOURCE FILES            #
@@ -52,6 +54,7 @@ SRCS		=	\
 				sl_strjoin.c		\
 				sl_get_lst.c		\
 				sl_get_map.c		\
+				sl_run_game.c		\
 				sl_init_game.c		\
 				sl_errno_msg.c		\
 				sl_check_map.c		\
@@ -71,14 +74,14 @@ DEPS		=	${OBJS:.o=.d}
 #               FLAGS               #
 #####################################
 CFLAGS		=	-Wall -Wextra -MMD -I${INCLUDE} -framework OpenGL -framework AppKit
-LDFLAGS		=
+LDFLAGS		=	-L${MLXD} -l${MLX}
 
 ifeq (${DEBUG}, true)
 	CFLAGS	+=	-g
 endif
 
-${NAME}:	${OBJS} ${MLXD}${MLX}
-	${LINKER} $@ ${LDFLAGS} $^
+${NAME}:	${OBJS} ${MLXA}
+	${LINKER} $@ ${LDFLAGS} ${OBJS}
 
 all:	${NAME}
 
@@ -92,8 +95,8 @@ ${OBJD}%.o:	${GNL_SRCD}%.c
 	@${MAKEDIR} ${OBJD}
 	${CC} $@ ${CFLAGS} $<
 
-${MLXD}${MLX}:
-	${MAKE} -C ${MLXD}
+${MLXA}:
+	${MAKE} -C ${dir $@}
 
 clean:
 	${RM} ${OBJD}

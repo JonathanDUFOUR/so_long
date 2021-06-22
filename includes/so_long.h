@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:15:56 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/22 08:52:50 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/06/22 18:55:20 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include "t_map.h"
 
 # define MAP_CHAR	"10PCE"
+# define WIN_W		500
+# define WIN_H		500
+# define WIN_TITLE	"pouic"
 
 enum	e_map_chars
 {
