@@ -1,0 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   padded_putwchar.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/23 01:42:26 by jodufour          #+#    #+#             */
+/*   Updated: 2021/07/23 01:46:12 by jodufour         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_io.h"
+#include "ft_ptf.h"
+#include "enums/e_ret.h"
+
+int	padded_putwchar(wchar_t c, uint16_t flags, t_uint padlen)
+{
+	if (!(flags & (1 << 0)) && padding(' ', padlen) == MALLOC_ERRNO)
+		return (MALLOC_ERRNO);
+	ft_putchar_fd(c, 1);
+	if (flags & (1 << 0) && padding(' ', padlen) == MALLOC_ERRNO)
+		return (MALLOC_ERRNO);
+	return (SUCCESS);
+}

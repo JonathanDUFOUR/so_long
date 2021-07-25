@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/06/22 22:01:06 by jodufour         ###   ########.fr        #
+#    Updated: 2021/07/25 22:15:25 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,11 @@ MAKEDIR		=	mkdir -p
 #####################################
 #            DIRECTORIES            #
 #####################################
-GNL_SRCD	=	get_next_line/
 SRCD		=	srcs/
 OBJD		=	objs/
-INCLUDE		=	includes
+INCD		=	includes/
+FT_IO		=	libft_io/
+FT_IO_INCD	=	
 
 #####################################
 #             LIBRARIES             #
@@ -38,10 +39,6 @@ INCLUDE		=	includes
 ######################################
 #            SOURCE FILES            #
 ######################################
-GNL_SRCS	=	\
-				get_next_line.c			\
-				get_next_line_utils.c
-
 SRCS		=	\
 				${GNL_SRCS}			\
 				main.c				\
@@ -69,8 +66,8 @@ DEPS		=	${OBJS:.o=.d}
 #####################################
 #               FLAGS               #
 #####################################
-CFLAGS		=	-Wall -Wextra -MMD -I${INCLUDE}
-LDFLAGS		=	
+CFLAGS		=	-Wall -Wextra -MMD -I${INCD} -I
+LDFLAGS		=	-L ${FT_IO} -lft_io
 
 ifeq (${DEBUG}, true)
 	CFLAGS	+=	-g

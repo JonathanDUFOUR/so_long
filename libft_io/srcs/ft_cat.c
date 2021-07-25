@@ -1,44 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_cat.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/20 23:52:53 by jodufour          #+#    #+#             */
-/*   Updated: 2021/06/13 03:14:35 by jodufour         ###   ########.fr       */
+/*   Created: 2020/03/21 06:21:42 by jdufour           #+#    #+#             */
+/*   Updated: 2021/07/22 20:18:45 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <fcntl.h>
+#include "ft_io.h"
 
-# include <stdbool.h>
-# include <string.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4096
-# endif
-
-typedef struct s_elem	t_elem;
-typedef struct s_lst	t_lst;
-
-struct s_lst
-{
-	size_t	size;
-	t_elem	*head;
-	t_elem	*tail;
-};
-
-struct s_elem
+void	ft_cat(char **f)
 {
 	int		fd;
-	char	*rest;
-	t_elem	*next;
-};
+	int		rd;
+	char	output[BUFF_SIZE];
 
-int		get_next_line(int fd, char **line);
-bool	gnl_fd_del(int fd);
-void	gnl_clear(void);
-
-#endif
+	while (*f)
+	{
+		fd = open(*f++, O_RDONLY);
+		if (fd < 0)
+			continue ;
+		rd = read(fd, &output, BUFF_SIZE);
+		while (rd > 0)
+		{
+			write(1, &output, rd);
+			rd = read(fd, &output, BUFF_SIZE);
+		}
+		close(fd);
+	}
+}
