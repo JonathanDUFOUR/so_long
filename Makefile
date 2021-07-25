@@ -6,10 +6,13 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/06/15 01:17:05 by jodufour         ###   ########.fr        #
+#    Updated: 2021/06/22 22:01:06 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+######################################
+#             EXECUTABLE             #
+######################################
 NAME		=	so_long
 
 ######################################
@@ -23,10 +26,14 @@ MAKEDIR		=	mkdir -p
 #####################################
 #            DIRECTORIES            #
 #####################################
-INCLUDE		=	includes/
 GNL_SRCD	=	get_next_line/
 SRCD		=	srcs/
 OBJD		=	objs/
+INCLUDE		=	includes
+
+#####################################
+#             LIBRARIES             #
+#####################################
 
 ######################################
 #            SOURCE FILES            #
@@ -38,11 +45,13 @@ GNL_SRCS	=	\
 SRCS		=	\
 				${GNL_SRCS}			\
 				main.c				\
+				sl_free.c			\
 				sl_strlen.c			\
 				sl_strjoin.c		\
 				sl_get_lst.c		\
 				sl_get_map.c		\
 				sl_run_game.c		\
+				sl_init_game.c		\
 				sl_errno_msg.c		\
 				sl_check_map.c		\
 				sl_print_map.c		\
@@ -61,14 +70,14 @@ DEPS		=	${OBJS:.o=.d}
 #               FLAGS               #
 #####################################
 CFLAGS		=	-Wall -Wextra -MMD -I${INCLUDE}
-LDFLAGS		=
+LDFLAGS		=	
 
 ifeq (${DEBUG}, true)
 	CFLAGS	+=	-g
 endif
 
-${NAME}:	${OBJS}
-	${LINKER} $@ ${LDFLAGS} $^
+${NAME}:	${OBJS} ${MLXA}
+	${LINKER} $@ ${LDFLAGS} ${OBJS}
 
 all:	${NAME}
 
@@ -81,6 +90,9 @@ ${OBJD}%.o:	${SRCD}%.c
 ${OBJD}%.o:	${GNL_SRCD}%.c
 	@${MAKEDIR} ${OBJD}
 	${CC} $@ ${CFLAGS} $<
+
+${MLXA}:
+	${MAKE} -C ${dir $@}
 
 clean:
 	${RM} ${OBJD}
