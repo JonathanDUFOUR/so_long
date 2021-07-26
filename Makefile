@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/07/25 22:15:25 by jodufour         ###   ########.fr        #
+#    Updated: 2021/07/26 05:01:24 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,14 @@ MAKEDIR		=	mkdir -p
 SRCD		=	srcs/
 OBJD		=	objs/
 INCD		=	includes/
+
 FT_IO		=	libft_io/
-FT_IO_INCD	=	
+FT_IO_INCD	=	includes/
+FT_IO_INCD	:=	${addprefix ${FT_IO}, ${FT_IO_INCD}}
+
+MLX			=	mlx/
+MLX_INCD	=	.
+MLX_INCD	:=	${addprefix ${MLX}, ${MLX_INCD}}
 
 #####################################
 #             LIBRARIES             #
@@ -66,8 +72,8 @@ DEPS		=	${OBJS:.o=.d}
 #####################################
 #               FLAGS               #
 #####################################
-CFLAGS		=	-Wall -Wextra -MMD -I${INCD} -I
-LDFLAGS		=	-L ${FT_IO} -lft_io
+CFLAGS		=	-Wall -Wextra -MMD -I${INCD} -I${FT_IO_INCD} -I${MLX_INCD}
+LDFLAGS		=	-L${FT_IO} -lft_io -L${MLX} -lmlx
 
 ifeq (${DEBUG}, true)
 	CFLAGS	+=	-g
