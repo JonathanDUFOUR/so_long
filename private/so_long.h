@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/09 14:14:09 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/27 04:04:04 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/27 03:50:45 by jodufour          #+#    #+#             */
+/*   Updated: 2021/08/27 04:08:18 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-#include "enum/e_ret.h"
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
-int	main(int ac, char **av)
-{
-	int	ret;
+int	sl_err_msg(int err);
+int	sl_game_init(char const *ber);
 
-	if (ac == 2)
-	{
-		ret = sl_game_init(av[1]);
-		if (ret != SUCCESS)
-			return (sl_err_msg(ret));
-	}
-	else
-		return (sl_err_msg(AC_ERR));
-	return (SUCCESS);
-}
+#endif

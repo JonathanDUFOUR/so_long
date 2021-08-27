@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sl_game_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/09 14:14:09 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/27 04:04:04 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/27 04:04:36 by jodufour          #+#    #+#             */
+/*   Updated: 2021/08/27 04:08:24 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
 #include "enum/e_ret.h"
 
-int	main(int ac, char **av)
+int	sl_game_init(char const *ber)
 {
-	int	ret;
-
-	if (ac == 2)
-	{
-		ret = sl_game_init(av[1]);
-		if (ret != SUCCESS)
-			return (sl_err_msg(ret));
-	}
-	else
-		return (sl_err_msg(AC_ERR));
+	(void)ber;
 	return (SUCCESS);
 }

@@ -6,102 +6,95 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/07/26 05:01:24 by jodufour         ###   ########.fr        #
+#    Updated: 2021/08/27 04:12:10 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################################
 #             EXECUTABLE             #
 ######################################
-NAME		=	so_long
+NAME			=	so_long
 
 ######################################
 #              COMMANDS              #
 ######################################
-CC			=	gcc -c -o
-LINKER		=	gcc -o
-RM			=	rm -rf
-MAKEDIR		=	mkdir -p
+CC				=	clang -c -o
+LINK			=	clang -o
+RM				=	rm -rf
+MKDIR			=	mkdir -p
 
 #####################################
 #            DIRECTORIES            #
 #####################################
-SRCD		=	srcs/
-OBJD		=	objs/
-INCD		=	includes/
+SRC_DIR			=	srcs/
+OBJ_DIR			=	objs/
+INC_DIR			=	includes/
+PRV_DIR			=	private/
 
-FT_IO		=	libft_io/
-FT_IO_INCD	=	includes/
-FT_IO_INCD	:=	${addprefix ${FT_IO}, ${FT_IO_INCD}}
+FT_IO_DIR		=	libft_io/
+FT_IO_INC_DIR	=	includes/
+FT_IO_INC_DIR	:=	${addprefix ${FT_IO_DIR}, ${FT_IO_INC_DIR}}
 
-MLX			=	mlx/
-MLX_INCD	=	.
-MLX_INCD	:=	${addprefix ${MLX}, ${MLX_INCD}}
+MLX_DIR			=	mlx/
+MLX_INC_DIR		=	.
+MLX_INC_DIR		:=	${addprefix ${MLX_DIR}, ${MLX_INC_DIR}}
 
 #####################################
 #             LIBRARIES             #
 #####################################
+FT_IO_A			=	libft_io.a
+MLX_A			=	libmlx.a
 
 ######################################
 #            SOURCE FILES            #
 ######################################
-SRCS		=	\
-				${GNL_SRCS}			\
+SRC			=	\
+				${addprefix game/,	\
+					sl_game_init.c	\
+				}					\
 				main.c				\
-				sl_free.c			\
-				sl_strlen.c			\
-				sl_strjoin.c		\
-				sl_get_lst.c		\
-				sl_get_map.c		\
-				sl_run_game.c		\
-				sl_init_game.c		\
-				sl_errno_msg.c		\
-				sl_check_map.c		\
-				sl_print_map.c		\
-				sl_multifree.c		\
-				sl_lstadd_back.c
+				sl_err_msg.c
 
 ######################################
 #            OBJECT FILES            #
 ######################################
-OBJS		=	${SRCS:.c=.o}
-OBJS		:=	${addprefix ${OBJD}, ${OBJS}}
+OBJ			=	${SRC:.c=.o}
+OBJ			:=	${addprefix ${OBJ_DIR}, ${OBJ}}
 
-DEPS		=	${OBJS:.o=.d}
+DEP			=	${OBJ:.o=.d}
 
 #####################################
 #               FLAGS               #
 #####################################
-CFLAGS		=	-Wall -Wextra -MMD -I${INCD} -I${FT_IO_INCD} -I${MLX_INCD}
-LDFLAGS		=	-L${FT_IO} -lft_io -L${MLX} -lmlx
+CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		+=	-MMD -MP
+CFLAGS		+=	-I${INC_DIR} -I${PRV_DIR}
+CFLAGS		+=	-I${FT_IO_INC_DIR}
+CFLAGS		+=	-I${MLX_INC_DIR}
+
+#LDFLAGS		=	-L${FT_IO_DIR} -lft_io
+#LDFLAGS		+=	-L${MLX_DIR} -lmlx
 
 ifeq (${DEBUG}, true)
 	CFLAGS	+=	-g
 endif
 
-${NAME}:	${OBJS} ${MLXA}
-	${LINKER} $@ ${LDFLAGS} ${OBJS}
+${NAME}:	${OBJ}
+	${LINK} $@ ${OBJ} ${LDFLAGS}
 
 all:	${NAME}
 
--include ${DEPS}
+-include ${DEP}
 
-${OBJD}%.o:	${SRCD}%.c
-	@${MAKEDIR} ${OBJD}
+${OBJ_DIR}%.o:	${SRC_DIR}%.c
+	@${MKDIR} ${@D}
 	${CC} $@ ${CFLAGS} $<
-
-${OBJD}%.o:	${GNL_SRCD}%.c
-	@${MAKEDIR} ${OBJD}
-	${CC} $@ ${CFLAGS} $<
-
-${MLXA}:
-	${MAKE} -C ${dir $@}
 
 clean:
-	${RM} ${OBJD}
+	${RM} ${OBJ_DIR}
 
 fclean:
-	${RM} ${OBJD} ${NAME}
+	${RM} ${OBJ_DIR} ${NAME}
 
 re:	fclean all
 

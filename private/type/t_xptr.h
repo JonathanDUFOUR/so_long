@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   t_xptr.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/09 14:14:09 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/27 04:04:04 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/27 04:15:42 by jodufour          #+#    #+#             */
+/*   Updated: 2021/08/27 04:18:19 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-#include "enum/e_ret.h"
+#ifndef T_XPTR_H
+# define T_XPTR_H
 
-int	main(int ac, char **av)
+typedef struct s_xptr	t_xptr;
+
+struct	s_xptr
 {
-	int	ret;
+	void	*mlx;
+	void	*win;
+};
 
-	if (ac == 2)
-	{
-		ret = sl_game_init(av[1]);
-		if (ret != SUCCESS)
-			return (sl_err_msg(ret));
-	}
-	else
-		return (sl_err_msg(AC_ERR));
-	return (SUCCESS);
-}
+#endif
