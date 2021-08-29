@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 19:59:34 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 20:48:02 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/29 22:54:33 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 /*
 **	check width of a parsed map line
+**	return an error if the len is different from a previous len
 */
 int	sl_map_check_width(char const *line)
 {

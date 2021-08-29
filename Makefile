@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/08/29 20:53:50 by jodufour         ###   ########.fr        #
+#    Updated: 2021/08/30 00:57:23 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,8 +79,18 @@ SRC					=	\
 							sl_block_load.c				\
 							sl_block.c					\
 						}								\
+						${addprefix event/,				\
+							sl_event_none.c				\
+							sl_event_quit.c				\
+						}								\
 						${addprefix game/,				\
+							sl_game_clear.c				\
 							sl_game_init.c				\
+							sl_game_run.c				\
+						}								\
+						${addprefix hook/,				\
+							sl_hook_key.c				\
+							sl_hook_set.c				\
 						}								\
 						${addprefix map/,				\
 							sl_map_check_borders.c		\

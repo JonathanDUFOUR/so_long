@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 13:11:10 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/28 14:36:06 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/29 22:58:12 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "enum/e_ret.h"
 
 /*
-**	load wall block data from xpm file
+**	load wall img data from xpm file
 */
 int	sl_block_load_wall(void)
 {
@@ -26,11 +26,11 @@ int	sl_block_load_wall(void)
 	t_img			wall;
 
 	wall.ptr = mlx_xpm_file_to_image(xptr->mlx, FLOOR_XPM,
-		&wall.width, &wall.height);
+			&wall.width, &wall.height);
 	if (!wall.ptr)
 		return (MLX_ERR);
 	wall.addr = mlx_get_data_addr(wall.ptr, &wall.bpp,
-		&wall.line_len, &wall.endian);
+			&wall.line_len, &wall.endian);
 	if (!wall.addr)
 	{
 		mlx_destroy_image(xptr->mlx, wall.ptr);

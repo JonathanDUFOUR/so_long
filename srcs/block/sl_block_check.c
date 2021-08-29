@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 19:41:12 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 20:41:37 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/29 23:19:34 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 /*
 **	check if all images are valid
+**	return an error if at least one is not
 */
 int	sl_block_check(void)
 {

@@ -6,14 +6,14 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/20 23:33:41 by jodufour          #+#    #+#              #
-#    Updated: 2021/08/20 19:07:15 by jodufour         ###   ########.fr        #
+#    Updated: 2021/08/29 00:06:39 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #######################################
 #               COMANDS               #
 #######################################
-CC			=	gcc -c -o
+CC			=	clang -c -o
 LINK		=	ar rcs
 MKDIR		=	mkdir -p
 RM			=	rm -rf
@@ -28,11 +28,11 @@ NAME_SO		=	${NAME}.so
 #######################################
 #             DIRECTORIES             #
 #######################################
-INC_DIR		=	includes/
-PRIV_DIR	=	private/
 SRC_DIR		=	srcs/
 PTF_SRC_DIR	=	ft_printf/
 OBJ_DIR		=	objs/
+INC_DIR		=	includes/
+PRV_DIR		=	private/
 
 ######################################
 #            SOURCE FILES            #
@@ -161,7 +161,9 @@ DEP			=	${OBJS:.o=.d}
 #######################################
 #                FLAGS                #
 #######################################
-CFLAGS		=	-Wall -Wextra -MMD -I${INC_DIR} -I${PRIV_DIR}
+CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		+=	-MMD -MP
+CFLAGS		+=	-I${INC_DIR} -I${PRV_DIR}
 
 ifeq (${DEBUG}, true)
 	CFLAGS	+=	-g
@@ -177,7 +179,7 @@ ${NAME_A}:	${OBJ}
 
 ${NAME_SO}:	CFLAGS	+= -fPIC
 ${NAME_SO}:	LDFLAGS += -shared
-${NAME_SO}:	LINK = gcc -o
+${NAME_SO}:	LINK = clang -o
 ${NAME_SO}:	${OBJ}
 	${LINK} $@ ${LDFLAGS} $^
 
@@ -198,7 +200,7 @@ fclean:
 re:	fclean all
 
 norm:
-	@norminette ${SRC_DIR} | grep 'Error' ; true
+	@norminette ${SRC_DIR} ${INC_DIR} ${PRV_DIR} | grep 'Error' ; true
 
 coffee:
 	@echo '                                              '

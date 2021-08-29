@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 04:36:30 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 20:48:14 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/29 23:09:13 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static bool	sl_is_border(t_uint idx, t_uint w, t_uint h)
 
 /*
 **	check if borders are walls
+**	return an error if at least one is not
 */
 int	sl_map_check_borders(void)
 {

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 03:46:22 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 20:48:06 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/29 23:08:41 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 /*
 **	check collect, player, and exit count in map
+**	return an error if at least one of those have an invalid count
 */
 int	sl_map_check_cep(void)
 {

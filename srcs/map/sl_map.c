@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 16:38:31 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/27 22:38:41 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/29 22:56:57 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "type/t_map.h"
 
 /*
-**	singleton to get the map
+**	singleton to get map
 */
 t_map	*sl_map(void)
 {

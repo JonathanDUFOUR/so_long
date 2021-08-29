@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 03:56:40 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 20:26:23 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/30 00:49:41 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static t_err const		g_err[] = {
 	{MAP_ERR, "invalid map", 11},
 	{MLX_ERR, "mlx function failed", 19},
 	{IMG_DIM_ERR, "invalid image dimensions", 24},
+	{NO_HOOK_ERR, "no hook set for the pressed key", 31},
 	{0, NULL, 0}
 };
 

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 03:54:37 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/28 13:45:22 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/29 22:22:06 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@
 # define FLOOR_XPM "ressources/xpm/floor.xpm"
 # define PLAYER_XPM "ressources/xpm/player.xpm"
 # define WALL_XPM "ressources/xpm/wall.xpm"
+
+# define WIN_TITLE "so_long"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 19:38:05 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/28 05:06:54 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/29 23:25:30 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 /*
 **	read map from file descriptor and check its width
+**	return an error if open, read, or gnl fails
 */
 int	sl_map_read(int const fd)
 {

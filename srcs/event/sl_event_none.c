@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_xptr.c                                          :+:      :+:    :+:   */
+/*   sl_event_none.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/28 05:21:43 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 22:56:53 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/29 23:58:28 by jodufour          #+#    #+#             */
+/*   Updated: 2021/08/30 00:56:25 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include "type/t_xptr.h"
+#include "enum/e_ret.h"
 
 /*
-**	singleton to get xptr
+**	default behavior when no hooks are triggered
 */
-t_xptr	*sl_xptr(void)
+int	sl_event_none(void *null)
 {
-	static t_xptr	xptr = {NULL, NULL};
-
-	return (&xptr);
+	(void)null;
+	return (SUCCESS);
 }

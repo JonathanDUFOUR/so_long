@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 13:10:29 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/28 14:35:49 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/29 22:33:13 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	sl_block_load_player(void)
 	t_img			player;
 
 	player.ptr = mlx_xpm_file_to_image(xptr->mlx, PLAYER_XPM,
-		&player.width, &player.height);
+			&player.width, &player.height);
 	if (!player.ptr)
 		return (MLX_ERR);
 	player.addr = mlx_get_data_addr(player.ptr, &player.bpp,
-		&player.line_len, &player.endian);
+			&player.line_len, &player.endian);
 	if (!player.addr)
 	{
 		mlx_destroy_image(xptr->mlx, player.ptr);

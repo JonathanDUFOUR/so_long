@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 03:54:36 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 20:25:48 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/30 00:49:02 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ enum	e_ret
 	OPEN_ERR,
 	MAP_ERR,
 	MLX_ERR,
-	IMG_DIM_ERR
+	IMG_DIM_ERR,
+	NO_HOOK_ERR
 };
 
 #endif

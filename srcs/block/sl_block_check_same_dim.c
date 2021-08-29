@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 20:32:57 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 20:45:11 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/29 23:19:55 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "enum/e_ret.h"
 
 /*
-**	Check if all images have the same dimensions
+**	check if all images have the same dimensions
+**	return an error if at least one has not
 */
 int	sl_block_check_same_dim(void)
 {

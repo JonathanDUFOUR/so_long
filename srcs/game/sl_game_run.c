@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_xptr.c                                          :+:      :+:    :+:   */
+/*   sl_game_run.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/28 05:21:43 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 22:56:53 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/29 22:48:03 by jodufour          #+#    #+#             */
+/*   Updated: 2021/08/30 00:10:46 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "mlx.h"
 #include "type/t_xptr.h"
+#include "enum/e_ret.h"
 
-/*
-**	singleton to get xptr
-*/
-t_xptr	*sl_xptr(void)
+int	sl_game_run(void)
 {
-	static t_xptr	xptr = {NULL, NULL};
+	t_xptr *const	xptr = sl_xptr();
 
-	return (&xptr);
+	mlx_loop(xptr->mlx);
+	return (SUCCESS);
 }

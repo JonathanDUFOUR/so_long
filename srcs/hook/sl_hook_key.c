@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_xptr.c                                          :+:      :+:    :+:   */
+/*   sl_hook_key.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/28 05:21:43 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 22:56:53 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/30 00:00:39 by jodufour          #+#    #+#             */
+/*   Updated: 2021/08/30 00:50:48 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include "type/t_xptr.h"
+#include "event_lookup.h"
+#include "enum/e_ret.h"
 
 /*
-**	singleton to get xptr
+**	set running events from key hooks
 */
-t_xptr	*sl_xptr(void)
+int	sl_hook_key(int keysym, void *null)
 {
-	static t_xptr	xptr = {NULL, NULL};
+	int	i;
 
-	return (&xptr);
+	(void)null;
+	i = 0;
+	while (g_event[i].f && keysym != g_event[i].keysym)
+		++i;
+	if (g_event[i].f)
+		return (g_event[i].f());
+	return (NO_HOOK_ERR);
 }

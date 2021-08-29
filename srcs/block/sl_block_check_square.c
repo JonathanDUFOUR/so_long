@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 19:53:09 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 20:46:42 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/29 23:20:24 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 #include "enum/e_ret.h"
 
 /*
-**	Return true if the image is a square
-**	Return false if it is not
+**	return true if the image is a square
+**	return false if it is not
 */
 static bool	sl_is_square(t_img img)
 {
@@ -24,7 +24,8 @@ static bool	sl_is_square(t_img img)
 }
 
 /*
-**	Check if all image are squares
+**	check if all images are squares
+**	return an error if at least one is not
 */
 int	sl_block_check_square(void)
 {

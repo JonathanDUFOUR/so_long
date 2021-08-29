@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 13:09:00 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/28 14:35:02 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/29 22:31:58 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	sl_block_load_exit(void)
 	t_img			exit;
 
 	exit.ptr = mlx_xpm_file_to_image(xptr->mlx, EXIT_XPM,
-		&exit.width, &exit.height);
+			&exit.width, &exit.height);
 	if (!exit.ptr)
 		return (MLX_ERR);
 	exit.addr = mlx_get_data_addr(exit.ptr, &exit.bpp,
-		&exit.line_len, &exit.endian);
+			&exit.line_len, &exit.endian);
 	if (!exit.addr)
 	{
 		mlx_destroy_image(xptr->mlx, exit.ptr);
