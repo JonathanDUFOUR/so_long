@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 22:14:31 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 23:21:43 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/30 18:23:37 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	sl_map_check(void)
 {
 	int	ret;
 
-	ret = sl_map_check_cep();
+	ret = sl_map_check_chars();
 	if (ret == SUCCESS)
 		ret = sl_map_check_borders();
 	return (ret);

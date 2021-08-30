@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 00:42:21 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/30 00:53:30 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/30 01:36:34 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,18 @@ struct s_event
 	int	(*f)(void);
 };
 
+int	sl_event_move_down(void);
+int	sl_event_move_left(void);
+int	sl_event_move_right(void);
+int	sl_event_move_up(void);
 int	sl_event_quit(void);
 
 static t_event const	g_event[] = {
 	{XK_Escape, sl_event_quit},
+	{XK_s, sl_event_move_down},
+	{XK_a, sl_event_move_left},
+	{XK_d, sl_event_move_right},
+	{XK_w, sl_event_move_up},
 	{0, NULL}
 };
 

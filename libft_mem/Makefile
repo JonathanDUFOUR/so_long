@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/21 00:24:57 by jodufour          #+#    #+#              #
-#    Updated: 2021/08/29 00:07:20 by jodufour         ###   ########.fr        #
+#    Updated: 2021/08/30 19:08:03 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ SRC		=	\
 			ft_memdel.c				\
 			ft_memmove.c			\
 			ft_memset.c				\
-			ft_swap.c
+			ft_memswap.c
 
 ######################################
 #            OBJECT FILES            #

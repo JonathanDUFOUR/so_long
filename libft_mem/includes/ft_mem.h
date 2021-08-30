@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 00:44:15 by jodufour          #+#    #+#             */
-/*   Updated: 2021/07/21 05:56:28 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/30 19:08:14 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_memcmp(void const *a1, void const *a2, size_t n);
 
 void	ft_bzero(void *addr, size_t n);
 void	ft_memdel(void *addr);
-void	ft_swap(void *a, void *b);
+void	ft_memswap(void *a, void *b);
 
 void	*ft_calloc(size_t n, size_t size);
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);

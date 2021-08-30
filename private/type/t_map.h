@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 16:22:21 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/28 05:02:43 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/30 19:01:16 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@ struct s_map
 	char	*e;
 	t_uint	w;
 	t_uint	h;
-	t_uint	cnt_p;
 	t_uint	cnt_c;
 	t_uint	cnt_e;
+	t_uint	cnt_p;
+	t_uint	idx_e;
+	t_uint	idx_p;
 };
 
 int		sl_map_check_borders(void);
-int		sl_map_check_cep(void);
+int		sl_map_check_chars(void);
 int		sl_map_check_width(char const *line);
 int		sl_map_check(void);
 int		sl_map_load(char const *ber);

@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/08/30 00:57:23 by jodufour         ###   ########.fr        #
+#    Updated: 2021/08/30 18:23:11 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,10 @@ SRC					=	\
 							sl_block.c					\
 						}								\
 						${addprefix event/,				\
+							sl_event_move_down.c		\
+							sl_event_move_left.c		\
+							sl_event_move_right.c		\
+							sl_event_move_up.c			\
 							sl_event_none.c				\
 							sl_event_quit.c				\
 						}								\
@@ -94,7 +98,7 @@ SRC					=	\
 						}								\
 						${addprefix map/,				\
 							sl_map_check_borders.c		\
-							sl_map_check_cep.c			\
+							sl_map_check_chars.c		\
 							sl_map_check_width.c		\
 							sl_map_check.c				\
 							sl_map_clear.c				\

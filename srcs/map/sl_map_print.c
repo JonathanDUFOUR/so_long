@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 22:00:17 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/28 05:04:56 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/30 19:01:06 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,6 @@ void	sl_map_print(void)
 	sl_map_print_data("map->cnt_c: ", map->cnt_c);
 	sl_map_print_data("map->cnt_e: ", map->cnt_e);
 	sl_map_print_data("map->cnt_p: ", map->cnt_p);
+	sl_map_print_data("map->idx_e: ", map->idx_e);
+	sl_map_print_data("map->idx_p: ", map->idx_p);
 }
