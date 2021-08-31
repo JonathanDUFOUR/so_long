@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/08/31 04:51:05 by jodufour         ###   ########.fr        #
+#    Updated: 2021/08/31 23:10:12 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,64 +66,71 @@ MLX_A				:=	${addprefix ${MLX_DIR}, ${MLX_A}}
 #            SOURCE FILES            #
 ######################################
 SRC					=	\
-						${addprefix block/,				\
-							sl_block_check_same_dim.c	\
-							sl_block_check_square.c		\
-							sl_block_check.c			\
-							sl_block_clear.c			\
-							sl_block_draw_collect.c		\
-							sl_block_draw_exit.c		\
-							sl_block_draw_floor.c		\
-							sl_block_draw_player.c		\
-							sl_block_draw_wall.c		\
-							sl_block_draw.c				\
-							sl_block_load_collect.c		\
-							sl_block_load_exit.c		\
-							sl_block_load_floor.c		\
-							sl_block_load_player.c		\
-							sl_block_load_wall.c		\
-							sl_block_load.c				\
-							sl_block.c					\
-						}								\
-						${addprefix event/,				\
-							sl_event_move_down.c		\
-							sl_event_move_left.c		\
-							sl_event_move_right.c		\
-							sl_event_move_up.c			\
-							sl_event_none.c				\
-							sl_event_quit.c				\
-						}								\
-						${addprefix game/,				\
-							sl_game_clear.c				\
-							sl_game_init.c				\
-							sl_game_over.c				\
-							sl_game_run.c				\
-						}								\
-						${addprefix hook/,				\
-							sl_hook_key.c				\
-							sl_hook_set.c				\
-						}								\
-						${addprefix map/,				\
-							sl_map_check_borders.c		\
-							sl_map_check_chars.c		\
-							sl_map_check_width.c		\
-							sl_map_check.c				\
-							sl_map_clear.c				\
-							sl_map_draw.c				\
-							sl_map_load.c				\
-							sl_map_print.c				\
-							sl_map_read.c				\
-							sl_map_redraw.c				\
-							sl_map_update.c				\
-							sl_map.c					\
-						}								\
-						${addprefix xptr/,				\
-							sl_xptr_clear.c				\
-							sl_xptr_init.c				\
-							sl_xptr.c					\
-						}								\
-						main.c							\
-						sl_err_msg.c					\
+						${addprefix block/,					\
+							sl_block_check_same_dim.c		\
+							sl_block_check_square.c			\
+							sl_block_check.c				\
+							sl_block_clear.c				\
+							sl_block_draw_collect.c			\
+							sl_block_draw_exit.c			\
+							sl_block_draw_floor.c			\
+							sl_block_draw_player_down.c		\
+							sl_block_draw_player_left.c		\
+							sl_block_draw_player_right.c	\
+							sl_block_draw_player_up.c		\
+							sl_block_draw_player.c			\
+							sl_block_draw_wall.c			\
+							sl_block_draw.c					\
+							sl_block_load_collect.c			\
+							sl_block_load_exit.c			\
+							sl_block_load_floor.c			\
+							sl_block_load_player_down.c		\
+							sl_block_load_player_left.c		\
+							sl_block_load_player_right.c	\
+							sl_block_load_player_up.c		\
+							sl_block_load_wall.c			\
+							sl_block_load.c					\
+							sl_block.c						\
+						}									\
+						${addprefix event/,					\
+							sl_event_move_down.c			\
+							sl_event_move_left.c			\
+							sl_event_move_right.c			\
+							sl_event_move_up.c				\
+							sl_event_none.c					\
+							sl_event_quit.c					\
+						}									\
+						${addprefix game/,					\
+							sl_game_clear.c					\
+							sl_game_init.c					\
+							sl_game_over.c					\
+							sl_game_run.c					\
+						}									\
+						${addprefix hook/,					\
+							sl_hook_key.c					\
+							sl_hook_set.c					\
+						}									\
+						${addprefix map/,					\
+							sl_map_check_borders.c			\
+							sl_map_check_chars.c			\
+							sl_map_check_width.c			\
+							sl_map_check.c					\
+							sl_map_clear.c					\
+							sl_map_draw.c					\
+							sl_map_load.c					\
+							sl_map_print.c					\
+							sl_map_read.c					\
+							sl_map_redraw.c					\
+							sl_map_update.c					\
+							sl_map.c						\
+						}									\
+						${addprefix xptr/,					\
+							sl_xptr_clear.c					\
+							sl_xptr_init.c					\
+							sl_xptr.c						\
+						}									\
+						main.c								\
+						sl_err_msg.c						\
 						sl_step.c
 
 ######################################

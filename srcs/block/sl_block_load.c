@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 05:53:09 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 23:00:03 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 22:26:04 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,13 @@ int	sl_block_load(void)
 	if (ret == SUCCESS)
 		ret = sl_block_load_floor();
 	if (ret == SUCCESS)
-		ret = sl_block_load_player();
+		ret = sl_block_load_player_down();
+	if (ret == SUCCESS)
+		ret = sl_block_load_player_left();
+	if (ret == SUCCESS)
+		ret = sl_block_load_player_right();
+	if (ret == SUCCESS)
+		ret = sl_block_load_player_up();
 	if (ret == SUCCESS)
 		ret = sl_block_load_wall();
 	if (ret == SUCCESS)

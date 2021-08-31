@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 13:09:52 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 22:33:02 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 21:52:10 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	sl_block_load_floor(void)
 	t_img			floor;
 
 	floor.ptr = mlx_xpm_file_to_image(xptr->mlx, FLOOR_XPM,
-			&floor.width, &floor.height);
+			(int *)&floor.width, (int *)&floor.height);
 	if (!floor.ptr)
 		return (MLX_ERR);
-	floor.addr = mlx_get_data_addr(floor.ptr, &floor.bpp,
-			&floor.line_len, &floor.endian);
+	floor.addr = mlx_get_data_addr(floor.ptr, (int *)&floor.bpp,
+			(int *)&floor.line_len, (int *)&floor.endian);
 	if (!floor.addr)
 	{
 		mlx_destroy_image(xptr->mlx, floor.ptr);

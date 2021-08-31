@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 03:46:22 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 01:54:59 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 19:31:47 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,27 @@
 int	sl_map_check_chars(void)
 {
 	t_map *const	map = sl_map();
-	char const		*e = map->e;
+	char const		*ptr = map->ptr;
 
-	while (*e)
+	while (*ptr)
 	{
-		if (*e == MAP_CHAR[COLLECT])
-			++map->cnt_c;
-		else if (*e == MAP_CHAR[EXIT])
+		if (*ptr == MAP_CHAR[COLLECT])
+			++map->count.collect;
+		else if (*ptr == MAP_CHAR[EXIT])
 		{
-			map->idx_e = e - map->e;
-			++map->cnt_e;
+			map->idx_exit = ptr - map->ptr;
+			++map->count.exit;
 		}
-		else if (*e == MAP_CHAR[PLAYER])
+		else if (*ptr == MAP_CHAR[PLAYER])
 		{
-			map->idx_p = e - map->e;
-			++map->cnt_p;
+			map->idx_player = ptr - map->ptr;
+			++map->count.player;
 		}
-		else if (*e != MAP_CHAR[WALL] && *e != MAP_CHAR[FLOOR])
+		else if (*ptr != MAP_CHAR[WALL] && *ptr != MAP_CHAR[FLOOR])
 			return (MAP_ERR);
-		++e;
+		++ptr;
 	}
-	if (!map->cnt_c || map->cnt_e != 1 || map->cnt_p != 1)
+	if (!map->count.collect || map->count.exit != 1 || map->count.player != 1)
 		return (MAP_ERR);
 	return (SUCCESS);
 }

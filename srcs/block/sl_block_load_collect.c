@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 13:06:42 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 22:31:36 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 21:48:37 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	sl_block_load_collect(void)
 	t_img			collect;
 
 	collect.ptr = mlx_xpm_file_to_image(xptr->mlx, COLLECT_XPM,
-			&collect.width, &collect.height);
+			(int *)&collect.width, (int *)&collect.height);
 	if (!collect.ptr)
 		return (MLX_ERR);
-	collect.addr = mlx_get_data_addr(collect.ptr, &collect.bpp,
-			&collect.line_len, &collect.endian);
+	collect.addr = mlx_get_data_addr(collect.ptr, (int *)&collect.bpp,
+			(int *)&collect.line_len, (int *)&collect.endian);
 	if (!collect.addr)
 	{
 		mlx_destroy_image(xptr->mlx, collect.ptr);

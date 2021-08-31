@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 16:34:08 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/28 14:33:05 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 20:22:46 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 */
 int	sl_map_load(char const *ber)
 {
-	int		fd;
-	int		ret;
+	int	fd;
+	int	ret;
 
 	fd = open(ber, O_RDONLY);
 	if (fd == -1)

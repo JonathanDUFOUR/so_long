@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 13:11:10 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 02:16:09 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 21:57:35 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	sl_block_load_wall(void)
 	t_img			wall;
 
 	wall.ptr = mlx_xpm_file_to_image(xptr->mlx, WALL_XPM,
-			&wall.width, &wall.height);
+			(int *)&wall.width, (int *)&wall.height);
 	if (!wall.ptr)
 		return (MLX_ERR);
-	wall.addr = mlx_get_data_addr(wall.ptr, &wall.bpp,
-			&wall.line_len, &wall.endian);
+	wall.addr = mlx_get_data_addr(wall.ptr, (int *)&wall.bpp,
+			(int *)&wall.line_len, (int *)&wall.endian);
 	if (!wall.addr)
 	{
 		mlx_destroy_image(xptr->mlx, wall.ptr);

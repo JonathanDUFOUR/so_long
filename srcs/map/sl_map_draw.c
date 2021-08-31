@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 23:21:23 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 01:59:44 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 19:33:56 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 int	sl_map_draw(void)
 {
 	t_map *const	map = sl_map();
-	char const		*e = map->e;
+	char const		*ptr = map->ptr;
 	int				ret;
 
 	ret = SUCCESS;
-	while (*e && ret == SUCCESS)
+	while (*ptr && ret == SUCCESS)
 	{
-		ret = sl_block_draw(e - map->e, *e);
-		++e;
+		ret = sl_block_draw(ptr - map->ptr, *ptr);
+		++ptr;
 	}
 	return (ret);
 }

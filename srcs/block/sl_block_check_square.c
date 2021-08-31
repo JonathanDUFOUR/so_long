@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 19:53:09 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 23:20:24 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 22:30:26 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ int	sl_block_check_square(void)
 	if (!sl_is_square(block->collect)
 		|| !sl_is_square(block->exit)
 		|| !sl_is_square(block->floor)
-		|| !sl_is_square(block->player)
+		|| !sl_is_square(block->player_down)
+		|| !sl_is_square(block->player_left)
+		|| !sl_is_square(block->player_right)
+		|| !sl_is_square(block->player_up)
 		|| !sl_is_square(block->wall))
 		return (IMG_DIM_ERR);
 	return (SUCCESS);

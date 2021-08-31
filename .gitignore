@@ -54,3 +54,6 @@ dkms.conf
 
 # Scripts
 *.sh
+
+# IDE files
+.vscode

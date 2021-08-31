@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 04:36:30 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 23:09:13 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 20:21:16 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 **	return true if map[idx] is a border
 **	return false if it is not
 */
-static bool	sl_is_border(t_uint idx, t_uint w, t_uint h)
+static bool	sl_is_border(t_huint idx, t_huint width, t_huint height)
 {
-	return (idx < w
-		|| !(idx % w)
-		|| idx % w == w - 1
-		|| idx >= (h - 1) * w);
+	return (idx < width
+		|| !(idx % width)
+		|| idx % width == width - 1
+		|| idx >= (height - 1) * width);
 }
 
 /*
@@ -35,13 +35,14 @@ static bool	sl_is_border(t_uint idx, t_uint w, t_uint h)
 int	sl_map_check_borders(void)
 {
 	t_map *const	map = sl_map();
-	char const		*e = map->e;
+	char const		*ptr = map->ptr;
 
-	while (*e)
+	while (*ptr)
 	{
-		if (sl_is_border(e - map->e, map->w, map->h) && *e != MAP_CHAR[WALL])
+		if (sl_is_border(ptr - map->ptr, map->width, map->height)
+			&& *ptr != MAP_CHAR[WALL])
 			return (MAP_ERR);
-		++e;
+		++ptr;
 	}
 	return (SUCCESS);
 }

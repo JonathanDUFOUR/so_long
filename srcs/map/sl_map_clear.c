@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 21:36:52 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/30 23:17:00 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 19:33:13 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	sl_map_clear(void)
 {
 	t_map *const	map = sl_map();
 
-	free(map->e);
+	free(map->ptr);
 	ft_bzero(map, sizeof(t_map));
 }

@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_map.c                                           :+:      :+:    :+:   */
+/*   t_count.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/27 16:38:31 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 22:56:05 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/31 18:36:40 by jodufour          #+#    #+#             */
+/*   Updated: 2021/08/31 20:23:37 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include "type/t_map.h"
-#include "enum/e_direction.h"
+#ifndef T_COUNT_H
+# define T_COUNT_H
 
-/*
-**	singleton to get map
-*/
-t_map	*sl_map(void)
+# include "type/t_int.h"
+
+typedef struct s_count	t_count;
+
+struct s_count
 {
-	static t_map	map = {NULL, {0, 0, 0}, 0, 0, 0, 0, DOWN};
+	t_huint	collect;
+	t_huint	exit;
+	t_huint	player;
+};
 
-	return (&map);
-}
+#endif

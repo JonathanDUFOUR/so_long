@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_map.c                                           :+:      :+:    :+:   */
+/*   e_direction.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/27 16:38:31 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 22:56:05 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/31 22:44:55 by jodufour          #+#    #+#             */
+/*   Updated: 2021/08/31 22:46:37 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include "type/t_map.h"
-#include "enum/e_direction.h"
+#ifndef E_DIRECTION_H
+# define E_DIRECTION_H
 
-/*
-**	singleton to get map
-*/
-t_map	*sl_map(void)
+enum	e_direction
 {
-	static t_map	map = {NULL, {0, 0, 0}, 0, 0, 0, 0, DOWN};
+	DOWN = (1 << 0),
+	LEFT = (1 << 1),
+	RIGHT = (1 << 2),
+	UP = (1 << 3),
+};
 
-	return (&map);
-}
+#endif

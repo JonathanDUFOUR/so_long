@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_block_load_player.c                             :+:      :+:    :+:   */
+/*   sl_block_draw_player_up.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/28 13:10:29 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 22:33:13 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/31 22:17:08 by jodufour          #+#    #+#             */
+/*   Updated: 2021/08/31 22:17:23 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
-#include "config.h"
 #include "type/t_xptr.h"
 #include "type/t_block.h"
+#include "type/t_int.h"
 #include "enum/e_ret.h"
 
 /*
-**	load player block data from xpm file
+**	draw the player_up image loaded in block to window at position:
+**	x * img_width
+**	y * img_height
 */
-int	sl_block_load_player(void)
+int	sl_block_draw_player_up(t_huint x, t_huint y)
 {
 	t_xptr *const	xptr = sl_xptr();
 	t_block *const	block = sl_block();
-	t_img			player;
+	t_img const		player_up = block->player_up;
 
-	player.ptr = mlx_xpm_file_to_image(xptr->mlx, PLAYER_XPM,
-			&player.width, &player.height);
-	if (!player.ptr)
-		return (MLX_ERR);
-	player.addr = mlx_get_data_addr(player.ptr, &player.bpp,
-			&player.line_len, &player.endian);
-	if (!player.addr)
-	{
-		mlx_destroy_image(xptr->mlx, player.ptr);
-		return (MLX_ERR);
-	}
-	block->player = player;
+	mlx_put_image_to_window(xptr->mlx, xptr->win, player_up.ptr,
+		x * player_up.width, y * player_up.height);
 	return (SUCCESS);
 }

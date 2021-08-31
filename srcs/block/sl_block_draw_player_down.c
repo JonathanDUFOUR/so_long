@@ -1,44 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_xptr_init.c                                     :+:      :+:    :+:   */
+/*   sl_block_draw_player_down.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/28 05:24:57 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 20:32:19 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/31 01:31:08 by jodufour          #+#    #+#             */
+/*   Updated: 2021/08/31 22:14:54 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
-#include "config.h"
 #include "type/t_xptr.h"
 #include "type/t_block.h"
-#include "type/t_map.h"
+#include "type/t_int.h"
 #include "enum/e_ret.h"
 
 /*
-**	init mlx_ptr
-**	load block images from xpm files and check it
-**	init win_ptr
+**	draw the player_down image loaded in block to window at position:
+**	x * img_width
+**	y * img_height
 */
-int	sl_xptr_init(void)
+int	sl_block_draw_player_down(t_huint x, t_huint y)
 {
 	t_xptr *const	xptr = sl_xptr();
 	t_block *const	block = sl_block();
-	t_map *const	map = sl_map();
-	int				ret;
+	t_img const		player_down = block->player_down;
 
-	xptr->mlx = mlx_init();
-	if (!xptr->mlx)
-		return (MLX_ERR);
-	ret = sl_block_load();
-	if (ret == SUCCESS)
-		xptr->win = mlx_new_window(xptr->mlx,
-				block->wall.width * map->width,
-				block->wall.height * map->height,
-				WIN_TITLE);
-	if (ret == SUCCESS && !xptr->win)
-		return (MLX_ERR);
-	return (ret);
+	mlx_put_image_to_window(xptr->mlx, xptr->win, player_down.ptr,
+		x * player_down.width, y * player_down.height);
+	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 19:59:34 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 22:54:33 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 19:33:00 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	sl_map_check_width(char const *line)
 	t_map *const	map = sl_map();
 	size_t const	len = ft_strlen(line);
 
-	if (!map->w)
-		map->w = len;
-	else if (map->w != len)
+	if (!map->width)
+		map->width = len;
+	else if (map->width != len)
 		return (MAP_ERR);
 	return (SUCCESS);
 }

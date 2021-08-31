@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 22:00:17 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 04:18:29 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 20:25:23 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 #include "type/t_map.h"
 
 /*
-**	print the map in terminal
+**	display the map and its data in terminal
 */
 void	sl_map_print(void)
 {
 	t_map *const	map = sl_map();
-	char const		*e = map->e;
+	char const		*ptr = map->ptr;
 
-	while (*e)
+	while (*ptr)
 	{
-		printf("%.*s\n", map->w, e);
-		e += map->w;
+		printf("%.*s\n", map->width, ptr);
+		ptr += map->width;
 	}
-	printf("map->w: %u\n", map->w);
-	printf("map->h: %u\n", map->h);
-	printf("map->cnt_c: %u\n", map->cnt_c);
-	printf("map->cnt_e: %u\n", map->cnt_e);
-	printf("map->cnt_p: %u\n", map->cnt_p);
-	printf("map->idx_e: %u\n", map->idx_e);
-	printf("map->idx_p: %u\n", map->idx_p);
+	printf("map->width:  %hu\n", map->width);
+	printf("map->height: %hu\n", map->height);
+	printf("map->count.collect: %hu\n", map->count.collect);
+	printf("map->count.exit:    %hu\n", map->count.exit);
+	printf("map->count.player:  %hu\n", map->count.player);
+	printf("map->idx_exit:   %hu\n", map->idx_exit);
+	printf("map->idx_player: %hu\n", map->idx_player);
 }
