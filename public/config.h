@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 03:54:37 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/30 18:47:52 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 07:50:47 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@
 **	Must be as followed : <wall> <floor> <collect> <exit> <player>
 */
 
-# define COLLECT_XPM "ressources/xpm/collect.xpm"
-# define EXIT_XPM "ressources/xpm/exit.xpm"
+# define COLLECT_XPM "ressources/xpm/arch.xpm"
+# define EXIT_XPM "ressources/xpm/stairs.xpm"
 # define FLOOR_XPM "ressources/xpm/floor.xpm"
-# define PLAYER_XPM "ressources/xpm/player.xpm"
+# define PLAYER_XPM "ressources/xpm/penguin.xpm"
+# define PLAYER_DOWN_XPM "ressources/xpm/penguin_down.xpm"
 # define WALL_XPM "ressources/xpm/wall.xpm"
 
 # define WIN_TITLE "so_long"
