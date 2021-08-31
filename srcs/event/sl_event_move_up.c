@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 01:34:19 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/30 20:04:56 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 01:44:54 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,16 @@
 /*********/
 
 #include "config.h"
+#include "so_long.h"
 #include "type/t_map.h"
 #include "enum/e_map_char.h"
 #include "enum/e_ret.h"
 
-static void	sl_update(char *const player, char *const up)
-{
-	t_map *const	map = sl_map();
-
-	if (map->idx_p == map->idx_e)
-		*player = MAP_CHAR[EXIT];
-	else
-		*player = MAP_CHAR[FLOOR];
-	*up = MAP_CHAR[PLAYER];
-	map->idx_p -= map->w;
-}
-
+/*
+**	move player up
+**	update map data
+**	redraw map
+*/
 int	sl_event_move_up(void)
 {
 	t_map *const	map = sl_map();
@@ -41,12 +35,14 @@ int	sl_event_move_up(void)
 	if (*up != MAP_CHAR[WALL])
 	{
 		printf(GREEN "[OK]" WHITE "\n");
-		sl_update(player, up);
+		sl_map_update(player, up, map->idx_p - map->w);
 	}
 	else
 	{
 		printf(RED "[KO]" WHITE "\n");
 	}
 	sl_map_print();
+	if (map->idx_p == map->idx_e && !map->cnt_c)
+		sl_game_over("Victory !\n");
 	return (SUCCESS);
 }

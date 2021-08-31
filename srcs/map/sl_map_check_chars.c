@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 03:46:22 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/30 18:59:02 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 01:54:59 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 /*
 **	check map chars
-**	return an error if at least one of the following:
+**	return an error if at least one of the following is true:
 **		collect count == 0
 **		player count != 1
 **		exit count != 1

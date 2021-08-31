@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_map_clear.c                                     :+:      :+:    :+:   */
+/*   sl_block_draw.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/27 21:36:52 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/30 23:17:00 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/31 00:52:30 by jodufour          #+#    #+#             */
+/*   Updated: 2021/08/31 01:39:24 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "ft_mem.h"
+#include "block_draw_lookup.h"
 #include "type/t_map.h"
+#include "enum/e_ret.h"
 
 /*
-**	free map and bzero its variables
+**	draw the image related to 'c' to window
+**	at its [x][y] position related to its idx
 */
-void	sl_map_clear(void)
+int	sl_block_draw(t_uint idx, char const c)
 {
 	t_map *const	map = sl_map();
+	t_uint const	x = idx % map->w;
+	t_uint const	y = idx / map->w;
+	int				i;
 
-	free(map->e);
-	ft_bzero(map, sizeof(t_map));
+	i = 0;
+	while (g_block_draw[i].f && c != g_block_draw[i].c)
+		++i;
+	if (g_block_draw[i].f)
+		g_block_draw[i].f(x, y);
+	return (SUCCESS);
 }

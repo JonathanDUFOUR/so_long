@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   sl_game_over.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/27 03:50:45 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 01:06:00 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/30 22:04:45 by jodufour          #+#    #+#             */
+/*   Updated: 2021/08/30 23:16:05 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include <unistd.h>
+#include "mlx.h"
+#include "ft_string.h"
+#include "type/t_xptr.h"
 
-# include "type/t_int.h"
+/*
+**	print a custom game over message in terminal
+**	end the mlx_loop
+*/
+void	sl_game_over(char const *s)
+{
+	t_xptr *const	xptr = sl_xptr();
 
-int		sl_err_msg(int err);
-int		sl_game_init(char const *ber);
-int		sl_game_run(void);
-int		sl_hook_key(int keysym, void *null);
-int		sl_hook_set(void);
-int		sl_event_none(void *null);
-
-void	sl_game_clear(void);
-void	sl_game_over(char const *s);
-
-#endif
+	write(1, s, ft_strlen(s));
+	mlx_loop_end(xptr->mlx);
+}

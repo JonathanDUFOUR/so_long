@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   sl_map_update.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/27 03:50:45 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 01:06:00 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/31 00:34:27 by jodufour          #+#    #+#             */
+/*   Updated: 2021/08/31 00:39:23 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "config.h"
+#include "type/t_map.h"
+#include "enum/e_map_char.h"
 
-# include "type/t_int.h"
+void	sl_map_update(char *const player, char *const togo, t_uint new_idx_p)
+{
+	t_map *const	map = sl_map();
 
-int		sl_err_msg(int err);
-int		sl_game_init(char const *ber);
-int		sl_game_run(void);
-int		sl_hook_key(int keysym, void *null);
-int		sl_hook_set(void);
-int		sl_event_none(void *null);
-
-void	sl_game_clear(void);
-void	sl_game_over(char const *s);
-
-#endif
+	if (map->idx_p == map->idx_e)
+		*player = MAP_CHAR[EXIT];
+	else
+		*player = MAP_CHAR[FLOOR];
+	if (*togo == MAP_CHAR[COLLECT])
+		--map->cnt_c;
+	*togo = MAP_CHAR[PLAYER];
+	map->idx_p = new_idx_p;
+}

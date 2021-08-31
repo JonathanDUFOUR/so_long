@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_block_load_wall.c                               :+:      :+:    :+:   */
+/*   sl_block_draw_collect.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/28 13:11:10 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 02:16:09 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/31 01:27:51 by jodufour          #+#    #+#             */
+/*   Updated: 2021/08/31 02:13:22 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
-#include "config.h"
 #include "type/t_xptr.h"
 #include "type/t_block.h"
+#include "type/t_int.h"
 #include "enum/e_ret.h"
 
 /*
-**	load wall img data from xpm file
+**	draw the collect image loaded in block to window at position:
+**	x * img_width
+**	y * img_height
 */
-int	sl_block_load_wall(void)
+int	sl_block_draw_collect(t_uint x, t_uint y)
 {
 	t_xptr *const	xptr = sl_xptr();
 	t_block *const	block = sl_block();
-	t_img			wall;
+	t_img const		collect = block->collect;
 
-	wall.ptr = mlx_xpm_file_to_image(xptr->mlx, WALL_XPM,
-			&wall.width, &wall.height);
-	if (!wall.ptr)
-		return (MLX_ERR);
-	wall.addr = mlx_get_data_addr(wall.ptr, &wall.bpp,
-			&wall.line_len, &wall.endian);
-	if (!wall.addr)
-	{
-		mlx_destroy_image(xptr->mlx, wall.ptr);
-		return (MLX_ERR);
-	}
-	block->wall = wall;
+	mlx_put_image_to_window(xptr->mlx, xptr->win, collect.ptr,
+		x * collect.width, y * collect.height);
 	return (SUCCESS);
 }

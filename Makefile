@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/08/30 18:23:11 by jodufour         ###   ########.fr        #
+#    Updated: 2021/08/31 02:02:00 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,12 @@ SRC					=	\
 							sl_block_check_square.c		\
 							sl_block_check.c			\
 							sl_block_clear.c			\
+							sl_block_draw_collect.c		\
+							sl_block_draw_exit.c		\
+							sl_block_draw_floor.c		\
+							sl_block_draw_player.c		\
+							sl_block_draw_wall.c		\
+							sl_block_draw.c				\
 							sl_block_load_collect.c		\
 							sl_block_load_exit.c		\
 							sl_block_load_floor.c		\
@@ -90,6 +96,7 @@ SRC					=	\
 						${addprefix game/,				\
 							sl_game_clear.c				\
 							sl_game_init.c				\
+							sl_game_over.c				\
 							sl_game_run.c				\
 						}								\
 						${addprefix hook/,				\
@@ -102,9 +109,11 @@ SRC					=	\
 							sl_map_check_width.c		\
 							sl_map_check.c				\
 							sl_map_clear.c				\
+							sl_map_draw.c				\
 							sl_map_load.c				\
 							sl_map_print.c				\
 							sl_map_read.c				\
+							sl_map_update.c				\
 							sl_map.c					\
 						}								\
 						${addprefix xptr/,				\
@@ -126,7 +135,7 @@ DEP					=	${OBJ:.o=.d}
 #######################################
 #                FLAGS                #
 #######################################
-CFLAGS				=	-Wall -Wextra -Werror
+CFLAGS				=	-Wall -Wextra #-Werror
 CFLAGS				+=	-MMD -MP
 CFLAGS				+=	-I${PRV_DIR} -I${PBL_DIR}
 CFLAGS				+=	-I${FT_IO_INC_DIR}
