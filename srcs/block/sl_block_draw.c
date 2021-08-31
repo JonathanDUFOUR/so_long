@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 00:52:30 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 01:39:24 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 04:29:57 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int	sl_block_draw(t_uint idx, char const c)
 	while (g_block_draw[i].f && c != g_block_draw[i].c)
 		++i;
 	if (g_block_draw[i].f)
-		g_block_draw[i].f(x, y);
+		return (g_block_draw[i].f(x, y));
 	return (SUCCESS);
 }

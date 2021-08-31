@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_map_print.c                                     :+:      :+:    :+:   */
+/*   sl_map_redraw.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/27 22:00:17 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 04:18:29 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/31 04:49:36 by jodufour          #+#    #+#             */
+/*   Updated: 2021/08/31 05:03:22 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "type/t_map.h"
+#include "type/t_block.h"
+#include "enum/e_ret.h"
 
-/*
-**	print the map in terminal
-*/
-void	sl_map_print(void)
+int	sl_map_redraw(t_uint old_idx, t_uint new_idx)
 {
 	t_map *const	map = sl_map();
 	char const		*e = map->e;
+	int				ret;
 
-	while (*e)
-	{
-		printf("%.*s\n", map->w, e);
-		e += map->w;
-	}
-	printf("map->w: %u\n", map->w);
-	printf("map->h: %u\n", map->h);
-	printf("map->cnt_c: %u\n", map->cnt_c);
-	printf("map->cnt_e: %u\n", map->cnt_e);
-	printf("map->cnt_p: %u\n", map->cnt_p);
-	printf("map->idx_e: %u\n", map->idx_e);
-	printf("map->idx_p: %u\n", map->idx_p);
+	ret = sl_block_draw(old_idx, e[old_idx]);
+	if (ret == SUCCESS)
+		ret = sl_block_draw(new_idx, e[new_idx]);
+	return (ret);
 }

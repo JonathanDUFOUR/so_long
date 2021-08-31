@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/08/31 02:02:00 by jodufour         ###   ########.fr        #
+#    Updated: 2021/08/31 04:51:05 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,6 +113,7 @@ SRC					=	\
 							sl_map_load.c				\
 							sl_map_print.c				\
 							sl_map_read.c				\
+							sl_map_redraw.c				\
 							sl_map_update.c				\
 							sl_map.c					\
 						}								\
@@ -122,7 +123,8 @@ SRC					=	\
 							sl_xptr.c					\
 						}								\
 						main.c							\
-						sl_err_msg.c
+						sl_err_msg.c					\
+						sl_step.c
 
 ######################################
 #            OBJECT FILES            #

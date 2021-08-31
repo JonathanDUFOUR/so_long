@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 01:32:51 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 01:43:54 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 05:07:43 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,21 @@
 */
 int	sl_event_move_left(void)
 {
+	t_uint *const	step = sl_step();
 	t_map *const	map = sl_map();
 	char *const		player = map->e + map->idx_p;
 	char *const		left = player - 1;
+	int				ret;
 
-	printf("player moves left: ");
+	ret = SUCCESS;
 	if (*left != MAP_CHAR[WALL])
 	{
-		printf(GREEN "[OK]" WHITE "\n");
 		sl_map_update(player, left, map->idx_p - 1);
+		ret = sl_map_redraw(player - map->e, left - map->e);
+		++*step;
+		printf("Moves done: %u\n", *step);
 	}
-	else
-	{
-		printf(RED "[KO]" WHITE "\n");
-	}
-	sl_map_print();
 	if (map->idx_p == map->idx_e && !map->cnt_c)
 		sl_game_over("Victory !\n");
-	return (SUCCESS);
+	return (ret);
 }

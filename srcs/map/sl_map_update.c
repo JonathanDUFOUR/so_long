@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 00:34:27 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 00:39:23 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/08/31 04:37:46 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include "type/t_map.h"
 #include "enum/e_map_char.h"
 
+/*
+**	update map chars and player index
+*/
 void	sl_map_update(char *const player, char *const togo, t_uint new_idx_p)
 {
 	t_map *const	map = sl_map();
