@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/08/31 23:10:12 by jodufour         ###   ########.fr        #
+#    Updated: 2021/09/01 20:16:01 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,6 +131,9 @@ SRC					=	\
 						}									\
 						main.c								\
 						sl_err_msg.c						\
+						sl_step_draw_count.c				\
+						sl_step_draw_title.c				\
+						sl_step_update.c					\
 						sl_step.c
 
 ######################################

@@ -6,14 +6,11 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 01:31:54 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 23:27:24 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/01 18:41:00 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* DEBUG */
-#include <stdio.h>
-/*********/
-
+#include "mlx.h"
 #include "config.h"
 #include "so_long.h"
 #include "type/t_map.h"
@@ -29,7 +26,6 @@
 */
 int	sl_event_move_down(void)
 {
-	t_uint *const	step = sl_step();
 	t_map *const	map = sl_map();
 	char *const		player = map->ptr + map->idx_player;
 	char *const		down = player + map->width;
@@ -40,8 +36,8 @@ int	sl_event_move_down(void)
 	{
 		sl_map_update(player, down, map->idx_player + map->width);
 		ret = sl_map_redraw(player - map->ptr, down - map->ptr);
-		++*step;
-		printf("Moves done: %u\n", *step);
+		if (ret == SUCCESS)
+			ret = sl_step_update();
 	}
 	else
 		ret = sl_block_draw(map->idx_player, *player);

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 03:50:45 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 04:07:27 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/01 20:19:33 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@
 # include "type/t_int.h"
 
 int		sl_err_msg(int err);
+int		sl_event_none(void *null);
 int		sl_game_init(char const *ber);
 int		sl_game_run(void);
 int		sl_hook_key(int keysym, void *null);
 int		sl_hook_set(void);
-int		sl_event_none(void *null);
+int		sl_step_draw_count(int color);
+int		sl_step_draw_title(void);
+int		sl_step_update(void);
 
 void	sl_game_clear(void);
 void	sl_game_over(char const *s);

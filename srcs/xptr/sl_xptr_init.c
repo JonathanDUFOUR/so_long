@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 05:24:57 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 20:32:19 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/01 18:14:56 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	sl_xptr_init(void)
 	if (ret == SUCCESS)
 		xptr->win = mlx_new_window(xptr->mlx,
 				block->wall.width * map->width,
-				block->wall.height * map->height,
+				block->wall.height * (map->height + 1),
 				WIN_TITLE);
 	if (ret == SUCCESS && !xptr->win)
 		return (MLX_ERR);

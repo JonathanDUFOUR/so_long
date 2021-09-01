@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utoa.c                                          :+:      :+:    :+:   */
+/*   sl_step_update.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 05:31:42 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/01 19:12:02 by jodufour         ###   ########.fr       */
+/*   Created: 2021/09/01 18:36:51 by jodufour          #+#    #+#             */
+/*   Updated: 2021/09/01 20:15:31 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "mlx.h"
 #include "ft_io.h"
+#include "ft_mem.h"
+#include "so_long.h"
+#include "type/t_map.h"
+#include "type/t_xptr.h"
+#include "type/t_block.h"
+#include "enum/e_ret.h"
 
-char	*ft_utoa(t_uint n)
+/*
+**	Increase step count and redraw it
+*/
+int	sl_step_update(void)
 {
-	char	*output;
-	size_t	len;
+	t_uint *const	step = sl_step();
+	int				ret;
 
-	len = ft_uintlen(n);
-	output = malloc((len + 1) * sizeof(char));
-	if (!output)
-		return (NULL);
-	output[len] = 0;
-	while (len)
-	{
-		output[--len] = (n % 10) + '0';
-		n /= 10;
-	}
-	return (output);
+	ret = sl_step_draw_count(0x00000000);
+	if (ret != SUCCESS)
+		return (ret);
+	++*step;
+	ret = sl_step_draw_count(0x00FFFFFF);
+	return (ret);
 }
