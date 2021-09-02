@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   e_map_char.h                                       :+:      :+:    :+:   */
+/*   sl_block_clear_floor.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/28 04:02:48 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/02 04:58:35 by jodufour         ###   ########.fr       */
+/*   Created: 2021/09/02 01:47:25 by jodufour          #+#    #+#             */
+/*   Updated: 2021/09/02 01:51:47 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef E_MAP_CHAR_H
-# define E_MAP_CHAR_H
+#include "mlx.h"
+#include "type/t_xptr.h"
+#include "type/t_block.h"
 
-enum	e_map_char
+/*
+**	free floor image
+*/
+void	sl_block_clear_floor(void)
 {
-	WALL,
-	FLOOR,
-	COLLECT,
-	EXIT,
-	PLAYER,
-	ENEMY_DOWN,
-	ENEMY_LEFT,
-	ENEMY_RIGHT,
-	ENEMY_UP
-};
+	t_xptr *const	xptr = sl_xptr();
+	t_block *const	block = sl_block();
 
-#endif
+	if (block->floor.ptr)
+		mlx_destroy_image(xptr->mlx, block->floor.ptr);
+}

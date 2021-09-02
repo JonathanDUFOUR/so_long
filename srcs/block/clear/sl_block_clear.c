@@ -6,13 +6,11 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 18:59:05 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 22:31:23 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/02 01:55:14 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "ft_mem.h"
-#include "type/t_xptr.h"
 #include "type/t_block.h"
 
 /*
@@ -20,24 +18,13 @@
 */
 void	sl_block_clear(void)
 {
-	t_xptr *const	xptr = sl_xptr();
 	t_block *const	block = sl_block();
 
-	if (block->collect.ptr)
-		mlx_destroy_image(xptr->mlx, block->collect.ptr);
-	if (block->exit.ptr)
-		mlx_destroy_image(xptr->mlx, block->exit.ptr);
-	if (block->floor.ptr)
-		mlx_destroy_image(xptr->mlx, block->floor.ptr);
-	if (block->player_down.ptr)
-		mlx_destroy_image(xptr->mlx, block->player_down.ptr);
-	if (block->player_left.ptr)
-		mlx_destroy_image(xptr->mlx, block->player_left.ptr);
-	if (block->player_right.ptr)
-		mlx_destroy_image(xptr->mlx, block->player_right.ptr);
-	if (block->player_up.ptr)
-		mlx_destroy_image(xptr->mlx, block->player_up.ptr);
-	if (block->wall.ptr)
-		mlx_destroy_image(xptr->mlx, block->wall.ptr);
+	sl_block_clear_collect();
+	sl_block_clear_enemy();
+	sl_block_clear_exit();
+	sl_block_clear_floor();
+	sl_block_clear_player();
+	sl_block_clear_wall();
 	ft_bzero(block, sizeof(t_block));
 }

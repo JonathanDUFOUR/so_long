@@ -6,11 +6,12 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 03:46:22 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 19:31:47 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/02 03:53:26 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
+#include "ft_string.h"
 #include "type/t_map.h"
 #include "enum/e_map_char.h"
 #include "enum/e_ret.h"
@@ -30,7 +31,9 @@ int	sl_map_check_chars(void)
 
 	while (*ptr)
 	{
-		if (*ptr == MAP_CHAR[COLLECT])
+		if (!ft_strchr(MAP_CHAR, *ptr))
+			return (MAP_ERR);
+		else if (*ptr == MAP_CHAR[COLLECT])
 			++map->count.collect;
 		else if (*ptr == MAP_CHAR[EXIT])
 		{
@@ -42,8 +45,6 @@ int	sl_map_check_chars(void)
 			map->idx_player = ptr - map->ptr;
 			++map->count.player;
 		}
-		else if (*ptr != MAP_CHAR[WALL] && *ptr != MAP_CHAR[FLOOR])
-			return (MAP_ERR);
 		++ptr;
 	}
 	if (!map->count.collect || map->count.exit != 1 || map->count.player != 1)
