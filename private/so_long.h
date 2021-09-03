@@ -6,13 +6,14 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 03:50:45 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/01 20:19:33 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/03 05:17:21 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include <stdbool.h>
 # include "type/t_int.h"
 
 int		sl_err_msg(int err);
@@ -28,6 +29,9 @@ int		sl_step_update(void);
 void	sl_game_clear(void);
 void	sl_game_over(char const *s);
 
+bool	sl_is_enemy(char const c);
+
 t_uint	*sl_step(void);
+t_uint	*sl_sleep(void);
 
 #endif

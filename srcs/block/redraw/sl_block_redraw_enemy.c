@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_event_none.c                                    :+:      :+:    :+:   */
+/*   sl_block_redraw_enemy.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/29 23:58:28 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/03 05:30:28 by jodufour         ###   ########.fr       */
+/*   Created: 2021/09/03 04:22:35 by jodufour          #+#    #+#             */
+/*   Updated: 2021/09/03 04:59:03 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config.h"
-#include "so_long.h"
-#include "type/t_block.h"
 #include "type/t_map.h"
+#include "enemy_redraw_lookup.h"
 #include "enum/e_ret.h"
 
 /*
-**	default behavior when no hooks are triggered
+**	redraw all enemies images to window at their new positions
 */
-int	sl_event_none(void *null)
+int	sl_block_redraw_enemy(void)
 {
-	t_uint *const	sleep = sl_sleep();
+	t_map *const	map = sl_map();
+	char const		*ptr = map->ptr;
 	int				ret;
+	int				i;
 
-	(void)null;
 	ret = SUCCESS;
-	if (!(*sleep % SLEEP_TIME))
+	while (*ptr && ret == SUCCESS)
 	{
-		sl_map_update_enemy();
-		ret = sl_block_redraw_enemy();
+		i = 0;
+		while (g_enemy_redraw[i].f && *ptr != g_enemy_redraw[i].c)
+			++i;
+		if (g_enemy_redraw[i].f)
+			ret = g_enemy_redraw[i].f(ptr - map->ptr);
+		++ptr;
 	}
-	++*sleep;
 	return (ret);
 }

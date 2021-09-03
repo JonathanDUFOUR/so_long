@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 05:55:08 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/02 07:21:55 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/03 04:28:13 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		sl_block_load_player_up(void);
 int		sl_block_load_player(void);
 int		sl_block_load_wall(void);
 int		sl_block_load(void);
+int		sl_block_redraw_enemy(void);
 
 void	sl_block_clear_collect(void);
 void	sl_block_clear_enemy(void);

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 01:34:19 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/02 07:47:40 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/03 04:44:29 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int	sl_event_move_up(void)
 	map->direction_player = UP;
 	if (*up != MAP_CHAR[WALL])
 	{
-		if (*up == MAP_CHAR[ENEMY_DOWN] || *up == MAP_CHAR[ENEMY_LEFT]
-			|| *up == MAP_CHAR[ENEMY_RIGHT] || *up == MAP_CHAR[ENEMY_UP])
+		if (sl_is_enemy(*up))
 			sl_game_over(RED ">>> FAILURE <<<" WHITE);
 		sl_map_update(player, up, map->idx_player - map->width);
 		ret = sl_map_redraw(player - map->ptr, up - map->ptr);
@@ -42,7 +41,12 @@ int	sl_event_move_up(void)
 			ret = sl_step_update();
 	}
 	else
-		ret = sl_block_draw(map->idx_player, *player);
+	{
+		sl_map_update_enemy();
+		ret = sl_block_redraw_enemy();
+		if (ret == SUCCESS)
+			ret = sl_block_draw(map->idx_player, *player);
+	}
 	if (map->idx_player == map->idx_exit && !map->count.collect)
 		sl_game_over(GREEN ">>> SUCCESS <<<" WHITE);
 	return (ret);

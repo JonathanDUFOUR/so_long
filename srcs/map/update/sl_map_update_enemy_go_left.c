@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_map_update.c                                    :+:      :+:    :+:   */
+/*   sl_map_update_enemy_go_left.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/31 00:34:27 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 20:27:02 by jodufour         ###   ########.fr       */
+/*   Created: 2021/09/03 02:33:25 by jodufour          #+#    #+#             */
+/*   Updated: 2021/09/03 03:19:39 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,16 @@
 #include "enum/e_map_char.h"
 
 /*
-**	update map chars and player index
+**	make left char becoming an enemy_left
+**	make enemy char becoming a floor/exit
 */
-void	sl_map_update(char *const player, char *const togo,
-	t_huint new_idx_player)
+void	sl_map_update_enemy_go_left(t_huint enemy_idx, char *const left)
 {
 	t_map *const	map = sl_map();
 
-	if (map->idx_player == map->idx_exit)
-		*player = MAP_CHAR[EXIT];
+	if (enemy_idx == map->idx_exit)
+		map->ptr[enemy_idx] = MAP_CHAR[EXIT];
 	else
-		*player = MAP_CHAR[FLOOR];
-	if (*togo == MAP_CHAR[COLLECT])
-		--map->count.collect;
-	*togo = MAP_CHAR[PLAYER];
-	map->idx_player = new_idx_player;
+		map->ptr[enemy_idx] = MAP_CHAR[FLOOR];
+	*left = MAP_CHAR[ENEMY_LEFT];
 }

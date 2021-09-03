@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_event_none.c                                    :+:      :+:    :+:   */
+/*   sl_map_update_enemy_go_down.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/29 23:58:28 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/03 05:30:28 by jodufour         ###   ########.fr       */
+/*   Created: 2021/09/03 02:42:04 by jodufour          #+#    #+#             */
+/*   Updated: 2021/09/03 03:19:17 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
-#include "so_long.h"
-#include "type/t_block.h"
 #include "type/t_map.h"
-#include "enum/e_ret.h"
+#include "enum/e_map_char.h"
 
 /*
-**	default behavior when no hooks are triggered
+**	make down char becoming an enemy_down
+**	make enemy char becoming a floor/exit
 */
-int	sl_event_none(void *null)
+void	sl_map_update_enemy_go_down(t_huint enemy_idx, char *const down)
 {
-	t_uint *const	sleep = sl_sleep();
-	int				ret;
+	t_map *const	map = sl_map();
 
-	(void)null;
-	ret = SUCCESS;
-	if (!(*sleep % SLEEP_TIME))
-	{
-		sl_map_update_enemy();
-		ret = sl_block_redraw_enemy();
-	}
-	++*sleep;
-	return (ret);
+	if (enemy_idx == map->idx_exit)
+		map->ptr[enemy_idx] = MAP_CHAR[EXIT];
+	else
+		map->ptr[enemy_idx] = MAP_CHAR[FLOOR];
+	*down = ENEMY_DOWN;
 }

@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_event_none.c                                    :+:      :+:    :+:   */
+/*   sl_block_redraw_enemy_left.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/29 23:58:28 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/03 05:30:28 by jodufour         ###   ########.fr       */
+/*   Created: 2021/09/03 03:51:25 by jodufour          #+#    #+#             */
+/*   Updated: 2021/09/03 04:57:59 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
-#include "so_long.h"
-#include "type/t_block.h"
 #include "type/t_map.h"
+#include "type/t_block.h"
+#include "enum/e_map_char.h"
 #include "enum/e_ret.h"
 
 /*
-**	default behavior when no hooks are triggered
+**	redraw the enemy_left image to window
+**	at its [x][y] position related to its idx
 */
-int	sl_event_none(void *null)
+int	sl_block_redraw_enemy_left(t_huint idx_enemy)
 {
-	t_uint *const	sleep = sl_sleep();
+	t_map *const	map = sl_map();
+	int const		idx_old = idx_enemy + 1;
+	char const		old = map->ptr[idx_old];
 	int				ret;
 
-	(void)null;
-	ret = SUCCESS;
-	if (!(*sleep % SLEEP_TIME))
-	{
-		sl_map_update_enemy();
-		ret = sl_block_redraw_enemy();
-	}
-	++*sleep;
+	ret = sl_block_draw(idx_old, old);
+	if (ret == SUCCESS)
+		ret = sl_block_draw(idx_enemy, MAP_CHAR[ENEMY_LEFT]);
 	return (ret);
 }

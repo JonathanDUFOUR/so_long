@@ -6,14 +6,20 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 03:54:37 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/02 05:01:41 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/03 05:53:47 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONFIG_H
 # define CONFIG_H
 
-# define MAP_CHAR "10CEPDLRU"
+# define SLEEP_TIME 3000
+/*
+**	WARNING /!\
+**	Never set SLEEP_TIME value to 0 !!!
+*/
+
+# define MAP_CHAR "1 CEPDLRU"
 /*
 **	Must be as followed:
 **
@@ -29,10 +35,10 @@
 */
 
 # define COLLECT_XPM "ressources/xpm/arch.xpm"
-# define ENEMY_DOWN_XPM "ressources/xpm/apple.xpm"
-# define ENEMY_LEFT_XPM "ressources/xpm/apple.xpm"
-# define ENEMY_RIGHT_XPM "ressources/xpm/apple.xpm"
-# define ENEMY_UP_XPM "ressources/xpm/apple.xpm"
+# define ENEMY_DOWN_XPM "ressources/xpm/spike_down.xpm"
+# define ENEMY_LEFT_XPM "ressources/xpm/spike_left.xpm"
+# define ENEMY_RIGHT_XPM "ressources/xpm/spike_right.xpm"
+# define ENEMY_UP_XPM "ressources/xpm/spike_up.xpm"
 # define EXIT_XPM "ressources/xpm/stairs.xpm"
 # define FLOOR_XPM "ressources/xpm/floor.xpm"
 # define PLAYER_DOWN_XPM "ressources/xpm/penguin_down.xpm"
@@ -42,6 +48,9 @@
 # define WALL_XPM "ressources/xpm/wall.xpm"
 
 # define WIN_TITLE "so_long"
+
+# define VICTORY_MSG ">>> SUCCESS <<<"
+# define DEFEAT_MSG ">>> FAILURE <<<"
 
 # define RED "\e[31m"
 # define GREEN "\e[32m"

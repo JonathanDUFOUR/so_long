@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 16:22:21 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 22:55:11 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/03 02:36:51 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ int		sl_map_redraw(t_huint old_idx, t_huint new_idx);
 
 void	sl_map_clear(void);
 void	sl_map_print(void);
+void	sl_map_update_enemy_go_down(t_huint enemy_idx, char *const down);
+void	sl_map_update_enemy_go_left(t_huint enemy_idx, char *const left);
+void	sl_map_update_enemy_go_right(t_huint enemy_idx, char *const right);
+void	sl_map_update_enemy_go_up(t_huint enemy_idx, char *const up);
+void	sl_map_update_enemy(void);
 void	sl_map_update(char *const player, char *const togo, t_huint new_idx_p);
 
 t_map	*sl_map(void);

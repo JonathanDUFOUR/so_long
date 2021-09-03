@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_event_none.c                                    :+:      :+:    :+:   */
+/*   sl_is_enemy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/29 23:58:28 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/03 05:30:28 by jodufour         ###   ########.fr       */
+/*   Created: 2021/09/03 04:40:35 by jodufour          #+#    #+#             */
+/*   Updated: 2021/09/03 04:41:48 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdbool.h>
 #include "config.h"
-#include "so_long.h"
-#include "type/t_block.h"
-#include "type/t_map.h"
-#include "enum/e_ret.h"
+#include "enum/e_map_char.h"
 
-/*
-**	default behavior when no hooks are triggered
-*/
-int	sl_event_none(void *null)
+bool	sl_is_enemy(char const c)
 {
-	t_uint *const	sleep = sl_sleep();
-	int				ret;
-
-	(void)null;
-	ret = SUCCESS;
-	if (!(*sleep % SLEEP_TIME))
-	{
-		sl_map_update_enemy();
-		ret = sl_block_redraw_enemy();
-	}
-	++*sleep;
-	return (ret);
+	return (c == MAP_CHAR[ENEMY_DOWN]
+		|| c == MAP_CHAR[ENEMY_LEFT]
+		|| c == MAP_CHAR[ENEMY_RIGHT]
+		|| c == MAP_CHAR[ENEMY_UP]);
 }

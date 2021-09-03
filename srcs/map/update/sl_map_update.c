@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_event_none.c                                    :+:      :+:    :+:   */
+/*   sl_map_update.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/29 23:58:28 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/03 05:30:28 by jodufour         ###   ########.fr       */
+/*   Created: 2021/08/31 00:34:27 by jodufour          #+#    #+#             */
+/*   Updated: 2021/09/02 22:36:51 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
-#include "so_long.h"
-#include "type/t_block.h"
 #include "type/t_map.h"
-#include "enum/e_ret.h"
+#include "enum/e_map_char.h"
 
 /*
-**	default behavior when no hooks are triggered
+**	update map chars and player index
 */
-int	sl_event_none(void *null)
+void	sl_map_update(char *const player, char *const togo,
+	t_huint new_idx_player)
 {
-	t_uint *const	sleep = sl_sleep();
-	int				ret;
+	t_map *const	map = sl_map();
 
-	(void)null;
-	ret = SUCCESS;
-	if (!(*sleep % SLEEP_TIME))
-	{
-		sl_map_update_enemy();
-		ret = sl_block_redraw_enemy();
-	}
-	++*sleep;
-	return (ret);
+	if (map->idx_player == map->idx_exit)
+		*player = MAP_CHAR[EXIT];
+	else
+		*player = MAP_CHAR[FLOOR];
+	if (*togo == MAP_CHAR[COLLECT])
+		--map->count.collect;
+	*togo = MAP_CHAR[PLAYER];
+	map->idx_player = new_idx_player;
+	sl_map_update_enemy();
 }

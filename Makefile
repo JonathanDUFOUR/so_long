@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/09/02 07:24:01 by jodufour         ###   ########.fr        #
+#    Updated: 2021/09/03 05:16:27 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,6 +109,13 @@ SRC					=	\
 								sl_block_load_wall.c			\
 								sl_block_load.c					\
 							}									\
+							${addprefix redraw/,				\
+								sl_block_redraw_enemy_down.c	\
+								sl_block_redraw_enemy_left.c	\
+								sl_block_redraw_enemy_right.c	\
+								sl_block_redraw_enemy_up.c		\
+								sl_block_redraw_enemy.c			\
+							}									\
 							sl_block_check_same_dim.c			\
 							sl_block_check_square.c				\
 							sl_block_check.c					\
@@ -133,18 +140,37 @@ SRC					=	\
 							sl_hook_set.c						\
 						}										\
 						${addprefix map/,						\
-							sl_map_check_borders.c				\
-							sl_map_check_chars.c				\
-							sl_map_check_width.c				\
-							sl_map_check.c						\
+							${addprefix check/,					\
+								sl_map_check_borders.c			\
+								sl_map_check_chars.c			\
+								sl_map_check_width.c			\
+								sl_map_check.c					\
+							}									\
+							${addprefix update/,				\
+								sl_map_update_enemy_down.c		\
+								sl_map_update_enemy_go_down.c	\
+								sl_map_update_enemy_go_left.c	\
+								sl_map_update_enemy_go_right.c	\
+								sl_map_update_enemy_go_up.c		\
+								sl_map_update_enemy_left.c		\
+								sl_map_update_enemy_right.c		\
+								sl_map_update_enemy_up.c		\
+								sl_map_update_enemy.c			\
+								sl_map_update.c					\
+							}									\
 							sl_map_clear.c						\
 							sl_map_draw.c						\
 							sl_map_load.c						\
 							sl_map_print.c						\
 							sl_map_read.c						\
 							sl_map_redraw.c						\
-							sl_map_update.c						\
 							sl_map.c							\
+						}										\
+						${addprefix step/,						\
+							sl_step_draw_count.c				\
+							sl_step_draw_title.c				\
+							sl_step_update.c					\
+							sl_step.c							\
 						}										\
 						${addprefix xptr/,						\
 							sl_xptr_clear.c						\
@@ -153,10 +179,8 @@ SRC					=	\
 						}										\
 						main.c									\
 						sl_err_msg.c							\
-						sl_step_draw_count.c					\
-						sl_step_draw_title.c					\
-						sl_step_update.c						\
-						sl_step.c
+						sl_is_enemy.c							\
+						sl_sleep.c
 
 ######################################
 #            OBJECT FILES            #

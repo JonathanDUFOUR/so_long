@@ -6,13 +6,16 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 03:56:13 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/27 04:12:45 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/03 03:25:00 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "err_msg_lookup.h"
 
+/*
+**	print a message related to err value on stderr
+*/
 int	sl_err_msg(int err)
 {
 	int	i;
