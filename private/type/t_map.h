@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 16:22:21 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/03 02:36:51 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/03 06:31:57 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		sl_map_check_chars(void);
 int		sl_map_check_width(char const *line);
 int		sl_map_check(void);
 int		sl_map_draw(void);
-int		sl_map_load(char const *ber);
+int		sl_map_load(char const *file);
 int		sl_map_read(int const fd);
 int		sl_map_redraw(t_huint old_idx, t_huint new_idx);
 

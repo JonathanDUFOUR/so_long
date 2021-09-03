@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/09/03 05:16:27 by jodufour         ###   ########.fr        #
+#    Updated: 2021/09/03 06:36:34 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -179,6 +179,7 @@ SRC					=	\
 						}										\
 						main.c									\
 						sl_err_msg.c							\
+						sl_file_check_ext.c						\
 						sl_is_enemy.c							\
 						sl_sleep.c
 
@@ -193,7 +194,7 @@ DEP					=	${OBJ:.o=.d}
 #######################################
 #                FLAGS                #
 #######################################
-CFLAGS				=	-Wall -Wextra #-Werror
+CFLAGS				=	-Wall -Wextra -Werror
 CFLAGS				+=	-MMD -MP
 CFLAGS				+=	-I${PRV_DIR} -I${PBL_DIR}
 CFLAGS				+=	-I${FT_IO_INC_DIR}

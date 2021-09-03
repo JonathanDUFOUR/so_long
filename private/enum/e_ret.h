@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 03:54:36 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 19:54:38 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/03 06:32:21 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ enum	e_ret
 	GNL_ERR = -1,
 	SUCCESS,
 	AC_ERR,
+	EXT_ERR,
 	OPEN_ERR,
 	MALLOC_ERR,
 	MAP_ERR,

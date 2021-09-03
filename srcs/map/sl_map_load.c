@@ -6,24 +6,28 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 16:34:08 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 20:22:46 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/03 06:36:04 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include "ft_io.h"
+#include "so_long.h"
 #include "type/t_map.h"
 #include "enum/e_ret.h"
 
 /*
 **	load map from ber file and check it
 */
-int	sl_map_load(char const *ber)
+int	sl_map_load(char const *file)
 {
 	int	fd;
 	int	ret;
 
-	fd = open(ber, O_RDONLY);
+	ret = sl_file_check_ext(file);
+	if (ret != SUCCESS)
+		return (ret);
+	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (OPEN_ERR);
 	ret = sl_map_read(fd);

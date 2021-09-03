@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 03:50:45 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/03 05:17:21 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/03 06:28:44 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 
 int		sl_err_msg(int err);
 int		sl_event_none(void *null);
-int		sl_game_init(char const *ber);
+int		sl_file_check_ext(char const *file);
+int		sl_game_init(char const *file);
 int		sl_game_run(void);
 int		sl_hook_key(int keysym, void *null);
 int		sl_hook_set(void);

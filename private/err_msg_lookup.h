@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 03:56:40 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/30 00:49:41 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/03 06:33:12 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ struct	s_err
 
 static t_err const		g_err[] = {
 	{AC_ERR, "wrong argument count", 20},
+	{EXT_ERR, "wrong file extension", 20},
 	{OPEN_ERR, "open() failed", 13},
 	{GNL_ERR, "get_next_line() failed", 22},
 	{MAP_ERR, "invalid map", 11},
