@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 03:54:37 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/03 05:53:47 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/03 06:11:19 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **	Never set SLEEP_TIME value to 0 !!!
 */
 
-# define MAP_CHAR "1 CEPDLRU"
+# define MAP_CHAR "10CEPDLRU"
 /*
 **	Must be as followed:
 **
