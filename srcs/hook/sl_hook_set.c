@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 22:51:21 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/30 01:11:43 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/09/09 02:12:08 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "mlx.h"
 #include "so_long.h"
 #include "type/t_xptr.h"
+#include "type/t_map.h"
 #include "enum/e_ret.h"
 
 /*
@@ -28,5 +29,6 @@ int	sl_hook_set(void)
 	mlx_hook(xptr->win, KeyPress, KeyPressMask, sl_hook_key, NULL);
 	mlx_hook(xptr->win, DestroyNotify, StructureNotifyMask, mlx_loop_end,
 		xptr->mlx);
+	mlx_hook(xptr->win, Expose, ExposureMask, sl_map_draw, NULL);
 	return (SUCCESS);
 }
