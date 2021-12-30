@@ -6,13 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 18:36:51 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/01 20:15:31 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/12/30 21:29:45 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "ft_io.h"
-#include "ft_mem.h"
+#include "ft_string.h"
 #include "so_long.h"
 #include "type/t_map.h"
 #include "type/t_xptr.h"

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_draw_lookup.h                               :+:      :+:    :+:   */
+/*   lookup_player_draw.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 22:41:27 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 23:11:02 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/12/30 21:34:13 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLAYER_DRAW_LOOKUP_H
-# define PLAYER_DRAW_LOOKUP_H
+#ifndef LOOKUP_PLAYER_DRAW_H
+# define LOOKUP_PLAYER_DRAW_H
 
 # include <stddef.h>
 # include "type/t_int.h"
@@ -31,11 +31,11 @@ int	sl_block_draw_player_right(t_huint x, t_huint y);
 int	sl_block_draw_player_up(t_huint x, t_huint y);
 
 static t_player_draw const		g_player_draw[] = {
-	{DOWN, sl_block_draw_player_down},
-	{LEFT, sl_block_draw_player_left},
-	{RIGHT, sl_block_draw_player_right},
-	{UP, sl_block_draw_player_up},
-	{0, NULL}
+{DOWN, sl_block_draw_player_down},
+{LEFT, sl_block_draw_player_left},
+{RIGHT, sl_block_draw_player_right},
+{UP, sl_block_draw_player_up},
+{0, NULL}
 };
 
 #endif

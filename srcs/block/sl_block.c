@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 11:24:08 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/02 05:06:13 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/12/30 21:35:26 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@
 t_block	*sl_block(void)
 {
 	static t_block	block = {
-		{NULL, NULL, 0, 0, 0, 0, 0},
-		{NULL, NULL, 0, 0, 0, 0, 0},
-		{NULL, NULL, 0, 0, 0, 0, 0},
-		{NULL, NULL, 0, 0, 0, 0, 0},
-		{NULL, NULL, 0, 0, 0, 0, 0},
-		{NULL, NULL, 0, 0, 0, 0, 0},
-		{NULL, NULL, 0, 0, 0, 0, 0},
-		{NULL, NULL, 0, 0, 0, 0, 0},
-		{NULL, NULL, 0, 0, 0, 0, 0},
-		{NULL, NULL, 0, 0, 0, 0, 0},
-		{NULL, NULL, 0, 0, 0, 0, 0},
-		{NULL, NULL, 0, 0, 0, 0, 0},
+	{NULL, NULL, 0, 0, 0, 0, 0},
+	{NULL, NULL, 0, 0, 0, 0, 0},
+	{NULL, NULL, 0, 0, 0, 0, 0},
+	{NULL, NULL, 0, 0, 0, 0, 0},
+	{NULL, NULL, 0, 0, 0, 0, 0},
+	{NULL, NULL, 0, 0, 0, 0, 0},
+	{NULL, NULL, 0, 0, 0, 0, 0},
+	{NULL, NULL, 0, 0, 0, 0, 0},
+	{NULL, NULL, 0, 0, 0, 0, 0},
+	{NULL, NULL, 0, 0, 0, 0, 0},
+	{NULL, NULL, 0, 0, 0, 0, 0},
+	{NULL, NULL, 0, 0, 0, 0, 0},
 	};
 
 	return (&block);

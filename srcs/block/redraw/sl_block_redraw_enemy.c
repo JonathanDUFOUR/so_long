@@ -6,12 +6,12 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 04:22:35 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/03 04:59:03 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/12/30 21:37:52 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "type/t_map.h"
-#include "enemy_redraw_lookup.h"
+#include "lookup_enemy_redraw.h"
 #include "enum/e_ret.h"
 
 /*

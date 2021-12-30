@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_update_lookup.h                              :+:      :+:    :+:   */
+/*   lookup_enemy_update.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 22:44:21 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/03 00:12:57 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/12/30 21:33:53 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENEMY_UPDATE_LOOKUP_H
-# define ENEMY_UPDATE_LOOKUP_H
+#ifndef LOOKUP_ENEMY_UPDATE_H
+# define LOOKUP_ENEMY_UPDATE_H
 
 # include <stddef.h>
 # include "config.h"
@@ -32,11 +32,11 @@ void	sl_map_update_enemy_right(t_huint enemy_idx);
 void	sl_map_update_enemy_up(t_huint enemy_idx);
 
 static t_enemy_update const		g_enemy_update[] = {
-	{MAP_CHAR[ENEMY_DOWN], sl_map_update_enemy_down},
-	{MAP_CHAR[ENEMY_LEFT], sl_map_update_enemy_left},
-	{MAP_CHAR[ENEMY_RIGHT], sl_map_update_enemy_right},
-	{MAP_CHAR[ENEMY_UP], sl_map_update_enemy_up},
-	{0, NULL}
+{MAP_CHAR[ENEMY_DOWN], sl_map_update_enemy_down},
+{MAP_CHAR[ENEMY_LEFT], sl_map_update_enemy_left},
+{MAP_CHAR[ENEMY_RIGHT], sl_map_update_enemy_right},
+{MAP_CHAR[ENEMY_UP], sl_map_update_enemy_up},
+{0, NULL}
 };
 
 #endif

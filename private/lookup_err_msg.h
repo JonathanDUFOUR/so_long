@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   err_msg_lookup.h                                   :+:      :+:    :+:   */
+/*   lookup_err_msg.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 03:56:40 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/03 06:33:12 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/12/30 21:33:59 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERR_MSG_LOOKUP_H
-# define ERR_MSG_LOOKUP_H
+#ifndef LOOKUP_ERR_MSG_H
+# define LOOKUP_ERR_MSG_H
 
 # include <stddef.h>
 # include "enum/e_ret.h"
@@ -26,15 +26,15 @@ struct	s_err
 };
 
 static t_err const		g_err[] = {
-	{AC_ERR, "wrong argument count", 20},
-	{EXT_ERR, "wrong file extension", 20},
-	{OPEN_ERR, "open() failed", 13},
-	{GNL_ERR, "get_next_line() failed", 22},
-	{MAP_ERR, "invalid map", 11},
-	{MLX_ERR, "mlx function failed", 19},
-	{IMG_DIM_ERR, "invalid image dimensions", 24},
-	{NO_HOOK_ERR, "no hook set for the pressed key", 31},
-	{0, NULL, 0}
+{AC_ERR, "wrong argument count", 20},
+{EXT_ERR, "wrong file extension", 20},
+{OPEN_ERR, "open() failed", 13},
+{GNL_ERR, "get_next_line() failed", 22},
+{MAP_ERR, "invalid map", 11},
+{MLX_ERR, "mlx function failed", 19},
+{IMG_DIM_ERR, "invalid image dimensions", 24},
+{NO_HOOK_ERR, "no hook set for the pressed key", 31},
+{0, NULL, 0}
 };
 
 #endif

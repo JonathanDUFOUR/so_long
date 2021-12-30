@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/12/30 21:19:28 by jodufour         ###   ########.fr        #
+#    Updated: 2021/12/30 21:40:56 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -205,7 +205,7 @@ endif
 #######################################
 #                RULES                #
 #######################################
-${NAME}: ${OBJ} ${FT_IO_A} ${FT_MEM_A} ${FT_STRING_A} ${MLX_A}
+${NAME}: ${OBJ} ${FT_IO_A} ${FT_STRING_A} ${MLX_A}
 	${LINK} ${OBJ} ${LDFLAGS} ${OUTPUT_OPTION}
 
 all: ${NAME}

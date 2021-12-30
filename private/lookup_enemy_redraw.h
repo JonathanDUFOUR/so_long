@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_redraw_lookup.h                              :+:      :+:    :+:   */
+/*   lookup_enemy_redraw.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 03:41:30 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/03 04:05:03 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/12/30 21:33:47 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENEMY_REDRAW_LOOKUP_H
-# define ENEMY_REDRAW_LOOKUP_H
+#ifndef LOOKUP_ENEMY_REDRAW_H
+# define LOOKUP_ENEMY_REDRAW_H
 
 # include <stddef.h>
 # include "config.h"
@@ -32,11 +32,11 @@ int	sl_block_redraw_enemy_right(t_huint idx_enemy);
 int	sl_block_redraw_enemy_up(t_huint idx_enemy);
 
 static t_enemy_redraw const		g_enemy_redraw[] = {
-	{MAP_CHAR[ENEMY_DOWN], sl_block_redraw_enemy_down},
-	{MAP_CHAR[ENEMY_LEFT], sl_block_redraw_enemy_left},
-	{MAP_CHAR[ENEMY_RIGHT], sl_block_redraw_enemy_right},
-	{MAP_CHAR[ENEMY_UP], sl_block_redraw_enemy_up},
-	{0, NULL},
+{MAP_CHAR[ENEMY_DOWN], sl_block_redraw_enemy_down},
+{MAP_CHAR[ENEMY_LEFT], sl_block_redraw_enemy_left},
+{MAP_CHAR[ENEMY_RIGHT], sl_block_redraw_enemy_right},
+{MAP_CHAR[ENEMY_UP], sl_block_redraw_enemy_up},
+{0, NULL},
 };
 
 #endif

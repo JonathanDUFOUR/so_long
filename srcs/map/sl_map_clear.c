@@ -6,12 +6,12 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 21:36:52 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 19:33:13 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/12/30 21:27:51 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "ft_mem.h"
+#include "ft_string.h"
 #include "type/t_map.h"
 
 /*

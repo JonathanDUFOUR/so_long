@@ -6,13 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 22:37:39 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/03 05:30:35 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/12/30 21:38:38 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
 #include "so_long.h"
-#include "enemy_update_lookup.h"
+#include "lookup_enemy_update.h"
 #include "type/t_map.h"
 #include "enum/e_map_char.h"
 

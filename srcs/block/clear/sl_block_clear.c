@@ -6,11 +6,11 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/29 18:59:05 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/02 01:55:14 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/12/30 21:27:28 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_mem.h"
+#include "ft_string.h"
 #include "type/t_block.h"
 
 /*
