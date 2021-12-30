@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2021/09/03 06:36:34 by jodufour         ###   ########.fr        #
+#    Updated: 2021/12/30 21:19:28 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ NAME				=	so_long
 ######################################
 #              COMMANDS              #
 ######################################
-CC					=	clang -c -o
-LINK				=	clang -o
+CC					=	clang -c
+LINK				=	clang
 RM					=	rm -rf
 MKDIR				=	mkdir -p
 
@@ -32,15 +32,11 @@ PRV_DIR				=	private/
 PBL_DIR				=	public/
 
 FT_IO_DIR			=	libft_io/
-FT_IO_INC_DIR		=	includes/
+FT_IO_INC_DIR		=	include/
 FT_IO_INC_DIR		:=	${addprefix ${FT_IO_DIR}, ${FT_IO_INC_DIR}}
 
-FT_MEM_DIR			=	libft_mem/
-FT_MEM_INC_DIR		=	includes/
-FT_MEM_INC_DIR		:=	${addprefix ${FT_MEM_DIR}, ${FT_MEM_INC_DIR}}
-
 FT_STRING_DIR		=	libft_string/
-FT_STRING_INC_DIR	=	includes/
+FT_STRING_INC_DIR	=	include/
 FT_STRING_INC_DIR	:=	${addprefix ${FT_STRING_DIR}, ${FT_STRING_INC_DIR}}
 
 MLX_DIR				=	mlx_linux/
@@ -52,9 +48,6 @@ MLX_INC_DIR			:=	${addprefix ${MLX_DIR}, ${MLX_INC_DIR}}
 #######################################
 FT_IO_A				=	libft_io.a
 FT_IO_A				:=	${addprefix ${FT_IO_DIR}, ${FT_IO_A}}
-
-FT_MEM_A			=	libft_mem.a
-FT_MEM_A			:=	${addprefix ${FT_MEM_DIR}, ${FT_MEM_A}}
 
 FT_STRING_A			=	libft_string.a
 FT_STRING_A			:=	${addprefix ${FT_STRING_DIR}, ${FT_STRING_A}}
@@ -198,37 +191,32 @@ CFLAGS				=	-Wall -Wextra -Werror
 CFLAGS				+=	-MMD -MP
 CFLAGS				+=	-I${PRV_DIR} -I${PBL_DIR}
 CFLAGS				+=	-I${FT_IO_INC_DIR}
-CFLAGS				+=	-I${FT_MEM_INC_DIR}
 CFLAGS				+=	-I${FT_STRING_INC_DIR}
 CFLAGS				+=	-I${MLX_INC_DIR}
 
 LDFLAGS				=	-L${FT_IO_DIR} -lft_io
-LDFLAGS				+=	-L${FT_MEM_DIR} -lft_mem
 LDFLAGS				+=	-L${FT_STRING_DIR} -lft_string
 LDFLAGS				+=	-L${MLX_DIR} -lmlx -lX11 -lXext
 
-ifeq (${DEBUG}, true)
+ifeq (${DEBUG}, 1)
 	CFLAGS	+=	-g
 endif
 
 #######################################
 #                RULES                #
 #######################################
-${NAME}:	${OBJ} ${FT_IO_A} ${FT_MEM_A} ${FT_STRING_A} ${MLX_A}
-	${LINK} $@ ${OBJ} ${LDFLAGS}
+${NAME}: ${OBJ} ${FT_IO_A} ${FT_MEM_A} ${FT_STRING_A} ${MLX_A}
+	${LINK} ${OBJ} ${LDFLAGS} ${OUTPUT_OPTION}
 
-all:	${NAME}
+all: ${NAME}
 
 -include ${DEP}
 
-${OBJ_DIR}%.o:	${SRC_DIR}%.c
+${OBJ_DIR}%.o: ${SRC_DIR}%.c
 	@${MKDIR} ${@D}
-	${CC} $@ ${CFLAGS} $<
+	${CC} ${CFLAGS} $< ${OUTPUT_OPTION}
 
 ${FT_IO_A}:
-	${MAKE} ${@F} -C ${@D}
-
-${FT_MEM_A}:
 	${MAKE} ${@F} -C ${@D}
 
 ${FT_STRING_A}:
@@ -237,38 +225,19 @@ ${FT_STRING_A}:
 ${MLX_A}:
 	${MAKE} -C ${@D}
 
+-include /home/jodufour/Templates/mk_files/coffee.mk
+-include /home/jodufour/Templates/mk_files/norm.mk
+
 clean:
-	${RM} ${OBJ_DIR}
+	${RM} ${OBJ_DIR} ${NAME} vgcore.*
 
 fclean:
-	${RM} ${OBJ_DIR} ${NAME}
+	${RM} ${OBJ_DIR} ${NAME} vgcore.*
 	${MAKE} $@ -C ${FT_IO_DIR}
 	${MAKE} $@ -C ${FT_STRING_DIR}
 
-re:	fclean all
+re: clean all
 
-coffee:
-	@echo '                                              '
-	@echo '                   "   "                      '
-	@echo '                  " " " "                     '
-	@echo '                 " " " "                      '
-	@echo '         _.-==="-"""""-"===-._                '
-	@echo '        |=___   "~"~"~"   ___=|=,.            '
-	@echo '        |    """======="""    |  \\           '
-	@echo '        |                     |   ||          '
-	@echo '        |                     |   ||          '
-	@echo '        |                     |   ||          '
-	@echo '        |                     |   ||          '
-	@echo '        |                     |  //           '
-	@echo '         \                   /=="`            '
-	@echo '          \                 /                 '
-	@echo '           `"--._______.--"`                  '
-	@echo '                                              '
+fre: fclean all
 
-norm:
-	@norminette ${SRC_DIR} ${INC_DIR} ${PRV_DIR} | grep 'Error' ; true
-	@${MAKE} $@ -C ${FT_IO_DIR}
-	@${MAKE} $@ -C ${FT_MEM_DIR}
-	@${MAKE} $@ -C ${FT_STRING_DIR}
-
-.PHONY:	all clean fclean re coffee norm
+.PHONY:	all clean fclean re fre

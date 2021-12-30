@@ -6,14 +6,14 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 03:54:37 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/03 07:59:38 by jodufour         ###   ########.fr       */
+/*   Updated: 2021/12/03 23:36:44 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONFIG_H
 # define CONFIG_H
 
-# define SLEEP_TIME 21000
+# define SLEEP_TIME 10000
 /*
 **	WARNING /!\
 **	Never set SLEEP_TIME value to 0 !!!
@@ -35,10 +35,10 @@
 */
 
 # define COLLECT_XPM "ressources/xpm/arch.xpm"
-# define ENEMY_DOWN_XPM "ressources/xpm/spike_down.xpm"
-# define ENEMY_LEFT_XPM "ressources/xpm/spike_left.xpm"
-# define ENEMY_RIGHT_XPM "ressources/xpm/spike_right.xpm"
-# define ENEMY_UP_XPM "ressources/xpm/spike_up.xpm"
+# define ENEMY_DOWN_XPM "ressources/xpm/apple.xpm"
+# define ENEMY_LEFT_XPM "ressources/xpm/apple.xpm"
+# define ENEMY_RIGHT_XPM "ressources/xpm/apple.xpm"
+# define ENEMY_UP_XPM "ressources/xpm/apple.xpm"
 # define EXIT_XPM "ressources/xpm/stairs.xpm"
 # define FLOOR_XPM "ressources/xpm/floor.xpm"
 # define PLAYER_DOWN_XPM "ressources/xpm/penguin_down.xpm"
