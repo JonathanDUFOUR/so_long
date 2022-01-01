@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2022/01/01 13:56:21 by jodufour         ###   ########.fr        #
+#    Updated: 2022/01/01 20:53:33 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -235,6 +235,7 @@ fclean:
 	${RM} ${OBJ_DIR} ${NAME} vgcore.*
 	${MAKE} $@ -C ${FT_IO_DIR}
 	${MAKE} $@ -C ${FT_STRING_DIR}
+	${MAKE} clean -C ${MLX_DIR}
 
 re: clean all
 
