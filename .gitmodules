@@ -4,3 +4,6 @@
 [submodule "libft_io"]
 	path = libft_io
 	url = https://gitlab.com/JonathanDUFOUR/libft_io.git
+[submodule "minilibx-linux"]
+	path = minilibx-linux
+	url = https://github.com/alisterd51/minilibx-linux.git

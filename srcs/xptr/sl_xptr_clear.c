@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 05:37:21 by jodufour          #+#    #+#             */
-/*   Updated: 2021/12/30 21:29:59 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/01 14:11:07 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@ void	sl_xptr_clear(void)
 	if (xptr->win)
 		mlx_destroy_window(xptr->mlx, xptr->win);
 	if (xptr->mlx)
-	{
 		mlx_destroy_display(xptr->mlx);
-		free(xptr->mlx);
-	}
 	ft_bzero(xptr, sizeof(t_xptr));
 }
