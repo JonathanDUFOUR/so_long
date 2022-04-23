@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 03:56:40 by jodufour          #+#    #+#             */
-/*   Updated: 2021/12/30 21:33:59 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/12 03:15:43 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LOOKUP_ERR_MSG_H
 
 # include <stddef.h>
-# include "enum/e_ret.h"
+# include "e_ret.h"
 
 typedef struct s_err	t_err;
 

@@ -6,27 +6,40 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:14:09 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/29 22:45:20 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/21 16:34:55 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include "ft_string.h"
+#include "mlx.h"
 #include "so_long.h"
-#include "enum/e_ret.h"
 
-int	main(int ac, char **av)
+inline static void	__run(t_all *const a)
 {
-	int	ret;
+	mlx_do_key_autorepeatoff(a->x.mlx);
+	mlx_loop(a->x.mlx);
+	mlx_do_key_autorepeaton(a->x.mlx);
+}
 
-	if (ac == 2)
-	{
-		ret = sl_game_init(av[1]);
-		if (ret == SUCCESS)
-			ret = sl_game_run();
-	}
-	else
-		ret = AC_ERR;
-	sl_game_clear();
-	if (ret != SUCCESS)
-		sl_err_msg(ret);
-	return (SUCCESS);
+int	main(int const ac, char const **av)
+{
+	t_all	a;
+
+	ft_bzero(&a, sizeof(t_all));
+	if (arg_check(ac, av, &a.ret)
+		|| xptr_init(&a.x, &a.ret)
+		|| config_load(&a.c, &a.x, &a.ret)
+		|| game_init(&a.g, &a.x, av[1], &a.ret)
+		|| hook_init(&a, &a.ret))
+		return (game_clear(&a.g, &a.x),
+			config_clear(&a.c, &a.x),
+			xptr_clear(&a.x),
+			err_msg(a.ret),
+			EXIT_FAILURE);
+	__run(&a);
+	return (game_clear(&a.g, &a.x),
+		config_clear(&a.c, &a.x),
+		xptr_clear(&a.x),
+		EXIT_SUCCESS);
 }

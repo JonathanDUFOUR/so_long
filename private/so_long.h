@@ -6,33 +6,28 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 03:50:45 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/03 06:28:44 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/13 13:01:51 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <stdbool.h>
-# include "type/t_int.h"
+# include "t_all.h"
 
-int		sl_err_msg(int err);
-int		sl_event_none(void *null);
-int		sl_file_check_ext(char const *file);
-int		sl_game_init(char const *file);
-int		sl_game_run(void);
-int		sl_hook_key(int keysym, void *null);
-int		sl_hook_set(void);
-int		sl_step_draw_count(int color);
-int		sl_step_draw_title(void);
-int		sl_step_update(void);
+int		arg_check(int const ac, char const **av, int *const ret)
+		__attribute__((nonnull));
+int		event_none(t_all *const a)
+		__attribute__((nonnull));
+int		hook_init(t_all *const a, int *const ret)
+		__attribute__((nonnull));
+int		hook_key_press(int const keysym, t_all *const a)
+		__attribute__((nonnull));
+int		hook_key_release(int const keysym, t_all *const a)
+		__attribute__((nonnull));
+int		render(t_all *const a)
+		__attribute__((nonnull));
 
-void	sl_game_clear(void);
-void	sl_game_over(char const *s);
-
-bool	sl_is_enemy(char const c);
-
-t_uint	*sl_step(void);
-t_uint	*sl_sleep(void);
+void	err_msg(int const err);
 
 #endif
