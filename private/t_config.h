@@ -6,13 +6,14 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 08:53:51 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/12 10:46:25 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/24 17:01:04 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_CONFIG_H
 # define T_CONFIG_H
 
+# include "settings.h"
 # include "t_img.h"
 # include "t_xptr.h"
 
@@ -20,10 +21,10 @@ typedef struct s_config	t_config;
 
 struct s_config
 {
-	t_img	enemy[4];
+	t_img	enemy[4][ANIMATE_CNT];
 	t_img	exit;
 	t_img	floor;
-	t_img	player[8];
+	t_img	player[8][ANIMATE_CNT];
 	t_img	wall;
 };
 

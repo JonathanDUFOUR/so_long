@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:18:29 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/12 11:46:32 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/24 17:18:22 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,29 @@
 #include "t_config.h"
 #include "e_cardinal.h"
 #include "e_ret.h"
+
+inline static int	__load_one(
+	t_config *const c,
+	t_xptr const *const x,
+	t_uint const cardinal,
+	t_uint const animate_idx)
+{
+	c->enemy[cardinal][animate_idx].ptr = mlx_xpm_file_to_image(
+			x->mlx,
+			(char *)g_xpm_enemy[cardinal][animate_idx],
+			(int *)&c->enemy[cardinal][animate_idx].width,
+			(int *)&c->enemy[cardinal][animate_idx].height);
+	if (!c->enemy[cardinal][animate_idx].ptr)
+		return (EXIT_FAILURE);
+	c->enemy[cardinal][animate_idx].addr = (uint32_t *)mlx_get_data_addr(
+			c->enemy[cardinal][animate_idx].ptr,
+			(int *)&c->enemy[cardinal][animate_idx].bpp,
+			(int *)&c->enemy[cardinal][animate_idx].line_len,
+			(int *)&c->enemy[cardinal][animate_idx].endian);
+	if (!c->enemy[cardinal][animate_idx].addr)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
 
 /**
 	@brief	Load the enemy images
@@ -30,24 +53,18 @@
 int	config_load_enemy(t_config *const c, t_xptr const *const x, int *const ret)
 {
 	t_uint	cardinal;
+	t_uint	animate_idx;
 
 	cardinal = EAST;
 	while (cardinal <= SOUTH)
 	{
-		c->enemy[cardinal].ptr = mlx_xpm_file_to_image(
-				x->mlx,
-				(char *)g_xpm_enemy[cardinal],
-				(int *)&c->enemy[cardinal].width,
-				(int *)&c->enemy[cardinal].height);
-		if (!c->enemy[cardinal].ptr)
-			return (*ret = MLX_ERR);
-		c->enemy[cardinal].addr = (uint32_t *)mlx_get_data_addr(
-				c->enemy[cardinal].ptr,
-				(int *)&c->enemy[cardinal].bpp,
-				(int *)&c->enemy[cardinal].line_len,
-				(int *)&c->enemy[cardinal].endian);
-		if (!c->enemy[cardinal].addr)
-			return (*ret = MLX_ERR);
+		animate_idx = 0U;
+		while (animate_idx < ANIMATE_CNT)
+		{
+			if (__load_one(c, x, cardinal, animate_idx))
+				return (*ret = MLX_ERR);
+			++animate_idx;
+		}
 		++cardinal;
 	}
 	return (*ret = SUCCESS);

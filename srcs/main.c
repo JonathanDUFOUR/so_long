@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:14:09 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/21 16:34:55 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/24 17:30:59 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 #include "ft_string.h"
 #include "mlx.h"
 #include "so_long.h"
+#include "e_cardinal.h"
 
 inline static void	__run(t_all *const a)
 {
+	a->g.p.img = &a->c.player[SOUTH][0];
 	mlx_do_key_autorepeatoff(a->x.mlx);
 	mlx_loop(a->x.mlx);
 	mlx_do_key_autorepeaton(a->x.mlx);

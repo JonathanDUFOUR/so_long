@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:01:59 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/12 09:07:48 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/24 16:08:22 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ enum e_cardinal
 	NORTH,
 	WEST,
 	SOUTH,
-	NORTH_EAST,
+	EAST_NORTH,
 	NORTH_WEST,
-	SOUTH_WEST,
+	WEST_SOUTH,
 	SOUTH_EAST
 };
 
