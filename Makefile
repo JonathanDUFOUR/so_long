@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2022/04/23 22:24:27 by jodufour         ###   ########.fr        #
+#    Updated: 2022/04/25 19:41:50 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ MKDIR				=	mkdir -p
 SRC_DIR				=	srcs/
 OBJ_DIR				=	objs/
 PRV_DIR				=	private/
-PBL_DIR				=	public/
 
 FT_IO_DIR			=	libft_io/
 FT_IO_INC_DIR		=	include/
@@ -127,7 +126,7 @@ DEP					=	${OBJ:.o=.d}
 #######################################
 CFLAGS				=	-Wall -Wextra# -Werror
 CFLAGS				+=	-MMD -MP
-CFLAGS				+=	-I${PRV_DIR} -I${PBL_DIR}
+CFLAGS				+=	-I${PRV_DIR}
 CFLAGS				+=	-I${FT_IO_INC_DIR}
 CFLAGS				+=	-I${FT_STRING_INC_DIR}
 CFLAGS				+=	-I${MLX_INC_DIR}
