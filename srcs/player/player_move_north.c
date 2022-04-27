@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:48:12 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/25 21:59:20 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/27 08:52:41 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	player_move_north(
 	axis[Y] = (p->axis[Y] - PLAYER_SPEED) / IMG_H;
 	if (m->ptr[axis[X] + axis[Y] * m->width] == MAP_CHAR[WALL])
 	{
-		p->axis[Y] -= fabs(p->axis[Y] - axis[Y] * IMG_H) - 0.01;
-		p->distance += fabs(p->axis[Y] - axis[Y] * IMG_H) - 0.01;
+		p->axis[Y] -= fabs((axis[Y] + 1) * IMG_H - p->axis[Y]) - 0.01;
+		p->distance += fabs((axis[Y] + 1) * IMG_H - p->axis[Y]) - 0.01;
 	}
 	else
 	{
