@@ -6,14 +6,14 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 18:36:40 by jodufour          #+#    #+#             */
-/*   Updated: 2021/08/31 20:23:37 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/27 09:40:36 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_COUNT_H
 # define T_COUNT_H
 
-# include "type/t_int.h"
+# include "t_int.h"
 
 typedef struct s_count	t_count;
 

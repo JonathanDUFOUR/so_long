@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2022/04/25 19:41:50 by jodufour         ###   ########.fr        #
+#    Updated: 2022/04/29 02:01:23 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -134,6 +134,7 @@ CFLAGS				+=	-I${MLX_INC_DIR}
 LDFLAGS				=	-L${FT_IO_DIR} -lft_io
 LDFLAGS				+=	-L${FT_STRING_DIR} -lft_string
 LDFLAGS				+=	-L${MLX_DIR} -lmlx -lX11 -lXext
+LDFLAGS				+=	-lm
 
 ifeq (${DEBUG}, 1)
 	CFLAGS	+=	-g

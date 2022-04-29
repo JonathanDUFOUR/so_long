@@ -6,14 +6,14 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 16:22:21 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/12 08:39:53 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/27 09:40:36 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_MAP_H
 # define T_MAP_H
 
-# include "type/t_int.h"
+# include "t_int.h"
 # include "t_img.h"
 # include "t_xptr.h"
 

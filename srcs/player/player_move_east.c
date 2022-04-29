@@ -6,11 +6,10 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:43:35 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/27 08:47:19 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/29 03:26:35 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include "settings.h"
 #include "t_config.h"
 #include "t_map.h"
@@ -22,6 +21,14 @@
 /* DBG */
 #include <stdio.h>
 
+/**
+	@brief	Move the given player to its east axis if available.
+			Update the data of the given player accordingly.
+
+	@param	p The player structure to update.
+	@param	m The map structure to check walls.
+	@param	c The configuration structure to load the current player image.
+*/
 void	player_move_east(
 	t_player *const p,
 	t_map *const m,
@@ -33,12 +40,7 @@ void	player_move_east(
 	p->img = &c->player[EAST][p->animate_idx];
 	axis[X] = (p->axis[X] + PLAYER_SPEED) / IMG_W;
 	axis[Y] = p->axis[Y] / IMG_H;
-	if (m->ptr[axis[X] + axis[Y] * m->width] == MAP_CHAR[WALL])
-	{
-		p->axis[X] += fabs(axis[X] * IMG_W - p->axis[X]) - 0.01;
-		p->distance += fabs(axis[X] * IMG_W - p->axis[X]) - 0.01;
-	}
-	else
+	if (m->ptr[axis[X] + axis[Y] * m->width] != MAP_CHAR[WALL])
 	{
 		p->axis[X] += PLAYER_SPEED;
 		p->distance += PLAYER_SPEED;
