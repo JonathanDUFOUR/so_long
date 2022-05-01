@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 08:53:51 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/24 17:01:04 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/01 01:43:05 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,20 @@ typedef struct s_config	t_config;
 
 struct s_config
 {
-	t_img	enemy[4][ANIMATE_CNT];
-	t_img	exit;
-	t_img	floor;
-	t_img	player[8][ANIMATE_CNT];
-	t_img	wall;
+	char const	*filename;
+	t_img		collect;
+	t_img		enemy[4][ANIMATE_CNT];
+	t_img		exit;
+	t_img		floor;
+	t_img		player[8][ANIMATE_CNT];
+	t_img		wall;
 };
 
-int		config_load(t_config *const c, t_xptr const *const x, int *const ret)
+int		config_load(t_config *const c, t_xptr const *const x,
+			char const *const filename, int *const ret)
+		__attribute__((nonnull));
+int		config_load_collect(t_config *const c, t_xptr const *const x,
+			int *const ret)
 		__attribute__((nonnull));
 int		config_load_enemy(t_config *const c, t_xptr const *const x,
 			int *const ret)

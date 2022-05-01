@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:42:31 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/24 17:14:33 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/01 01:54:55 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ inline static void	__clear_player(t_config *const c, t_xptr const *const x)
 */
 void	config_clear(t_config *const c, t_xptr const *const x)
 {
+	if (c->collect.ptr)
+		mlx_destroy_image(x->mlx, c->collect.ptr);
 	__clear_enemy(c, x);
 	if (c->exit.ptr)
 		mlx_destroy_image(x->mlx, c->exit.ptr);

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 05:49:15 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/12 11:48:18 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/01 00:42:57 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ struct s_game
 	t_player	p;
 };
 
-int		game_init(t_game *const g, t_xptr const *const x, char const *filename,
-			int *const ret)
+int		game_init(t_game *const g, t_xptr const *const x,
+			t_config const *const c, int *const ret)
 		__attribute__((nonnull));
 
 void	game_clear(t_game *const g, t_xptr const *const x)

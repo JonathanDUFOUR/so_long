@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_count.h                                          :+:      :+:    :+:   */
+/*   img_fill_img.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/31 18:36:40 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/27 09:40:36 by jodufour         ###   ########.fr       */
+/*   Created: 2022/05/01 04:52:15 by jodufour          #+#    #+#             */
+/*   Updated: 2022/05/01 05:05:29 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef T_COUNT_H
-# define T_COUNT_H
+#include "ft_string.h"
+#include "t_img.h"
+#include "e_axis.h"
 
-# include "t_int.h"
-
-typedef struct s_count	t_count;
-
-struct s_count
+void	img_fill_img(
+	t_img *const dst,
+	t_img const *const src,
+	t_uint const offset)
 {
-	t_huint	collect;
-	t_huint	exit;
-	t_huint	player;
-};
+	t_uint	y;
 
-#endif
+	y = 0U;
+	while (y < src->height)
+	{
+		ft_memcpy(
+			dst->addr + offset + y * dst->width,
+			src->addr + y * src->width,
+			src->line_len);
+		++y;
+	}
+}

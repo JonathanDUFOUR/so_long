@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 07:04:18 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/12 07:22:02 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/04/30 18:29:25 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,10 @@
 #include "t_map.h"
 #include "e_ret.h"
 
-inline static int	__first_line(
-	t_map *const m,
-	char *line,
-	int *const ret)
+inline static void	__first_line(t_map *const m, char *const line)
 {
 	m->ptr = line;
 	m->width = ft_strlen(line);
-	return (*ret = SUCCESS);
 }
 
 inline static int	__next_lines(
@@ -54,7 +50,6 @@ inline static int	__next_lines(
 
 	@return	The updated program status.
 */
-
 int	map_load(t_map *const m, char const *filename, int *const ret)
 {
 	int const	fd = open(filename, O_RDONLY);
@@ -66,10 +61,7 @@ int	map_load(t_map *const m, char const *filename, int *const ret)
 	while (*ret == 1)
 	{
 		if (!m->ptr)
-		{
-			if (__first_line(m, line, ret))
-				return (close(fd), *ret);
-		}
+			__first_line(m, line);
 		else if (__next_lines(m, line, ret))
 			return (close(fd), *ret);
 		++m->height;

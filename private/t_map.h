@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 16:22:21 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/27 09:40:36 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/01 00:41:46 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "t_int.h"
 # include "t_img.h"
+# include "t_config.h"
 # include "t_xptr.h"
 
 typedef struct s_map	t_map;
@@ -33,6 +34,12 @@ void	map_clear(t_map *const m, t_xptr const *const x)
 		__attribute__((nonnull));
 
 int		map_load(t_map *const m, char const *filename, int *const ret)
+		__attribute__((nonnull));
+int		map_maxi_init(t_map *const m, t_xptr const *const x,
+			t_config const *const c, int *const ret)
+		__attribute__((nonnull));
+int		map_mini_init(t_map *const m, t_xptr const *const x,
+			int *const ret)
 		__attribute__((nonnull));
 
 #endif

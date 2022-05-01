@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 03:54:37 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/27 08:48:45 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/01 05:32:05 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 **	MAP_CHAR[8]: enemy going south
 */
 
-# define SLEEP_TIME			42U
+# define SLEEP_TIME			0U
 
 # define WIN_TITLE			"so_long"
 # define WIN_W				800
@@ -39,7 +39,7 @@
 
 # define ANIMATE_CNT		18U
 
-# define PLAYER_SPEED		0.03
+# define PLAYER_SPEED		0.3
 
 static char const *const	g_xpm_enemy[][ANIMATE_CNT] = {
 {

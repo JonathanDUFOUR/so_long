@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:14:09 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/24 17:30:59 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/01 00:29:22 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	main(int const ac, char const **av)
 	ft_bzero(&a, sizeof(t_all));
 	if (arg_check(ac, av, &a.ret)
 		|| xptr_init(&a.x, &a.ret)
-		|| config_load(&a.c, &a.x, &a.ret)
-		|| game_init(&a.g, &a.x, av[1], &a.ret)
+		|| config_load(&a.c, &a.x, av[1], &a.ret)
+		|| game_init(&a.g, &a.x, &a.c, &a.ret)
 		|| hook_init(&a, &a.ret))
 		return (game_clear(&a.g, &a.x),
 			config_clear(&a.c, &a.x),

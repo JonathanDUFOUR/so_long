@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2022/04/29 02:01:23 by jodufour         ###   ########.fr        #
+#    Updated: 2022/05/01 05:06:30 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ SRC					=	\
 						${addprefix config/,					\
 							config_clear.c						\
 							config_load_enemy.c					\
+							config_load_collect.c				\
 							config_load_exit.c					\
 							config_load_floor.c					\
 							config_load_player.c				\
@@ -88,9 +89,15 @@ SRC					=	\
 							hook_key_press.c					\
 							hook_key_release.c					\
 						}										\
+						${addprefix img/,						\
+							img_fill_img.c						\
+							img_print.c							\
+						}										\
 						${addprefix map/,						\
 							map_clear.c							\
 							map_load.c							\
+							map_maxi_init.c						\
+							map_mini_init.c						\
 						}										\
 						${addprefix player/,					\
 							player_clear.c						\
