@@ -6,10 +6,11 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:49:11 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/24 22:58:26 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/01 08:29:40 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mlx.h"
 #include "so_long.h"
 #include "settings.h"
 #include "lookup_player_action.h"
@@ -39,7 +40,8 @@ int	event_none(t_all *const a)
 			a->g.p.animate_idx = ++a->g.p.animate_idx % ANIMATE_CNT;
 			clock = 0U;
 		}
-		render(a);
+		if (render(a))
+			mlx_loop_end(a->x.mlx);
 	}
 	return (a->ret = SUCCESS);
 }

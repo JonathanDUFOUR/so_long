@@ -6,15 +6,35 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 13:07:27 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/01 05:44:51 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/01 11:27:21 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include "ft_io.h"
 #include "mlx.h"
 #include "settings.h"
 #include "t_all.h"
 #include "e_axis.h"
 #include "e_ret.h"
+
+inline static int	__score(t_all *const a)
+{
+	static double	old;
+	char const		*str = ft_dtoa(old, 2);
+
+	if (!str)
+		return (a->ret = MALLOC_ERR);
+	mlx_string_put(a->x.mlx, a->x.win, 84, 21, 0x00000000, (char *)str);
+	free((void *)str);
+	str = ft_dtoa(a->g.p.distance, 2);
+	if (!str)
+		return (a->ret = MALLOC_ERR);
+	mlx_string_put(a->x.mlx, a->x.win, 84, 21, 0x00ffffff, (char *)str);
+	free((void *)str);
+	old = a->g.p.distance;
+	return (a->ret = SUCCESS);
+}
 
 inline static void	__copy_pixel_from_maxi(
 	t_game *const g,
@@ -69,20 +89,24 @@ inline static void	__fill_mini(t_game *const g)
 
 	@param	a The all structure containing the game and display data.
 
-	@return	The updated program status, always SUCCESS.
+	@return	The updated program status.
 */
 int	render(t_all *const a)
 {
+	if (__score(a))
+		return (a->ret);
 	__fill_mini(&a->g);
 	mlx_put_image_to_window(
 		a->x.mlx,
 		a->x.win,
-		a->g.m.mini.ptr, 0, 0);
+		a->g.m.mini.ptr,
+		0,
+		SIDEBAR_H);
 	mlx_put_image_to_window(
 		a->x.mlx,
 		a->x.win,
 		a->g.p.img->ptr,
 		WIN_W / 2 - IMG_W / 2,
-		WIN_H / 2 - IMG_H / 2);
+		WIN_H / 2 - IMG_H / 2 + SIDEBAR_H / 2);
 	return (a->ret = SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 03:54:37 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/01 05:32:05 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/01 08:15:15 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # define WIN_TITLE			"so_long"
 # define WIN_W				800
 # define WIN_H				600
+
+# define SIDEBAR_H			42
 
 # define IMG_W				32
 # define IMG_H				32

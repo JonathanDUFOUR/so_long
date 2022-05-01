@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 23:57:44 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/01 04:39:19 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/01 06:57:12 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 int	map_mini_init(t_map *const m, t_xptr const *const x, int *const ret)
 {
 	m->mini.width = WIN_W;
-	m->mini.height = WIN_H;
+	m->mini.height = WIN_H - SIDEBAR_H;
 	m->mini.ptr = mlx_new_image(
 			x->mlx,
 			m->mini.width,
