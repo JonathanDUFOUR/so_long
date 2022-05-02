@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2022/05/01 05:06:30 by jodufour         ###   ########.fr        #
+#    Updated: 2022/05/03 00:37:16 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,6 +101,7 @@ SRC					=	\
 						}										\
 						${addprefix player/,					\
 							player_clear.c						\
+							player_interact_tile.c				\
 							player_move_east_north.c			\
 							player_move_east.c					\
 							player_move_north_west.c			\
@@ -117,6 +118,7 @@ SRC					=	\
 						}										\
 						arg_check.c								\
 						err_msg.c								\
+						game_over.c								\
 						main.c									\
 						render.c
 

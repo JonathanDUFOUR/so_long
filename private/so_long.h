@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 03:50:45 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/13 13:01:51 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/02 12:23:43 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,8 @@ int		render(t_all *const a)
 		__attribute__((nonnull));
 
 void	err_msg(int const err);
+void	game_over(char const *const msg, double const distance,
+			t_xptr const *const x)
+		__attribute__((nonnull));
 
 #endif

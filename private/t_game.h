@@ -6,14 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 05:49:15 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/01 00:42:57 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/02 23:43:34 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_GAME_H
 # define T_GAME_H
 
-# include "t_map.h"
 # include "t_player.h"
 # include "t_xptr.h"
 

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:55:12 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/29 03:27:31 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/03 00:30:52 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,21 @@
 #include "e_cardinal.h"
 #include "e_map_char.h"
 
-/* DBG */
-#include <stdio.h>
-
 static double const	g_offset = 0.70710678118 * PLAYER_SPEED;
+
+inline static void	__init(
+	t_player *const p,
+	t_config const *const c,
+	t_uint hit[3][2])
+{
+	p->img = &c->player[SOUTH_EAST][p->animate_idx];
+	hit[0][X] = (p->axis[X] - HITBOX_W + g_offset) / IMG_W;
+	hit[0][Y] = (p->axis[Y] + HITBOX_H + g_offset) / IMG_H;
+	hit[1][X] = (p->axis[X] + HITBOX_W + g_offset) / IMG_W;
+	hit[1][Y] = (p->axis[Y] + HITBOX_H + g_offset) / IMG_H;
+	hit[2][X] = (p->axis[X] + HITBOX_W + g_offset) / IMG_W;
+	hit[2][Y] = (p->axis[Y] - HITBOX_H + g_offset) / IMG_H;
+}
 
 /**
 	@brief	Move the given player to its south east axis if available.
@@ -35,21 +46,18 @@ void	player_move_south_east(
 	t_map *const m,
 	t_config const *const c)
 {
-	t_uint	axis[2];
+	t_uint	hit[3][2];
 
-	fprintf(stderr, "%s\n", __func__);
-	p->img = &c->player[SOUTH_EAST][p->animate_idx];
-	axis[X] = (p->axis[X] + g_offset) / IMG_W;
-	axis[Y] = (p->axis[Y] + g_offset) / IMG_H;
-	if (m->ptr[axis[X] + (int)p->axis[Y] / IMG_H * m->width] != MAP_CHAR[WALL]
-		&& \
-		m->ptr[(int)p->axis[X] / IMG_W + axis[Y] * m->width] != MAP_CHAR[WALL]
-		&& \
-		m->ptr[axis[X] + axis[Y] * m->width] != MAP_CHAR[WALL])
+	__init(p, c, hit);
+	if (m->ptr[hit[0][X] + hit[0][Y] * m->width] != MAP_CHAR[WALL] && \
+		m->ptr[hit[1][X] + hit[1][Y] * m->width] != MAP_CHAR[WALL] && \
+		m->ptr[hit[2][X] + hit[2][Y] * m->width] != MAP_CHAR[WALL])
 	{
 		p->axis[X] += g_offset;
 		p->axis[Y] += g_offset;
 		p->distance += PLAYER_SPEED;
+		player_interact_tile(p, m, c, hit[0]);
+		player_interact_tile(p, m, c, hit[1]);
+		player_interact_tile(p, m, c, hit[2]);
 	}
-	printf("p->axis: {%f, %f}\n", p->axis[X], p->axis[Y]);
 }

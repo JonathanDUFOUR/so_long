@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 04:02:48 by jodufour          #+#    #+#             */
-/*   Updated: 2021/09/02 04:58:35 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/03 00:06:54 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ enum	e_map_char
 	COLLECT,
 	EXIT,
 	PLAYER,
-	ENEMY_DOWN,
-	ENEMY_LEFT,
-	ENEMY_RIGHT,
-	ENEMY_UP
+	ENEMY_EAST,
+	ENEMY_NORTH,
+	ENEMY_WEST,
+	ENEMY_SOUTH
 };
 
 #endif
