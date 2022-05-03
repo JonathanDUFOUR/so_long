@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 03:54:37 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/03 00:19:59 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/04 00:12:32 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@
 
 # define PLAYER_SPEED		8.0
 
-# define HITBOX_W			15
-# define HITBOX_H			15
+# define HITBOX			15
 
 static char const *const	g_xpm_enemy[][ANIMATE_CNT] = {
 {

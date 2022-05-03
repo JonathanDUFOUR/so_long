@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2022/05/03 00:37:16 by jodufour         ###   ########.fr        #
+#    Updated: 2022/05/04 00:18:23 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,17 @@ SRC					=	\
 							config_load_wall.c					\
 							config_load.c						\
 						}										\
+						${addprefix enemy/,						\
+							${addprefix lst/,					\
+								enemy_lst_add_back.c			\
+								enemy_lst_clear.c				\
+								enemy_lst_print.c				\
+								enemy_lst_push_back.c			\
+							}									\
+							enemy_del_one.c						\
+							enemy_new.c							\
+							enemy_print.c						\
+						}										\
 						${addprefix event/,						\
 							event_move_east_turn_off.c			\
 							event_move_east_turn_on.c			\
@@ -83,6 +94,15 @@ SRC					=	\
 						${addprefix game/,						\
 							game_clear.c						\
 							game_init.c							\
+							game_player_interact_tile.c			\
+							game_player_move_east_north.c		\
+							game_player_move_east.c				\
+							game_player_move_north_west.c		\
+							game_player_move_north.c			\
+							game_player_move_south_east.c		\
+							game_player_move_south.c			\
+							game_player_move_west_south.c		\
+							game_player_move_west.c				\
 						}										\
 						${addprefix hook/,						\
 							hook_init.c							\
@@ -101,15 +121,6 @@ SRC					=	\
 						}										\
 						${addprefix player/,					\
 							player_clear.c						\
-							player_interact_tile.c				\
-							player_move_east_north.c			\
-							player_move_east.c					\
-							player_move_north_west.c			\
-							player_move_north.c					\
-							player_move_south_east.c			\
-							player_move_south.c					\
-							player_move_west_south.c			\
-							player_move_west.c					\
 							player_print.c						\
 						}										\
 						${addprefix xptr/,						\

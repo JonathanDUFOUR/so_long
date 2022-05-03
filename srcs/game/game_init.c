@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 06:01:05 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/01 05:32:59 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/03 18:27:34 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@
 #include "ft_io.h"
 #include "ft_string.h"
 #include "mlx.h"
+#include "lookup_enemy_spawn.h"
 #include "t_game.h"
 #include "e_axis.h"
-#include "e_map_char.h"
 #include "e_ret.h"
 
-inline static int	__save_player(
-	t_game *const g,
-	t_uint const idx)
+inline static int	__save_player(t_game *const g, t_uint const idx)
 {
 	if (g->p.axis[X] && g->p.axis[Y])
 		return (EXIT_FAILURE);
@@ -31,6 +29,25 @@ inline static int	__save_player(
 	g->p.axis[Y] = idx / g->m.width * IMG_H + IMG_H / 2;
 	g->m.ptr[idx] = MAP_CHAR[FLOOR];
 	return (EXIT_SUCCESS);
+}
+
+inline static int	__save_enemy(
+	t_game *const g,
+	t_uint const idx,
+	int *const ret)
+{
+	double const	axis[2] = {
+		idx % g->m.width * IMG_W + IMG_W / 2,
+		idx / g->m.width * IMG_H + IMG_H / 2};
+	t_uint			i;
+
+	i = 0U;
+	while (g_enemy_spawn[i].c && g->m.ptr[idx] != g_enemy_spawn[i].c)
+		++i;
+	if (enemy_lst_add_back(&g->el, axis, g_enemy_spawn[i].mask))
+		return (*ret = MALLOC_ERR);
+	g->m.ptr[idx] = MAP_CHAR[FLOOR];
+	return (*ret = SUCCESS);
 }
 
 inline static int	__check(t_game *const g, int *const ret)
@@ -48,8 +65,13 @@ inline static int	__check(t_game *const g, int *const ret)
 				&& g->m.ptr[idx] != MAP_CHAR[WALL])
 			|| (g->m.ptr[idx] == MAP_CHAR[PLAYER] && __save_player(g, idx)))
 			return (*ret = MAP_ERR);
-		if (g->m.ptr[idx] == MAP_CHAR[COLLECT])
-			++g->m.collect_cnt;
+		g->m.ptr[idx] == MAP_CHAR[COLLECT] && ++g->m.collect_cnt;
+		if (g->m.ptr[idx] == MAP_CHAR[ENEMY_EAST] || \
+			g->m.ptr[idx] == MAP_CHAR[ENEMY_NORTH] || \
+			g->m.ptr[idx] == MAP_CHAR[ENEMY_WEST] || \
+			g->m.ptr[idx] == MAP_CHAR[ENEMY_SOUTH])
+			if (__save_enemy(g, idx, ret))
+				return (*ret);
 		++idx;
 	}
 	if (!g->m.collect_cnt || !g->p.axis[X] || !g->p.axis[Y])
@@ -79,5 +101,6 @@ int	game_init(
 		|| map_maxi_init(&g->m, x, c, ret)
 		|| map_mini_init(&g->m, x, ret))
 		return (*ret);
+	enemy_lst_print(&g->el);
 	return (*ret = SUCCESS);
 }

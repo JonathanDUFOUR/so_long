@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_player.h                                         :+:      :+:    :+:   */
+/*   t_enemy.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/12 05:01:23 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/03 23:36:55 by jodufour         ###   ########.fr       */
+/*   Created: 2022/05/03 14:46:02 by jodufour          #+#    #+#             */
+/*   Updated: 2022/05/03 17:13:48 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef T_PLAYER_H
-# define T_PLAYER_H
+#ifndef T_ENEMY_H
+# define T_ENEMY_H
 
-# include <stdbool.h>
-# include <stdint.h>
 # include "t_img.h"
 
-typedef struct s_player	t_player;
+typedef struct s_enemy	t_enemy;
 
-struct s_player
+struct s_enemy
 {
 	double		axis[2];
-	double		distance;
-	bool		is_dead;
-	bool		is_exited;
 	t_uint		animate_idx;
 	uint8_t		action_field;
 	t_img const	*img;
+	t_enemy		*next;
 };
 
-void	player_clear(t_player *const p)
+void	enemy_del_one(t_enemy *const e)
 		__attribute__((nonnull));
-void	player_print(t_player const *const p)
+void	enemy_print(t_enemy const *const e)
 		__attribute__((nonnull));
+
+t_enemy	*enemy_new(double const axis[2], uint8_t const action_field);
 
 #endif

@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_clear.c                                       :+:      :+:    :+:   */
+/*   enemy_lst_print.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/12 05:50:49 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/03 15:55:16 by jodufour         ###   ########.fr       */
+/*   Created: 2022/05/03 18:07:22 by jodufour          #+#    #+#             */
+/*   Updated: 2022/05/04 00:23:40 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "t_game.h"
+#include "t_enemy_lst.h"
 
 /**
-	@brief	Free the allocated memory in the given game structure.
+	@brief	Print every data stored in the given enemy list.
 
-	@param	g The game structure containing the memory to free.
-	@param	x The xptr structure containing the display and window pointers.
+	@param	el The enemy list to print.
 */
-void	game_clear(t_game *const g, t_xptr const *const x)
+void	enemy_lst_print(t_enemy_lst const *const el)
 {
-	enemy_lst_clear(&g->el);
-	map_clear(&g->m, x);
-	player_clear(&g->p);
+	t_enemy const	*e = el->head;
+
+	while (e)
+	{
+		enemy_print(e);
+		e = e->next;
+	}
 }

@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_clear.c                                       :+:      :+:    :+:   */
+/*   enemy_del_one.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/12 05:50:49 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/03 15:55:16 by jodufour         ###   ########.fr       */
+/*   Created: 2022/05/03 15:43:36 by jodufour          #+#    #+#             */
+/*   Updated: 2022/05/03 15:49:43 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "t_game.h"
+#include "ft_string.h"
+#include "t_enemy.h"
 
 /**
-	@brief	Free the allocated memory in the given game structure.
+	@brief	Release all resources contained in the given enemy structure.
 
-	@param	g The game structure containing the memory to free.
-	@param	x The xptr structure containing the display and window pointers.
+	@param e The enemy structure to delete.
 */
-void	game_clear(t_game *const g, t_xptr const *const x)
+void	enemy_del_one(t_enemy *const e)
 {
-	enemy_lst_clear(&g->el);
-	map_clear(&g->m, x);
-	player_clear(&g->p);
+	ft_bzero(e, sizeof(t_enemy));
 }

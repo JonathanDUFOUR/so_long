@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_clear.c                                       :+:      :+:    :+:   */
+/*   enemy_lst_push_back.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/12 05:50:49 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/03 15:55:16 by jodufour         ###   ########.fr       */
+/*   Created: 2022/05/03 16:00:58 by jodufour          #+#    #+#             */
+/*   Updated: 2022/05/03 16:13:24 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "t_game.h"
+#include "t_enemy_lst.h"
 
 /**
-	@brief	Free the allocated memory in the given game structure.
+	@brief	Set the given enemy node as the last node of the given enemy list. 
 
-	@param	g The game structure containing the memory to free.
-	@param	x The xptr structure containing the display and window pointers.
+	@param	el The enemy list to push the node to.
+	@param	e The enemy node to push.
 */
-void	game_clear(t_game *const g, t_xptr const *const x)
+void	enemy_lst_push_back(t_enemy_lst *const el, t_enemy *const e)
 {
-	enemy_lst_clear(&g->el);
-	map_clear(&g->m, x);
-	player_clear(&g->p);
+	if (!el->size)
+		el->head = e;
+	else
+		el->tail->next = e;
+	el->tail = e;
+	++el->size;
 }

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 03:56:40 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/12 03:15:43 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/03 17:33:14 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_err const		g_err[] = {
 {MLX_ERR, "mlx function failed", 19},
 {IMG_DIM_ERR, "invalid image dimensions", 24},
 {NO_HOOK_ERR, "no hook set for the pressed key", 31},
-{0, NULL, 0}
+{0}
 };
 
 #endif
