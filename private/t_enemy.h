@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:46:02 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/03 17:13:48 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/05 23:24:21 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ struct s_enemy
 {
 	double		axis[2];
 	t_uint		animate_idx;
+	t_uint		animate_clock;
 	uint8_t		action_field;
 	t_img const	*img;
 	t_enemy		*next;
