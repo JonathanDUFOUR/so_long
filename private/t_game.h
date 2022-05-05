@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 05:49:15 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/04 00:16:33 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/05 00:50:04 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,30 @@ int		game_init(t_game *const g, t_xptr const *const x,
 		__attribute__((nonnull));
 
 void	game_clear(t_game *const g, t_xptr const *const x)
+		__attribute__((nonnull));
+void	game_enemy_move_east(t_game *const g, t_config const *const c,
+			t_enemy *const e)
+		__attribute__((nonnull));
+void	game_enemy_move_north(t_game *const g, t_config const *const c,
+			t_enemy *const e)
+		__attribute__((nonnull));
+void	game_enemy_move_west(t_game *const g, t_config const *const c,
+			t_enemy *const e)
+		__attribute__((nonnull));
+void	game_enemy_move_south(t_game *const g, t_config const *const c,
+			t_enemy *const e)
+		__attribute__((nonnull));
+void	game_enemy_move_east_north(t_game *const g, t_config const *const c,
+			t_enemy *const e)
+		__attribute__((nonnull));
+void	game_enemy_move_north_west(t_game *const g, t_config const *const c,
+			t_enemy *const e)
+		__attribute__((nonnull));
+void	game_enemy_move_west_south(t_game *const g, t_config const *const c,
+			t_enemy *const e)
+		__attribute__((nonnull));
+void	game_enemy_move_south_east(t_game *const g, t_config const *const c,
+			t_enemy *const e)
 		__attribute__((nonnull));
 void	game_player_interact_tile(t_game *const g, t_config const *const c,
 			t_uint const axis[2])

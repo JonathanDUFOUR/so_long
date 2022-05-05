@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:18:29 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/24 17:18:22 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/05 01:15:47 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ int	config_load_enemy(t_config *const c, t_xptr const *const x, int *const ret)
 		{
 			if (__load_one(c, x, cardinal, animate_idx))
 				return (*ret = MLX_ERR);
+			if (c->enemy[cardinal][animate_idx].width != IMG_W || \
+				c->enemy[cardinal][animate_idx].height != IMG_H)
+				return (*ret = IMG_DIM_ERR);
 			++animate_idx;
 		}
 		++cardinal;

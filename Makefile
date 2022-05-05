@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2022/05/04 00:18:23 by jodufour         ###   ########.fr        #
+#    Updated: 2022/05/05 01:10:52 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ SRC					=	\
 							config_load_exit.c					\
 							config_load_floor.c					\
 							config_load_player.c				\
+							config_load_sidebar.c				\
 							config_load_wall.c					\
 							config_load.c						\
 						}										\
@@ -93,6 +94,10 @@ SRC					=	\
 						}										\
 						${addprefix game/,						\
 							game_clear.c						\
+							game_enemy_move_east.c				\
+							game_enemy_move_north.c				\
+							game_enemy_move_south.c				\
+							game_enemy_move_west.c				\
 							game_init.c							\
 							game_player_interact_tile.c			\
 							game_player_move_east_north.c		\
@@ -131,6 +136,10 @@ SRC					=	\
 						err_msg.c								\
 						game_over.c								\
 						main.c									\
+						render_background.c						\
+						render_enemy.c							\
+						render_player.c							\
+						render_score.c							\
 						render.c
 
 ######################################

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:42:31 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/01 01:54:55 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/05 00:59:22 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	config_clear(t_config *const c, t_xptr const *const x)
 	if (c->floor.ptr)
 		mlx_destroy_image(x->mlx, c->floor.ptr);
 	__clear_player(c, x);
+	if (c->sidebar.ptr)
+		mlx_destroy_image(x->mlx, c->sidebar.ptr);
 	if (c->wall.ptr)
 		mlx_destroy_image(x->mlx, c->wall.ptr);
 }

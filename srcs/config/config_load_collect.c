@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 01:40:36 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/01 01:42:12 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/05 01:13:57 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	config_load_collect(
 			(int *)&c->collect.height);
 	if (!c->collect.ptr)
 		return (*ret = MLX_ERR);
+	if (c->collect.width != IMG_W || c->collect.height != IMG_H)
+		return (*ret = IMG_DIM_ERR);
 	c->collect.addr = (uint32_t *)mlx_get_data_addr(
 			c->collect.ptr,
 			(int *)&c->collect.bpp,

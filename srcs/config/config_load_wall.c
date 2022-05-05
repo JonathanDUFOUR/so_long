@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:20:29 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/12 11:47:22 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/05 01:17:23 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	config_load_wall(t_config *const c, t_xptr const *const x, int *const ret)
 			(int *)&c->wall.height);
 	if (!c->wall.ptr)
 		return (*ret = MLX_ERR);
+	if (c->wall.width != IMG_W || c->wall.height != IMG_H)
+		return (*ret = IMG_DIM_ERR);
 	c->wall.addr = (uint32_t *)mlx_get_data_addr(
 			c->wall.ptr,
 			(int *)&c->wall.bpp,

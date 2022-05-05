@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:20:01 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/24 16:54:56 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/05 01:17:02 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ int	config_load_player(t_config *const c, t_xptr const *const x, int *const ret)
 		{
 			if (__load_one(c, x, cardinal, animate_idx))
 				return (*ret = MLX_ERR);
+			if (c->player[cardinal][animate_idx].width != IMG_W || \
+				c->player[cardinal][animate_idx].height != IMG_H)
+				return (*ret = IMG_DIM_ERR);
 			++animate_idx;
 		}
 		++cardinal;

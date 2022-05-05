@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 03:54:37 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/04 00:12:32 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/05 01:56:57 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,23 @@
 **	MAP_CHAR[8]: enemy going south
 */
 
-# define SLEEP_TIME			0U
+# define SLEEP_TIME			5U
 
 # define WIN_TITLE			"so_long"
 # define WIN_W				800
 # define WIN_H				600
 
-# define SIDEBAR_H			42
+# define SIDEBAR_H			21
 
 # define IMG_W				32
 # define IMG_H				32
 
 # define ANIMATE_CNT		18U
 
-# define PLAYER_SPEED		8.0
+# define PLAYER_SPEED		1.0
+# define ENEMY_SPEED		0.5
 
-# define HITBOX			15
+# define HITBOX				15
 
 static char const *const	g_xpm_enemy[][ANIMATE_CNT] = {
 {
@@ -294,6 +295,7 @@ static char const *const	g_xpm_player[][ANIMATE_CNT] = {
 # define XPM_COLLECT		"resources/xpm/arch.xpm"
 # define XPM_EXIT			"resources/xpm/stairs.xpm"
 # define XPM_FLOOR			"resources/xpm/floor.xpm"
+# define XPM_SIDEBAR		"resources/xpm/sidebar_800_black.xpm"
 # define XPM_WALL			"resources/xpm/wall.xpm"
 
 # define VICTORY_MSG		">>> SUCCESS <<<"

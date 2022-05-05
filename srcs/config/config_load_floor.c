@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:19:36 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/12 11:46:59 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/05 01:16:41 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	config_load_floor(t_config *const c, t_xptr const *const x, int *const ret)
 			(int *)&c->floor.height);
 	if (!c->floor.ptr)
 		return (*ret = MLX_ERR);
+	if (c->floor.width != IMG_W || c->floor.height != IMG_H)
+		return (*ret = IMG_DIM_ERR);
 	c->floor.addr = (uint32_t *)mlx_get_data_addr(
 			c->floor.ptr,
 			(int *)&c->floor.bpp,
