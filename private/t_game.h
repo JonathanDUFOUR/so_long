@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 05:49:15 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/05 00:50:04 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/06 23:58:10 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,13 @@ struct s_game
 	t_enemy_lst	el;
 	t_map		m;
 	t_player	p;
+	t_img		pplane;
 };
 
 int		game_init(t_game *const g, t_xptr const *const x,
 			t_config const *const c, int *const ret)
+		__attribute__((nonnull));
+int		game_pplane_init(t_game *const g, t_xptr const *const x, int *const ret)
 		__attribute__((nonnull));
 
 void	game_clear(t_game *const g, t_xptr const *const x)
@@ -74,6 +77,12 @@ void	game_player_move_north_west(t_game *const g, t_config const *const c)
 void	game_player_move_west_south(t_game *const g, t_config const *const c)
 		__attribute__((nonnull));
 void	game_player_move_south_east(t_game *const g, t_config const *const c)
+		__attribute__((nonnull));
+void	game_pplane_fill_background(t_game *const g)
+		__attribute__((nonnull));
+void	game_pplane_fill_enemy(t_game *const g)
+		__attribute__((nonnull));
+void	game_pplane_fill_player(t_game *const g)
 		__attribute__((nonnull));
 
 #endif

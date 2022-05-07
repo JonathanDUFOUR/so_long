@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 08:53:51 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/05 01:19:47 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/06 21:30:43 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ struct s_config
 	t_img		exit;
 	t_img		floor;
 	t_img		player[8][ANIMATE_CNT];
-	t_img		sidebar;
 	t_img		wall;
 };
 
@@ -47,9 +46,6 @@ int		config_load_floor(t_config *const c, t_xptr const *const x,
 			int *const ret)
 		__attribute__((nonnull));
 int		config_load_player(t_config *const c, t_xptr const *const x,
-			int *const ret)
-		__attribute__((nonnull));
-int		config_load_sidebar(t_config *const c, t_xptr const *const x,
 			int *const ret)
 		__attribute__((nonnull));
 int		config_load_wall(t_config *const c, t_xptr const *const x,

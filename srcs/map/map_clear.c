@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 05:56:52 by jodufour          #+#    #+#             */
-/*   Updated: 2022/04/12 08:41:58 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/06 21:26:55 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,5 @@ void	map_clear(t_map *const m, t_xptr const *const x)
 	free(m->ptr);
 	if (m->maxi.ptr)
 		mlx_destroy_image(x->mlx, m->maxi.ptr);
-	if (m->mini.ptr)
-		mlx_destroy_image(x->mlx, m->mini.ptr);
 	ft_bzero(m, sizeof(t_map));
 }

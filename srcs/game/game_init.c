@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 06:01:05 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/05 00:51:19 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/06 21:23:19 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	game_init(
 	if (map_load(&g->m, c->filename, ret)
 		|| __check(g, c, ret)
 		|| map_maxi_init(&g->m, x, c, ret)
-		|| map_mini_init(&g->m, x, ret))
+		|| game_pplane_init(g, x, ret))
 		return (*ret);
 	return (*ret = SUCCESS);
 }

@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2022/05/05 01:10:52 by jodufour         ###   ########.fr        #
+#    Updated: 2022/05/07 03:43:01 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,6 @@ SRC					=	\
 							config_load_exit.c					\
 							config_load_floor.c					\
 							config_load_player.c				\
-							config_load_sidebar.c				\
 							config_load_wall.c					\
 							config_load.c						\
 						}										\
@@ -108,6 +107,10 @@ SRC					=	\
 							game_player_move_south.c			\
 							game_player_move_west_south.c		\
 							game_player_move_west.c				\
+							game_pplane_fill_background.c		\
+							game_pplane_fill_enemy.c			\
+							game_pplane_fill_player.c			\
+							game_pplane_init.c					\
 						}										\
 						${addprefix hook/,						\
 							hook_init.c							\
@@ -122,7 +125,6 @@ SRC					=	\
 							map_clear.c							\
 							map_load.c							\
 							map_maxi_init.c						\
-							map_mini_init.c						\
 						}										\
 						${addprefix player/,					\
 							player_clear.c						\
@@ -136,10 +138,6 @@ SRC					=	\
 						err_msg.c								\
 						game_over.c								\
 						main.c									\
-						render_background.c						\
-						render_enemy.c							\
-						render_player.c							\
-						render_score.c							\
 						render.c
 
 ######################################
@@ -167,6 +165,7 @@ LDFLAGS				+=	-lm
 
 ifeq (${DEBUG}, 1)
 	CFLAGS	+=	-g
+	CFLAGS	+=	-DDEBUG
 endif
 
 #######################################
@@ -196,10 +195,10 @@ ${MLX_A}:
 -include norm.mk
 
 clean:
-	${RM} ${OBJ_DIR} ${NAME} vgcore.*
+	${RM} ${OBJ_DIR} ${NAME} vg*core.* *.log
 
 fclean:
-	${RM} ${OBJ_DIR} ${NAME} vgcore.*
+	${RM} ${OBJ_DIR} ${NAME} vg*core.*
 	${MAKE} $@ -C ${FT_IO_DIR}
 	${MAKE} $@ -C ${FT_STRING_DIR}
 	${MAKE} clean -C ${MLX_DIR}

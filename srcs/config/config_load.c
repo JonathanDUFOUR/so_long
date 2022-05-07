@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:13:19 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/05 01:03:14 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/06 21:31:10 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	config_load(
 		|| config_load_exit(c, x, ret)
 		|| config_load_floor(c, x, ret)
 		|| config_load_player(c, x, ret)
-		|| config_load_sidebar(c, x, ret)
 		|| config_load_wall(c, x, ret))
 		return (*ret);
 	return (*ret = SUCCESS);

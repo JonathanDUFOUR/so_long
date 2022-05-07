@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 03:54:37 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/05 23:34:58 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/07 03:21:01 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,20 @@
 **	MAP_CHAR[8]: enemy going south
 */
 
-# define SLEEP_TIME			8U
+# ifdef DEBUG
+#  define SLEEP_TIME		1U
+# else
+#  define SLEEP_TIME		10U
+# endif
 
 # define WIN_TITLE			"so_long"
-# define WIN_W				800
-# define WIN_H				600
+# ifdef DEBUG
+#  define WIN_W				400
+#  define WIN_H				300
+# else
+#  define WIN_W				800
+#  define WIN_H				600
+# endif
 
 # define SIDEBAR_H			21
 
@@ -41,8 +50,13 @@
 
 # define ANIMATE_CNT		18U
 
-# define PLAYER_SPEED		1.0
-# define ENEMY_SPEED		0.5
+# ifdef DEBUG
+#  define PLAYER_SPEED		3.0
+#  define ENEMY_SPEED		1.5
+# else
+#  define PLAYER_SPEED		0.5
+#  define ENEMY_SPEED		0.25
+# endif
 
 # define HITBOX				15
 

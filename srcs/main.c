@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:14:09 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/05 00:57:01 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/06 23:56:29 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 inline static int	__run(t_all *const a)
 {
+	mlx_string_put(a->x.mlx, a->x.win, 15, 15, 0x00ffffff, "Distance: ");
 	mlx_do_key_autorepeatoff(a->x.mlx);
 	mlx_loop(a->x.mlx);
 	mlx_do_key_autorepeaton(a->x.mlx);

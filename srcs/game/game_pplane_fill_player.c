@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_player.c                                    :+:      :+:    :+:   */
+/*   game_pplane_fill_player.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 22:43:38 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/05 00:05:16 by jodufour         ###   ########.fr       */
+/*   Created: 2022/05/06 21:58:38 by jodufour          #+#    #+#             */
+/*   Updated: 2022/05/07 00:38:45 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "t_all.h"
+#include "t_game.h"
 
 /**
-	@brief	Display the player image in the middle of the window.
+	@brief	Fill the projection plane image with the current player sprite.
 
-	@param	a The all structure containing the game and display data.
+	@param	g The game structure containing the projection plane to fill
+			and the player data.
 */
-void	render_player(t_all const *const a)
+void	game_pplane_fill_player(t_game *const g)
 {
-	mlx_put_image_to_window(
-		a->x.mlx,
-		a->x.win,
-		a->g.p.img->ptr,
-		WIN_W / 2 - IMG_W / 2, WIN_H / 2 - IMG_H / 2 + SIDEBAR_H / 2);
+	img_fill_img(
+		&g->pplane,
+		g->p.img,
+		g->pplane.width / 2 - IMG_W / 2
+		+ (g->pplane.height / 2 - IMG_H / 2) * g->pplane.width);
 }

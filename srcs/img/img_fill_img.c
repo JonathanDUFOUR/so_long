@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 04:52:15 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/04 00:30:24 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/07 01:27:59 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ void	img_fill_img(
 	t_img const *const src,
 	t_uint const offset)
 {
-	t_uint	y;
+	t_uint	i;
 
-	y = 0U;
-	while (y < src->height)
+	i = 0U;
+	while (i < src->height)
 	{
 		ft_memcpy(
-			dst->addr + offset + y * dst->width,
-			src->addr + y * src->width,
+			dst->addr + offset + i * dst->width,
+			src->addr + i * src->width,
 			src->line_len);
-		++y;
+		++i;
 	}
 }
