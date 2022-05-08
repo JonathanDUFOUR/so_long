@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:46:02 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/05 23:24:21 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/08 06:11:53 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ struct s_enemy
 };
 
 void	enemy_del_one(t_enemy *const e)
-		__attribute__((nonnull));
-void	enemy_print(t_enemy const *const e)
 		__attribute__((nonnull));
 
 t_enemy	*enemy_new(double const axis[2], uint8_t const action_field);

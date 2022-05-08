@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 05:01:23 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/05 23:24:09 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/08 06:13:04 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ struct s_player
 };
 
 void	player_clear(t_player *const p)
-		__attribute__((nonnull));
-void	player_print(t_player const *const p)
 		__attribute__((nonnull));
 
 #endif

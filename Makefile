@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2022/05/07 03:43:01 by jodufour         ###   ########.fr        #
+#    Updated: 2022/05/08 06:13:53 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,12 +72,10 @@ SRC					=	\
 							${addprefix lst/,					\
 								enemy_lst_add_back.c			\
 								enemy_lst_clear.c				\
-								enemy_lst_print.c				\
 								enemy_lst_push_back.c			\
 							}									\
 							enemy_del_one.c						\
 							enemy_new.c							\
-							enemy_print.c						\
 						}										\
 						${addprefix event/,						\
 							event_move_east_turn_off.c			\
@@ -119,7 +117,6 @@ SRC					=	\
 						}										\
 						${addprefix img/,						\
 							img_fill_img.c						\
-							img_print.c							\
 						}										\
 						${addprefix map/,						\
 							map_clear.c							\
@@ -128,7 +125,6 @@ SRC					=	\
 						}										\
 						${addprefix player/,					\
 							player_clear.c						\
-							player_print.c						\
 						}										\
 						${addprefix xptr/,						\
 							xptr_clear.c						\
