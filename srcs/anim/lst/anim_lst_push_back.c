@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_lst_clear.c                                  :+:      :+:    :+:   */
+/*   anim_lst_push_back.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 15:34:04 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/11 21:31:20 by jodufour         ###   ########.fr       */
+/*   Created: 2022/05/11 21:02:58 by jodufour          #+#    #+#             */
+/*   Updated: 2022/05/11 21:13:26 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "t_enemy_lst.h"
+#include "t_anim_lst.h"
 
 /**
-	@brief	Release all resources contained in the given enemy list.
+	@brief	Set the given anim node as the last node of the given anim list.
 
-	@param	el The enemy list to clear.
+	@param	al The anim list to push the node to.
+	@param	a The anim node to push.
 */
-void	enemy_lst_clear(t_enemy_lst *const el)
+void	anim_lst_push_back(t_anim_lst *const al, t_anim *const a)
 {
-	t_enemy	*next;
-
-	while (el->size)
+	if (!al->size)
+		al->head = a;
+	else
 	{
-		next = el->head->next;
-		enemy_del_one(el->head);
-		free(el->head);
-		el->head = next;
-		--el->size;
+		al->tail->next = a;
+		a->next = al->head;
 	}
-	el->tail = NULL;
+	al->tail = a;
+	++al->size;
 }

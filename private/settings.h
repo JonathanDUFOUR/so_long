@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/28 03:54:37 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/07 23:36:38 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/11 22:27:08 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@
 # define IMG_W				32
 # define IMG_H				32
 
-# define ANIMATE_CNT		18U
-
 # ifdef DEBUG
 #  define PLAYER_SPEED		3.0
 #  define ENEMY_SPEED		1.5
@@ -60,7 +58,7 @@
 
 # define HITBOX				15
 
-static char const *const	g_xpm_enemy[][ANIMATE_CNT] = {
+static char const *const	g_xpm_enemy[][] = {
 {
 	"resources/xpm/blinky_east_00.xpm",
 	"resources/xpm/blinky_east_00.xpm",
@@ -79,7 +77,8 @@ static char const *const	g_xpm_enemy[][ANIMATE_CNT] = {
 	"resources/xpm/blinky_east_00.xpm",
 	"resources/xpm/blinky_east_01.xpm",
 	"resources/xpm/blinky_east_01.xpm",
-	"resources/xpm/blinky_east_01.xpm"
+	"resources/xpm/blinky_east_01.xpm",
+	0
 },
 {
 	"resources/xpm/clyde_north_00.xpm",
@@ -99,7 +98,8 @@ static char const *const	g_xpm_enemy[][ANIMATE_CNT] = {
 	"resources/xpm/clyde_north_00.xpm",
 	"resources/xpm/clyde_north_01.xpm",
 	"resources/xpm/clyde_north_01.xpm",
-	"resources/xpm/clyde_north_01.xpm"
+	"resources/xpm/clyde_north_01.xpm",
+	0
 },
 {
 	"resources/xpm/inky_west_00.xpm",
@@ -119,7 +119,8 @@ static char const *const	g_xpm_enemy[][ANIMATE_CNT] = {
 	"resources/xpm/inky_west_00.xpm",
 	"resources/xpm/inky_west_01.xpm",
 	"resources/xpm/inky_west_01.xpm",
-	"resources/xpm/inky_west_01.xpm"
+	"resources/xpm/inky_west_01.xpm",
+	0
 },
 {
 	"resources/xpm/pinky_south_00.xpm",
@@ -139,11 +140,12 @@ static char const *const	g_xpm_enemy[][ANIMATE_CNT] = {
 	"resources/xpm/pinky_south_00.xpm",
 	"resources/xpm/pinky_south_01.xpm",
 	"resources/xpm/pinky_south_01.xpm",
-	"resources/xpm/pinky_south_01.xpm"
+	"resources/xpm/pinky_south_01.xpm",
+	0
 }
 };
 
-static char const *const	g_xpm_player[][ANIMATE_CNT] = {
+static char const *const	g_xpm_player[][] = {
 {
 	"resources/xpm/tux_east_00.xpm",
 	"resources/xpm/tux_east_01.xpm",
@@ -162,7 +164,8 @@ static char const *const	g_xpm_player[][ANIMATE_CNT] = {
 	"resources/xpm/tux_east_14.xpm",
 	"resources/xpm/tux_east_15.xpm",
 	"resources/xpm/tux_east_16.xpm",
-	"resources/xpm/tux_east_17.xpm"
+	"resources/xpm/tux_east_17.xpm",
+	0
 },
 {
 	"resources/xpm/tux_north_00.xpm",
@@ -182,7 +185,8 @@ static char const *const	g_xpm_player[][ANIMATE_CNT] = {
 	"resources/xpm/tux_north_14.xpm",
 	"resources/xpm/tux_north_15.xpm",
 	"resources/xpm/tux_north_16.xpm",
-	"resources/xpm/tux_north_17.xpm"
+	"resources/xpm/tux_north_17.xpm",
+	0
 },
 {
 	"resources/xpm/tux_west_00.xpm",
@@ -202,7 +206,8 @@ static char const *const	g_xpm_player[][ANIMATE_CNT] = {
 	"resources/xpm/tux_west_14.xpm",
 	"resources/xpm/tux_west_15.xpm",
 	"resources/xpm/tux_west_16.xpm",
-	"resources/xpm/tux_west_17.xpm"
+	"resources/xpm/tux_west_17.xpm",
+	0
 },
 {
 	"resources/xpm/tux_south_00.xpm",
@@ -222,7 +227,8 @@ static char const *const	g_xpm_player[][ANIMATE_CNT] = {
 	"resources/xpm/tux_south_14.xpm",
 	"resources/xpm/tux_south_15.xpm",
 	"resources/xpm/tux_south_16.xpm",
-	"resources/xpm/tux_south_17.xpm"
+	"resources/xpm/tux_south_17.xpm",
+	0
 },
 {
 	"resources/xpm/tux_east_00.xpm",
@@ -242,7 +248,8 @@ static char const *const	g_xpm_player[][ANIMATE_CNT] = {
 	"resources/xpm/tux_east_14.xpm",
 	"resources/xpm/tux_east_15.xpm",
 	"resources/xpm/tux_east_16.xpm",
-	"resources/xpm/tux_east_17.xpm"
+	"resources/xpm/tux_east_17.xpm",
+	0
 },
 {
 	"resources/xpm/tux_west_00.xpm",
@@ -262,7 +269,8 @@ static char const *const	g_xpm_player[][ANIMATE_CNT] = {
 	"resources/xpm/tux_west_14.xpm",
 	"resources/xpm/tux_west_15.xpm",
 	"resources/xpm/tux_west_16.xpm",
-	"resources/xpm/tux_west_17.xpm"
+	"resources/xpm/tux_west_17.xpm",
+	0
 },
 {
 	"resources/xpm/tux_west_00.xpm",
@@ -282,7 +290,8 @@ static char const *const	g_xpm_player[][ANIMATE_CNT] = {
 	"resources/xpm/tux_west_14.xpm",
 	"resources/xpm/tux_west_15.xpm",
 	"resources/xpm/tux_west_16.xpm",
-	"resources/xpm/tux_west_17.xpm"
+	"resources/xpm/tux_west_17.xpm",
+	0
 },
 {
 	"resources/xpm/tux_east_00.xpm",
@@ -302,7 +311,8 @@ static char const *const	g_xpm_player[][ANIMATE_CNT] = {
 	"resources/xpm/tux_east_14.xpm",
 	"resources/xpm/tux_east_15.xpm",
 	"resources/xpm/tux_east_16.xpm",
-	"resources/xpm/tux_east_17.xpm"
+	"resources/xpm/tux_east_17.xpm",
+	0
 }
 };
 

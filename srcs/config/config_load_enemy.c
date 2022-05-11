@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:18:29 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/05 01:15:47 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:50:28 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,13 @@ inline static int	__load_one(
 int	config_load_enemy(t_config *const c, t_xptr const *const x, int *const ret)
 {
 	t_uint	cardinal;
-	t_uint	animate_idx;
+	t_uint	idx;
 
 	cardinal = EAST;
 	while (cardinal <= SOUTH)
 	{
-		animate_idx = 0U;
-		while (animate_idx < ANIMATE_CNT)
-		{
-			if (__load_one(c, x, cardinal, animate_idx))
-				return (*ret = MLX_ERR);
-			if (c->enemy[cardinal][animate_idx].width != IMG_W || \
-				c->enemy[cardinal][animate_idx].height != IMG_H)
-				return (*ret = IMG_DIM_ERR);
-			++animate_idx;
-		}
+		idx = 0U;
+		while (g_xpm_enemy[cardinal][idx])
 		++cardinal;
 	}
 	return (*ret = SUCCESS);

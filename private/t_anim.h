@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_lst_clear.c                                  :+:      :+:    :+:   */
+/*   t_anim.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 15:34:04 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/11 21:31:20 by jodufour         ###   ########.fr       */
+/*   Created: 2022/05/11 16:03:58 by jodufour          #+#    #+#             */
+/*   Updated: 2022/05/11 16:11:33 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "t_enemy_lst.h"
+#ifndef T_ANIM_H
+# define T_ANIM_H
 
-/**
-	@brief	Release all resources contained in the given enemy list.
+# include "t_img.h"
+# include "t_xptr.h"
 
-	@param	el The enemy list to clear.
-*/
-void	enemy_lst_clear(t_enemy_lst *const el)
+typedef struct s_anim	t_anim;
+
+struct s_anim
 {
-	t_enemy	*next;
+	t_img	img;
+	t_anim	*next;
+};
 
-	while (el->size)
-	{
-		next = el->head->next;
-		enemy_del_one(el->head);
-		free(el->head);
-		el->head = next;
-		--el->size;
-	}
-	el->tail = NULL;
-}
+void	anim_del_one(t_anim *const a, t_xptr const *const x)
+		__attribute__((nonnull));
+
+t_anim	*anim_new(t_img const *const img)
+		__attribute__((nonnull));
+
+#endif

@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_lst_clear.c                                  :+:      :+:    :+:   */
+/*   anim_new.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 15:34:04 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/11 21:31:20 by jodufour         ###   ########.fr       */
+/*   Created: 2022/05/11 16:12:09 by jodufour          #+#    #+#             */
+/*   Updated: 2022/05/11 21:17:54 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "t_enemy_lst.h"
+#include "t_anim.h"
 
 /**
-	@brief	Release all resources contained in the given enemy list.
+	@brief	Allocate and initialize a new anim node.
 
-	@param	el The enemy list to clear.
+	@param	img The anim's image.
 */
-void	enemy_lst_clear(t_enemy_lst *const el)
+t_anim	*anim_new(t_img const *const img)
 {
-	t_enemy	*next;
+	t_anim *const	output = malloc(sizeof(t_anim));
 
-	while (el->size)
-	{
-		next = el->head->next;
-		enemy_del_one(el->head);
-		free(el->head);
-		el->head = next;
-		--el->size;
-	}
-	el->tail = NULL;
+	if (!output)
+		return (NULL);
+	output->img = *img;
+	output->next = NULL;
+	return (output);
 }

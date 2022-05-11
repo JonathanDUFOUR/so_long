@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_lst_clear.c                                  :+:      :+:    :+:   */
+/*   anim_del_one.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 15:34:04 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/11 21:31:20 by jodufour         ###   ########.fr       */
+/*   Created: 2022/05/11 18:46:30 by jodufour          #+#    #+#             */
+/*   Updated: 2022/05/11 18:49:23 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "t_enemy_lst.h"
+#include "ft_string.h"
+#include "mlx.h"
+#include "t_anim.h"
 
 /**
-	@brief	Release all resources contained in the given enemy list.
+	@brief	Release all resources contained in the given anim structure.
 
-	@param	el The enemy list to clear.
+	@param a The anim structure to delete.
+	@param x The xptr structure containing the display and window pointers.
 */
-void	enemy_lst_clear(t_enemy_lst *const el)
+void	anim_del_one(t_anim *const a, t_xptr const *const x)
 {
-	t_enemy	*next;
-
-	while (el->size)
-	{
-		next = el->head->next;
-		enemy_del_one(el->head);
-		free(el->head);
-		el->head = next;
-		--el->size;
-	}
-	el->tail = NULL;
+	if (a->img.ptr)
+		mlx_destroy_image(x->mlx, a->img.ptr);
+	ft_bzero(a, sizeof(t_anim));
 }

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 10:42:31 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/06 21:31:04 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:41:13 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,6 @@
 #include "settings.h"
 #include "t_config.h"
 #include "e_cardinal.h"
-
-inline static void	__clear_enemy(t_config *const c, t_xptr const *const x)
-{
-	t_uint	cardinal;
-	t_uint	animate_idx;
-
-	cardinal = EAST;
-	while (cardinal <= SOUTH)
-	{
-		animate_idx = 0;
-		while (animate_idx < ANIMATE_CNT)
-		{
-			if (c->enemy[cardinal][animate_idx].ptr)
-				mlx_destroy_image(x->mlx, c->enemy[cardinal][animate_idx].ptr);
-			animate_idx++;
-		}
-		cardinal++;
-	}
-}
-
-inline static void	__clear_player(t_config *const c, t_xptr const *const x)
-{
-	t_uint	cardinal;
-	t_uint	animate_idx;
-
-	cardinal = EAST;
-	while (cardinal <= SOUTH_EAST)
-	{
-		animate_idx = 0;
-		while (animate_idx < ANIMATE_CNT)
-		{
-			if (c->player[cardinal][animate_idx].ptr)
-				mlx_destroy_image(x->mlx, c->player[cardinal][animate_idx].ptr);
-			animate_idx++;
-		}
-		cardinal++;
-	}
-}
 
 /**
 	@brief	Free the allocated memory in the given configuration structure.
@@ -61,14 +23,26 @@ inline static void	__clear_player(t_config *const c, t_xptr const *const x)
 */
 void	config_clear(t_config *const c, t_xptr const *const x)
 {
+	t_uint	cardinal;
+
 	if (c->collect.ptr)
 		mlx_destroy_image(x->mlx, c->collect.ptr);
-	__clear_enemy(c, x);
+	cardinal = EAST;
+	while (cardinal <= SOUTH)
+	{
+		anim_lst_clear(&c->enemy[cardinal], x);
+		++cardinal;
+	}
 	if (c->exit.ptr)
 		mlx_destroy_image(x->mlx, c->exit.ptr);
 	if (c->floor.ptr)
 		mlx_destroy_image(x->mlx, c->floor.ptr);
-	__clear_player(c, x);
+	cardinal = EAST;
+	while (cardinal <= SOUTH_EAST)
+	{
+		anim_lst_clear(&c->player[cardinal], x);
+		++cardinal;
+	}
 	if (c->wall.ptr)
 		mlx_destroy_image(x->mlx, c->wall.ptr);
 }
