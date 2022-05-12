@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2022/05/13 01:19:11 by jodufour         ###   ########.fr        #
+#    Updated: 2022/05/13 01:30:17 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ NAME				=	so_long
 ######################################
 #              COMMANDS              #
 ######################################
-CC					=	clang
-LINK				=	clang
+CC					=	cc
+LINK				=	cc
 RM					=	rm -rf
 MKDIR				=	mkdir -p
 
