@@ -6,14 +6,14 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/20 23:33:41 by jodufour          #+#    #+#              #
-#    Updated: 2022/05/02 17:05:50 by jodufour         ###   ########.fr        #
+#    Updated: 2022/05/13 01:38:40 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #######################################
 #               COMANDS               #
 #######################################
-CC			=	clang -c -o
+CC			=	cc
 LINK		=	ar rcs
 MKDIR		=	mkdir -p
 RM			=	rm -rf
@@ -29,7 +29,6 @@ NAME_SO		=	${NAME}.so
 #             DIRECTORIES             #
 #######################################
 SRC_DIR		=	srcs/
-PTF_SRC_DIR	=	ft_printf/
 OBJ_DIR		=	objs/
 INC_DIR		=	include/
 PRV_DIR		=	private/
@@ -149,7 +148,7 @@ SRC			=	\
 					ft_printf.c					\
 					manage_cvrt.c				\
 					manage_text.c				\
-					padding_fd.c					\
+					padding_fd.c				\
 					parse_flags.c				\
 					parse_fwidth.c				\
 					parse_lmod.c				\
@@ -209,7 +208,8 @@ DEP			=	${OBJS:.o=.d}
 #######################################
 #                FLAGS                #
 #######################################
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-c
+CFLAGS		+=	-Wall -Wextra -Werror
 CFLAGS		+=	-MMD -MP
 CFLAGS		+=	-I${INC_DIR} -I${PRV_DIR}
 
@@ -231,13 +231,13 @@ ${NAME_SO}:	LINK = clang -o
 ${NAME_SO}:	${OBJ}
 	${LINK} $@ ${LDFLAGS} $^
 
-all:	${NAME_A} ${NAME_SO} ${TEST}
+all:	${NAME_A} ${NAME_SO}
 
 -include ${DEP}
 
 ${OBJ_DIR}%.o:	${SRC_DIR}%.c
 	@${MKDIR} ${@D}
-	${CC} $@ ${CFLAGS} $<
+	${CC} ${CFLAGS} $< ${OUTPUT_OPTION}
 
 clean:
 	${RM} ${OBJ_DIR}

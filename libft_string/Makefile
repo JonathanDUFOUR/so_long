@@ -6,14 +6,14 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/21 00:24:57 by jodufour          #+#    #+#              #
-#    Updated: 2021/12/20 21:27:13 by jodufour         ###   ########.fr        #
+#    Updated: 2022/05/13 01:39:42 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #######################################
 #               COMANDS               #
 #######################################
-CC		=	clang -c -o
+CC		=	cc
 LINK	=	ar rcs
 MKDIR	=	mkdir -p
 RM		=	rm -rf
@@ -89,7 +89,8 @@ DEP		=	${OBJ:.o=.d}
 #######################################
 #                FLAGS                #
 #######################################
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-c
+CFLAGS	+=	-Wall -Wextra -Werror
 CFLAGS	+=	-MMD -MP
 CFLAGS	+=	-I${INC_DIR}
 
@@ -117,7 +118,7 @@ all:	${NAME_A} ${NAME_SO}
 
 ${OBJ_DIR}%.o:	${SRC_DIR}%.c
 	@${MKDIR} ${@D}
-	${CC} $@ ${CFLAGS} $<
+	${CC} ${CFLAGS} $< ${OUTPUT_OPTION}
 
 clean:
 	${RM} ${OBJ_DIR}
