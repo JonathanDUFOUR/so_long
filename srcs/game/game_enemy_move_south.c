@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 21:25:30 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/05 00:37:43 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/13 00:16:58 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,8 @@
 #include "e_cardinal.h"
 #include "e_map_char.h"
 
-inline static void	__init(
-	t_enemy *const e,
-	t_config const *const c,
-	t_uint hit[2][2])
+inline static void	__init(t_enemy *const e, t_uint hit[2][2])
 {
-	e->img = &c->enemy[SOUTH][e->animate_idx];
 	hit[0][X] = (e->axis[X] + HITBOX) / IMG_W;
 	hit[0][Y] = (e->axis[Y] + HITBOX + ENEMY_SPEED) / IMG_H;
 	hit[1][X] = (e->axis[X] - HITBOX) / IMG_W;
@@ -43,7 +39,7 @@ void	game_enemy_move_south(
 {
 	t_uint	hit[2][2];
 
-	__init(e, c, hit);
+	__init(e, hit);
 	if (g->m.ptr[hit[0][X] + hit[0][Y] * g->m.width] != MAP_CHAR[WALL] && \
 		g->m.ptr[hit[1][X] + hit[1][Y] * g->m.width] != MAP_CHAR[WALL])
 	{
@@ -52,5 +48,6 @@ void	game_enemy_move_south(
 	else
 	{
 		e->action_field = 1 << MOVE_NORTH;
+		e->anim = c->enemy[NORTH].head;
 	}
 }

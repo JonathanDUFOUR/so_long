@@ -6,25 +6,24 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:46:02 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/08 06:11:53 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/12 22:39:30 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_ENEMY_H
 # define T_ENEMY_H
 
-# include "t_img.h"
+# include "t_anim.h"
 
 typedef struct s_enemy	t_enemy;
 
 struct s_enemy
 {
-	double		axis[2];
-	t_uint		animate_idx;
-	t_uint		animate_clock;
-	uint8_t		action_field;
-	t_img const	*img;
-	t_enemy		*next;
+	double			axis[2];
+	t_uint			animate_clock;
+	uint8_t			action_field;
+	t_anim const	*anim;
+	t_enemy			*next;
 };
 
 void	enemy_del_one(t_enemy *const e)

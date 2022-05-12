@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2022/05/08 06:13:53 by jodufour         ###   ########.fr        #
+#    Updated: 2022/05/13 01:19:11 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME				=	so_long
 ######################################
 #              COMMANDS              #
 ######################################
-CC					=	clang -c
+CC					=	clang
 LINK				=	clang
 RM					=	rm -rf
 MKDIR				=	mkdir -p
@@ -58,6 +58,15 @@ MLX_A				:=	${addprefix ${MLX_DIR}, ${MLX_A}}
 #            SOURCE FILES            #
 ######################################
 SRC					=	\
+						${addprefix anim/,						\
+							${addprefix lst/,					\
+								anim_lst_add_back.c				\
+								anim_lst_clear.c				\
+								anim_lst_push_back.c			\
+							}									\
+							anim_del_one.c						\
+							anim_new.c							\
+						}										\
 						${addprefix config/,					\
 							config_clear.c						\
 							config_load_enemy.c					\
@@ -147,7 +156,8 @@ DEP					=	${OBJ:.o=.d}
 #######################################
 #                FLAGS                #
 #######################################
-CFLAGS				=	-Wall -Wextra# -Werror
+CFLAGS				=	-c
+CFLAGS				+=	-Wall -Wextra -Werror
 CFLAGS				+=	-MMD -MP
 CFLAGS				+=	-I${PRV_DIR}
 CFLAGS				+=	-I${FT_IO_INC_DIR}

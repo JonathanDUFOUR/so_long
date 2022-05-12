@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:47:14 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/04 00:12:16 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/13 01:14:30 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ inline static void	__init(
 	t_config const *const c,
 	t_uint hit[3][2])
 {
-	p->img = &c->player[EAST_NORTH][p->animate_idx];
+	if (p->prev_action_field != p->action_field)
+		p->anim = c->player[EAST_NORTH].head;
+	p->prev_action_field = p->action_field;
 	hit[0][X] = (p->axis[X] + HITBOX + g_offset) / IMG_W;
 	hit[0][Y] = (p->axis[Y] + HITBOX - g_offset) / IMG_H;
 	hit[1][X] = (p->axis[X] + HITBOX + g_offset) / IMG_W;

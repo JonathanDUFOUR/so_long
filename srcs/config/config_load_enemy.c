@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:18:29 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/11 21:50:28 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/12 22:35:27 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,23 @@ inline static int	__load_one(
 	t_config *const c,
 	t_xptr const *const x,
 	t_uint const cardinal,
-	t_uint const animate_idx)
+	t_uint const idx)
 {
-	c->enemy[cardinal][animate_idx].ptr = mlx_xpm_file_to_image(
+	t_img	tmp;
+
+	tmp.ptr = mlx_xpm_file_to_image(
 			x->mlx,
-			(char *)g_xpm_enemy[cardinal][animate_idx],
-			(int *)&c->enemy[cardinal][animate_idx].width,
-			(int *)&c->enemy[cardinal][animate_idx].height);
-	if (!c->enemy[cardinal][animate_idx].ptr)
+			(char *)g_xpm_enemy[idx],
+			(int *)&tmp.width,
+			(int *)&tmp.height);
+	if (!tmp.ptr)
 		return (EXIT_FAILURE);
-	c->enemy[cardinal][animate_idx].addr = (uint32_t *)mlx_get_data_addr(
-			c->enemy[cardinal][animate_idx].ptr,
-			(int *)&c->enemy[cardinal][animate_idx].bpp,
-			(int *)&c->enemy[cardinal][animate_idx].line_len,
-			(int *)&c->enemy[cardinal][animate_idx].endian);
-	if (!c->enemy[cardinal][animate_idx].addr)
+	tmp.addr = (uint32_t *)mlx_get_data_addr(
+			tmp.ptr,
+			(int *)&tmp.bpp,
+			(int *)&tmp.line_len,
+			(int *)&tmp.endian);
+	if (!tmp.addr || anim_lst_add_back(&c->enemy[cardinal], &tmp))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
@@ -56,11 +58,17 @@ int	config_load_enemy(t_config *const c, t_xptr const *const x, int *const ret)
 	t_uint	idx;
 
 	cardinal = EAST;
+	idx = 0U;
 	while (cardinal <= SOUTH)
 	{
-		idx = 0U;
-		while (g_xpm_enemy[cardinal][idx])
+		while (g_xpm_enemy[idx])
+		{
+			if (__load_one(c, x, cardinal, idx))
+				return (*ret = MLX_ERR);
+			++idx;
+		}
 		++cardinal;
+		++idx;
 	}
 	return (*ret = SUCCESS);
 }

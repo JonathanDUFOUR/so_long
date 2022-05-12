@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 21:24:47 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/05 00:37:30 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/13 00:18:06 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,8 @@
 #include "e_cardinal.h"
 #include "e_map_char.h"
 
-inline static void	__init(
-	t_enemy *const e,
-	t_config const *const c,
-	t_uint hit[2][2])
+inline static void	__init(t_enemy *const e, t_uint hit[2][2])
 {
-	e->img = &c->enemy[WEST][e->animate_idx];
 	hit[0][X] = (e->axis[X] - HITBOX - ENEMY_SPEED) / IMG_W;
 	hit[0][Y] = (e->axis[Y] + HITBOX) / IMG_H;
 	hit[1][X] = (e->axis[X] - HITBOX - ENEMY_SPEED) / IMG_W;
@@ -43,7 +39,7 @@ void	game_enemy_move_west(
 {
 	t_uint	hit[2][2];
 
-	__init(e, c, hit);
+	__init(e, hit);
 	if (g->m.ptr[hit[0][X] + hit[0][Y] * g->m.width] != MAP_CHAR[WALL] && \
 		g->m.ptr[hit[1][X] + hit[1][Y] * g->m.width] != MAP_CHAR[WALL])
 	{
@@ -52,5 +48,6 @@ void	game_enemy_move_west(
 	else
 	{
 		e->action_field = 1 << MOVE_EAST;
+		e->anim = c->enemy[EAST].head;
 	}
 }

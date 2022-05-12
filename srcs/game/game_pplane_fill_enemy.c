@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 23:12:30 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/07 03:38:03 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/12 23:57:07 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,9 @@ void	game_pplane_fill_enemy(t_game *const g)
 		{
 			if (fabs(pdist[X]) < g->pplane.width / 2 - IMG_W / 2 && \
 				fabs(pdist[Y]) < g->pplane.height / 2 - IMG_H / 2)
-				__entire_enemy(&g->pplane, e->img, pdist);
+				__entire_enemy(&g->pplane, &e->anim->img, pdist);
 			else
-				__truncate_enemy(&g->pplane, e->img, pdist);
+				__truncate_enemy(&g->pplane, &e->anim->img, pdist);
 		}
 		e = e->next;
 	}

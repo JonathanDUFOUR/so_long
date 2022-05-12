@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:20:01 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/05 01:17:02 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/12 22:36:04 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,23 @@ inline static int	__load_one(
 	t_config *const c,
 	t_xptr const *const x,
 	t_uint const cardinal,
-	t_uint const animate_idx)
+	t_uint const idx)
 {
-	c->player[cardinal][animate_idx].ptr = mlx_xpm_file_to_image(
+	t_img	tmp;
+
+	tmp.ptr = mlx_xpm_file_to_image(
 			x->mlx,
-			(char *)g_xpm_player[cardinal][animate_idx],
-			(int *)&c->player[cardinal][animate_idx].width,
-			(int *)&c->player[cardinal][animate_idx].height);
-	if (!c->player[cardinal][animate_idx].ptr)
+			(char *)g_xpm_player[idx],
+			(int *)&tmp.width,
+			(int *)&tmp.height);
+	if (!tmp.ptr)
 		return (EXIT_FAILURE);
-	c->player[cardinal][animate_idx].addr = (uint32_t *)mlx_get_data_addr(
-			c->player[cardinal][animate_idx].ptr,
-			(int *)&c->player[cardinal][animate_idx].bpp,
-			(int *)&c->player[cardinal][animate_idx].line_len,
-			(int *)&c->player[cardinal][animate_idx].endian);
-	if (!c->player[cardinal][animate_idx].addr)
+	tmp.addr = (uint32_t *)mlx_get_data_addr(
+			tmp.ptr,
+			(int *)&tmp.bpp,
+			(int *)&tmp.line_len,
+			(int *)&tmp.endian);
+	if (!tmp.addr || anim_lst_add_back(&c->player[cardinal], &tmp))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
@@ -53,22 +55,20 @@ inline static int	__load_one(
 int	config_load_player(t_config *const c, t_xptr const *const x, int *const ret)
 {
 	t_uint	cardinal;
-	t_uint	animate_idx;
+	t_uint	idx;
 
 	cardinal = EAST;
+	idx = 0U;
 	while (cardinal <= SOUTH_EAST)
 	{
-		animate_idx = 0U;
-		while (animate_idx < ANIMATE_CNT)
+		while (g_xpm_player[idx])
 		{
-			if (__load_one(c, x, cardinal, animate_idx))
+			if (__load_one(c, x, cardinal, idx))
 				return (*ret = MLX_ERR);
-			if (c->player[cardinal][animate_idx].width != IMG_W || \
-				c->player[cardinal][animate_idx].height != IMG_H)
-				return (*ret = IMG_DIM_ERR);
-			++animate_idx;
+			++idx;
 		}
 		++cardinal;
+		++idx;
 	}
 	return (*ret = SUCCESS);
 }

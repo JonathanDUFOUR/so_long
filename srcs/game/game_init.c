@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 06:01:05 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/06 21:23:19 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/13 01:21:15 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ inline static int	__save_player(
 		return (EXIT_FAILURE);
 	g->p.axis[X] = idx % g->m.width * IMG_W + IMG_W / 2;
 	g->p.axis[Y] = idx / g->m.width * IMG_H + IMG_H / 2;
-	g->p.img = &c->player[SOUTH][0];
+	g->p.anim = c->player[SOUTH].head;
 	g->m.ptr[idx] = MAP_CHAR[FLOOR];
 	return (EXIT_SUCCESS);
 }
@@ -50,7 +50,7 @@ inline static int	__save_enemy(
 		++i;
 	if (enemy_lst_add_back(&g->el, axis, g_enemy_spawn[i].mask))
 		return (*ret = MALLOC_ERR);
-	g->el.tail->img = &c->enemy[g_enemy_spawn[i].img_idx][0];
+	g->el.tail->anim = c->enemy[g_enemy_spawn[i].img_idx].head;
 	g->m.ptr[idx] = MAP_CHAR[FLOOR];
 	return (*ret = SUCCESS);
 }
@@ -67,13 +67,13 @@ inline static int	__check(
 	{
 		if (!ft_strchr(MAP_CHAR, g->m.ptr[idx])
 			|| ((idx % g->m.width == 0
-					|| idx % g->m.width == g->m.width - 1
+					|| idx % g->m.width == g->m.width - 1U
 					|| idx / g->m.width == 0
-					|| idx / g->m.width == g->m.height - 1)
+					|| idx / g->m.width == g->m.height - 1U)
 				&& g->m.ptr[idx] != MAP_CHAR[WALL])
 			|| (g->m.ptr[idx] == MAP_CHAR[PLAYER] && __save_player(g, c, idx)))
 			return (*ret = MAP_ERR);
-		g->m.ptr[idx] == MAP_CHAR[COLLECT] && ++g->m.collect_cnt;
+		(void)(g->m.ptr[idx] == MAP_CHAR[COLLECT] && ++g->m.collect_cnt);
 		if (g->m.ptr[idx] == MAP_CHAR[ENEMY_EAST] || \
 			g->m.ptr[idx] == MAP_CHAR[ENEMY_NORTH] || \
 			g->m.ptr[idx] == MAP_CHAR[ENEMY_WEST] || \

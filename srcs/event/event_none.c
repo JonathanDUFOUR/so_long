@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:49:11 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/05 23:27:09 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/13 01:03:24 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ inline static bool	__is_player_dead(t_game const *const g)
 
 inline static bool	__routine_player(t_game *const g, t_config const *const c)
 {
-	t_uint			idx;
+	t_uint	idx;
 
 	idx = 0U;
 	while (g_action[idx].mask && g->p.action_field != g_action[idx].mask)
@@ -47,7 +47,7 @@ inline static bool	__routine_player(t_game *const g, t_config const *const c)
 		g_action[idx].p_fct(g, c);
 		if (g->p.animate_clock++ == SLEEP_TIME)
 		{
-			g->p.animate_idx = ++g->p.animate_idx % ANIMATE_CNT;
+			g->p.anim = g->p.anim->next;
 			g->p.animate_clock = 0U;
 		}
 		return (true);
@@ -69,9 +69,9 @@ inline static bool	__is_enemy_on_window(
 
 inline static bool	__routine_enemy(t_all *const a)
 {
-	t_uint			idx;
-	bool			ret;
-	t_enemy			*e;
+	t_uint	idx;
+	bool	ret;
+	t_enemy	*e;
 
 	ret = false;
 	e = a->g.el.head;
@@ -85,7 +85,7 @@ inline static bool	__routine_enemy(t_all *const a)
 			g_action[idx].e_fct(&a->g, &a->c, e);
 			if (e->animate_clock++ == SLEEP_TIME)
 			{
-				e->animate_idx = ++e->animate_idx % ANIMATE_CNT;
+				e->anim = e->anim->next;
 				e->animate_clock = 0U;
 			}
 			ret |= __is_enemy_on_window(&a->g.p, e);

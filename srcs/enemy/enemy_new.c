@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:50:17 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/05 23:24:51 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/12 22:44:24 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,9 @@ t_enemy	*enemy_new(double const axis[2], uint8_t const action_field)
 		return (NULL);
 	output->axis[X] = axis[X];
 	output->axis[Y] = axis[Y];
-	output->animate_idx = 0U;
 	output->animate_clock = 0U;
 	output->action_field = action_field;
-	output->img = NULL;
+	output->anim = NULL;
 	output->next = NULL;
 	return (output);
 }

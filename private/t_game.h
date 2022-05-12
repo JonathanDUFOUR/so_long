@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 05:49:15 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/06 23:58:10 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/13 00:19:57 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,6 @@ void	game_enemy_move_west(t_game *const g, t_config const *const c,
 			t_enemy *const e)
 		__attribute__((nonnull));
 void	game_enemy_move_south(t_game *const g, t_config const *const c,
-			t_enemy *const e)
-		__attribute__((nonnull));
-void	game_enemy_move_east_north(t_game *const g, t_config const *const c,
-			t_enemy *const e)
-		__attribute__((nonnull));
-void	game_enemy_move_north_west(t_game *const g, t_config const *const c,
-			t_enemy *const e)
-		__attribute__((nonnull));
-void	game_enemy_move_west_south(t_game *const g, t_config const *const c,
-			t_enemy *const e)
-		__attribute__((nonnull));
-void	game_enemy_move_south_east(t_game *const g, t_config const *const c,
 			t_enemy *const e)
 		__attribute__((nonnull));
 void	game_player_interact_tile(t_game *const g, t_config const *const c,
