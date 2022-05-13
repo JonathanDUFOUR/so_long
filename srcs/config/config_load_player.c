@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 09:20:01 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/12 22:36:04 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/05/13 03:09:17 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ inline static int	__load_one(
 			(int *)&tmp.line_len,
 			(int *)&tmp.endian);
 	if (!tmp.addr || anim_lst_add_back(&c->player[cardinal], &tmp))
-		return (EXIT_FAILURE);
+		return (mlx_destroy_image(x->mlx, tmp.ptr), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
