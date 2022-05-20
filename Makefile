@@ -6,22 +6,22 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 14:04:02 by jodufour          #+#    #+#              #
-#    Updated: 2022/05/13 01:30:17 by jodufour         ###   ########.fr        #
+#    Updated: 2022/05/19 02:57:05 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################################
-#             EXECUTABLE             #
-######################################
-NAME				=	so_long
-
-######################################
 #              COMMANDS              #
 ######################################
-CC					=	cc
-LINK				=	cc
+CC					=	clang
+LINK				=	clang
 RM					=	rm -rf
 MKDIR				=	mkdir -p
+
+######################################
+#             EXECUTABLE             #
+######################################
+NAME				=	so_long.out
 
 #######################################
 #             DIRECTORIES             #
@@ -177,6 +177,8 @@ endif
 #######################################
 #                RULES                #
 #######################################
+.PHONY: all clean fclean re fre
+
 ${NAME}: ${OBJ} ${FT_IO_A} ${FT_STRING_A} ${MLX_A}
 	${LINK} ${OBJ} ${LDFLAGS} ${OUTPUT_OPTION}
 
@@ -186,19 +188,13 @@ all: ${NAME}
 
 ${OBJ_DIR}%.o: ${SRC_DIR}%.c
 	@${MKDIR} ${@D}
-	${CC} ${CFLAGS} $< ${OUTPUT_OPTION}
+	${CC} $< ${CFLAGS} ${OUTPUT_OPTION}
 
-${FT_IO_A}:
-	${MAKE} ${@F} -C ${@D}
-
-${FT_STRING_A}:
+${FT_IO_A} ${FT_STRING_A}:
 	${MAKE} ${@F} -C ${@D}
 
 ${MLX_A}:
 	${MAKE} -C ${@D}
-
--include coffee.mk
--include norm.mk
 
 clean:
 	${RM} ${OBJ_DIR} ${NAME} vg*core.* *.log
@@ -213,4 +209,5 @@ re: clean all
 
 fre: fclean all
 
-.PHONY:	all clean fclean re fre
+-include ${HOME}/Templates/mk_files/coffee.mk
+-include ${HOME}/Templates/mk_files/norm.mk
