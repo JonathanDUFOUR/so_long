@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 06:01:05 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/13 01:21:15 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/09/17 00:58:35 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ inline static int	__check(
 {
 	t_uint	idx;
 
+	if (!g->m.ptr)
+		return (*ret = MAP_ERR);
 	idx = 0U;
 	while (g->m.ptr[idx])
 	{
