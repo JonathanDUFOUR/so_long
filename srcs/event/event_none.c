@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:49:11 by jodufour          #+#    #+#             */
-/*   Updated: 2022/05/13 01:03:24 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/10/06 18:41:25 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,9 @@ inline static bool	__routine_enemy(t_all *const a)
 int	event_none(t_all *const a)
 {
 	if (a->g.p.is_exited)
-		game_over(GREEN VICTORY_MSG RESET, a->g.p.distance, &a->x);
+		game_over(GREEN_FG VICTORY_MSG RESET, a->g.p.distance, &a->x);
 	else if (__is_player_dead(&a->g))
-		game_over(RED DEFEAT_MSG RESET, a->g.p.distance, &a->x);
+		game_over(RED_FG DEFEAT_MSG RESET, a->g.p.distance, &a->x);
 	if ((__routine_player(&a->g, &a->c) | __routine_enemy(a)) && render(a))
 		return (mlx_loop_end(a->x.mlx), a->ret);
 	return (a->ret = SUCCESS);
