@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 14:49:11 by jodufour          #+#    #+#             */
-/*   Updated: 2022/10/06 18:41:25 by jodufour         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:19:03 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ inline static bool	__is_player_dead(t_game const *const g)
 	return (false);
 }
 
-inline static bool	__routine_player(t_game *const g, t_config const *const c)
+inline static t_hhuint	__routine_player(
+	t_game *const g,
+	t_config const *const c)
 {
 	t_uint	idx;
 
@@ -50,9 +52,9 @@ inline static bool	__routine_player(t_game *const g, t_config const *const c)
 			g->p.anim = g->p.anim->next;
 			g->p.animate_clock = 0U;
 		}
-		return (true);
+		return (1);
 	}
-	return (false);
+	return (0);
 }
 
 inline static bool	__is_enemy_on_window(
@@ -67,17 +69,17 @@ inline static bool	__is_enemy_on_window(
 			fabs(pdist[Y]) < WIN_H / 2 + IMG_H);
 }
 
-inline static bool	__routine_enemy(t_all *const a)
+inline static t_hhuint	__routine_enemy(t_all *const a)
 {
-	t_uint	idx;
-	bool	ret;
-	t_enemy	*e;
+	t_uint		idx;
+	t_hhuint	ret;
+	t_enemy		*e;
 
-	ret = false;
+	ret = 0;
 	e = a->g.el.head;
 	while (e)
 	{
-		idx = 0U;
+		idx = 0;
 		while (g_action[idx].mask && e->action_field != g_action[idx].mask)
 			++idx;
 		if (g_action[idx].e_fct)
@@ -88,7 +90,8 @@ inline static bool	__routine_enemy(t_all *const a)
 				e->anim = e->anim->next;
 				e->animate_clock = 0U;
 			}
-			ret |= __is_enemy_on_window(&a->g.p, e);
+			if (__is_enemy_on_window(&a->g.p, e))
+				ret = 1;
 		}
 		e = e->next;
 	}

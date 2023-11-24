@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 06:01:05 by jodufour          #+#    #+#             */
-/*   Updated: 2022/09/17 00:58:35 by jodufour         ###   ########.fr       */
+/*   Updated: 2023/11/24 11:30:02 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@
 #include "e_axis.h"
 #include "e_cardinal.h"
 #include "e_ret.h"
+
+inline static bool	__is_border_or_corner(
+	t_huint const width,
+	t_huint const height,
+	t_huint const i)
+{
+	t_huint const	x = i % width;
+	t_huint const	y = i / width;
+
+	return (x == 0 || x == width - 1 || y == 0 || y == height - 1);
+}
 
 inline static int	__save_player(
 	t_game *const g,
@@ -60,29 +71,27 @@ inline static int	__check(
 	t_config const *const c,
 	int *const ret)
 {
-	t_uint	idx;
+	t_uint	i;
 
 	if (!g->m.ptr)
 		return (*ret = MAP_ERR);
-	idx = 0U;
-	while (g->m.ptr[idx])
+	i = 0U;
+	while (g->m.ptr[i])
 	{
-		if (!ft_strchr(MAP_CHAR, g->m.ptr[idx])
-			|| ((idx % g->m.width == 0
-					|| idx % g->m.width == g->m.width - 1U
-					|| idx / g->m.width == 0
-					|| idx / g->m.width == g->m.height - 1U)
-				&& g->m.ptr[idx] != MAP_CHAR[WALL])
-			|| (g->m.ptr[idx] == MAP_CHAR[PLAYER] && __save_player(g, c, idx)))
+		if (!ft_strchr(MAP_CHAR, g->m.ptr[i])
+			|| (__is_border_or_corner(g->m.width, g->m.height, i)
+				&& g->m.ptr[i] != MAP_CHAR[WALL])
+			|| (g->m.ptr[i] == MAP_CHAR[PLAYER] && __save_player(g, c, i)))
 			return (*ret = MAP_ERR);
-		(void)(g->m.ptr[idx] == MAP_CHAR[COLLECT] && ++g->m.collect_cnt);
-		if (g->m.ptr[idx] == MAP_CHAR[ENEMY_EAST] || \
-			g->m.ptr[idx] == MAP_CHAR[ENEMY_NORTH] || \
-			g->m.ptr[idx] == MAP_CHAR[ENEMY_WEST] || \
-			g->m.ptr[idx] == MAP_CHAR[ENEMY_SOUTH])
-			if (__save_enemy(g, c, idx, ret))
+		if (g->m.ptr[i] == MAP_CHAR[COLLECT])
+			++g->m.collect_cnt;
+		if (g->m.ptr[i] == MAP_CHAR[ENEMY_EAST] || \
+			g->m.ptr[i] == MAP_CHAR[ENEMY_NORTH] || \
+			g->m.ptr[i] == MAP_CHAR[ENEMY_WEST] || \
+			g->m.ptr[i] == MAP_CHAR[ENEMY_SOUTH])
+			if (__save_enemy(g, c, i, ret))
 				return (*ret);
-		++idx;
+		++i;
 	}
 	if (!g->m.collect_cnt || !g->p.axis[X] || !g->p.axis[Y])
 		return (*ret = MAP_ERR);
